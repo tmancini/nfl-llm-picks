@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { parseEspnScoreboard, parseNflverseScheduleCsv } from "../lib/espn";
+import {
+  parseEspnInjuries,
+  parseEspnScoreboard,
+  parseNflverseScheduleCsv,
+  parseTeamRecentForm,
+} from "../lib/espn";
+import { gamesForPrompt, userPrompt } from "../lib/prompt";
+import { minimalGameContexts } from "../lib/context";
 import { parsePicksPayload, validatePicks, isFillerRationale } from "../lib/picks";
 import { gradePick, recordForModel, gradeWeekFile } from "../lib/grade";
 import { applyLocks, scaffoldWeekFile, weekHasPicks } from "../lib/lock";
@@ -19,16 +26,31 @@ const espnFixture = {
       competitions: [
         {
           status: { type: { state: "pre", completed: false } },
+          venue: {
+            fullName: "GEHA Field at Arrowhead Stadium",
+            indoor: false,
+            address: { city: "Kansas City", state: "MO", country: "USA" },
+          },
           competitors: [
             {
               homeAway: "home",
               score: "0",
-              team: { abbreviation: "KC", displayName: "Kansas City Chiefs" },
+              records: [{ type: "total", summary: "1-0" }],
+              team: {
+                id: "12",
+                abbreviation: "KC",
+                displayName: "Kansas City Chiefs",
+              },
             },
             {
               homeAway: "away",
               score: "0",
-              team: { abbreviation: "PHI", displayName: "Philadelphia Eagles" },
+              records: [{ type: "total", summary: "1-0" }],
+              team: {
+                id: "21",
+                abbreviation: "PHI",
+                displayName: "Philadelphia Eagles",
+              },
             },
           ],
         },
@@ -40,6 +62,11 @@ const espnFixture = {
       competitions: [
         {
           status: { type: { state: "post", completed: true } },
+          venue: {
+            fullName: "Northwest Stadium",
+            indoor: false,
+            address: { city: "Landover", state: "MD", country: "USA" },
+          },
           competitors: [
             {
               homeAway: "home",
@@ -93,6 +120,15 @@ describe("ESPN parser", () => {
       awayScore: 17,
       winner: null,
     });
+    expect(parsed.extras["401772001"]).toMatchObject({
+      venueName: "GEHA Field at Arrowhead Stadium",
+      venueCity: "Kansas City",
+      indoor: false,
+      homeRecord: "1-0",
+      awayRecord: "1-0",
+      homeEspnId: "12",
+      awayEspnId: "21",
+    });
   });
 
   it("parses nflverse CSV fallback rows", () => {
@@ -105,6 +141,147 @@ describe("ESPN parser", () => {
     expect(games).toHaveLength(1);
     expect(games[0].home).toBe("KC");
     expect(games[0].away).toBe("PHI");
+  });
+
+  it("parses injuries without touching odds payloads", () => {
+    const notes = parseEspnInjuries({
+      odds: [{ details: "DO NOT USE" }],
+      pickcenter: [{ spread: -3 }],
+      injuries: [
+        {
+          team: { abbreviation: "KC" },
+          injuries: [
+            {
+              status: "Out",
+              athlete: {
+                displayName: "Patrick Mahomes",
+                position: { abbreviation: "QB" },
+              },
+              details: { type: "Ankle" },
+            },
+            {
+              status: "Questionable",
+              athlete: {
+                displayName: "Travis Kelce",
+                position: { abbreviation: "TE" },
+              },
+              details: { type: "Knee" },
+            },
+          ],
+        },
+      ],
+    });
+    expect(notes.KC).toEqual([
+      {
+        player: "Patrick Mahomes",
+        position: "QB",
+        status: "Out",
+        detail: "Ankle",
+      },
+      {
+        player: "Travis Kelce",
+        position: "TE",
+        status: "Questionable",
+        detail: "Knee",
+      },
+    ]);
+  });
+
+  it("parses recent form from a team schedule", () => {
+    const recent = parseTeamRecentForm(
+      {
+        team: { abbreviation: "KC" },
+        events: [
+          {
+            week: { number: 1 },
+            seasonType: { type: 2 },
+            competitions: [
+              {
+                status: { type: { completed: true, state: "post" } },
+                neutralSite: false,
+                competitors: [
+                  {
+                    homeAway: "home",
+                    winner: true,
+                    score: { value: 27, displayValue: "27" },
+                    team: { id: "12", abbreviation: "KC" },
+                  },
+                  {
+                    homeAway: "away",
+                    winner: false,
+                    score: { value: 20, displayValue: "20" },
+                    team: { id: "21", abbreviation: "PHI" },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            week: { number: 2 },
+            seasonType: { type: 2 },
+            competitions: [
+              {
+                status: { type: { completed: false, state: "pre" } },
+                competitors: [
+                  {
+                    homeAway: "home",
+                    team: { id: "12", abbreviation: "KC" },
+                  },
+                  {
+                    homeAway: "away",
+                    team: { id: "22", abbreviation: "NYG" },
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "KC",
+      2,
+      3,
+    );
+    expect(recent).toEqual([
+      {
+        week: 1,
+        opponent: "PHI",
+        location: "home",
+        result: "W",
+        score: "27-20",
+      },
+    ]);
+  });
+});
+
+describe("prompt context", () => {
+  it("embeds context fields and forbids betting lines in the user prompt", () => {
+    const games = minimalGameContexts([
+      game({ id: "1", away: "PHI", home: "KC", kickoffEt: "Thu 8:15 PM ET" }),
+    ]);
+    games[0].awaySide.record = "1-0";
+    games[0].homeSide.recent = [
+      {
+        week: 1,
+        opponent: "LAC",
+        location: "home",
+        result: "W",
+        score: "27-20",
+      },
+    ];
+    games[0].weather = {
+      status: "forecast",
+      tempF: 72,
+      precipProb: 10,
+      summary: "partly cloudy",
+    };
+    const prompt = userPrompt(2026, 2, games);
+    expect(prompt).toContain("Do not consult or mention betting lines");
+    expect(prompt).toContain("partly cloudy");
+    const packed = gamesForPrompt(games)[0] as Record<string, unknown>;
+    expect(packed.gameId).toBe("1");
+    expect(packed).not.toHaveProperty("odds");
+    expect(packed).not.toHaveProperty("spread");
+    expect(JSON.stringify(packed)).not.toMatch(/moneyline|over\/under/i);
   });
 });
 
@@ -257,6 +434,9 @@ describe("cli + consensus", () => {
     expect(parseCliArgs(["--fixture", "--force"])).toEqual({
       fixture: true,
       force: true,
+    });
+    expect(parseCliArgs(["--context-only"])).toEqual({
+      contextOnly: true,
     });
   });
 

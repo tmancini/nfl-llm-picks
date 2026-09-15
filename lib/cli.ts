@@ -3,6 +3,7 @@ export type CliArgs = {
   week?: number;
   force?: boolean;
   fixture?: boolean;
+  contextOnly?: boolean;
 };
 
 export function parseCliArgs(argv: string[]): CliArgs {
@@ -20,6 +21,8 @@ export function parseCliArgs(argv: string[]): CliArgs {
       args.force = true;
     } else if (token === "--fixture") {
       args.fixture = true;
+    } else if (token === "--context-only") {
+      args.contextOnly = true;
     }
   }
   if (args.season !== undefined && !Number.isInteger(args.season)) {

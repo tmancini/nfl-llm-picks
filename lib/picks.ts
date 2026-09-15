@@ -1,4 +1,4 @@
-import type { Game, Pick, SlateGame } from "./types";
+import type { Game, Pick } from "./types";
 import { normalizeTeamCode } from "./teams";
 
 const FILLER =
@@ -86,13 +86,4 @@ export function validatePicks(games: Game[], picks: Pick[]): Pick[] {
   }
 
   return normalized;
-}
-
-export function slateForPrompt(games: Game[]): SlateGame[] {
-  return games.map((game) => ({
-    id: game.id,
-    away: game.away,
-    home: game.home,
-    kickoffEt: game.kickoffEt,
-  }));
 }

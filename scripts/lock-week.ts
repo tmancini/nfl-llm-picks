@@ -1,4 +1,5 @@
 import { parseCliArgs } from "../lib/cli";
+import { buildWeekContexts } from "../lib/context";
 import { loadLocalEnv, getOpenRouterApiKey } from "../lib/env";
 import { fetchEspnCurrent, fetchSlate, mergeScores } from "../lib/espn";
 import {
@@ -17,6 +18,16 @@ async function main(): Promise<void> {
   const season = args.season ?? live.season;
   const week = args.week ?? live.week;
   const slate = args.season || args.week ? await fetchSlate(season, week) : live;
+
+  if (args.contextOnly) {
+    console.log(`Fetching weekly context for ${season} week ${week} (no model calls)…`);
+    const contexts = await buildWeekContexts(slate);
+    console.log(JSON.stringify(contexts, null, 2));
+    console.log(
+      `Context pack: ${contexts.length} games (injuries/form/weather; no odds).`,
+    );
+    return;
+  }
 
   if (slate.games.every((game) => game.status === "final")) {
     console.warn(
@@ -77,7 +88,9 @@ async function main(): Promise<void> {
     return;
   }
 
-  const locked = await applyLocks(weekFile, createOpenRouterClient(apiKey));
+  console.log(`Building weekly context pack for ${season} week ${week}…`);
+  const contexts = await buildWeekContexts(slate);
+  const locked = await applyLocks(weekFile, createOpenRouterClient(apiKey), contexts);
   const path = writeWeekFile(locked);
   writeCurrentPointer({ season, week });
   console.log(`Locked ${season} week ${week}: ${path}`);

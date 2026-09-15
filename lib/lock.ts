@@ -2,6 +2,7 @@ import { MODELS, MAX_LOCK_ATTEMPTS } from "./models";
 import { emptyRecord, gradeWeekFile } from "./grade";
 import { parsePicksPayload, validatePicks } from "./picks";
 import { SYSTEM_PROMPT, userPrompt } from "./prompt";
+import { minimalGameContexts, type GameContext } from "./context";
 import type { OpenRouterClient } from "./openrouter";
 import type { Game, Pick, WeekFile } from "./types";
 import { nowIso } from "./time";
@@ -37,9 +38,10 @@ export async function lockModelPicks(
   season: number,
   week: number,
   games: Game[],
+  contexts: GameContext[],
   maxAttempts = MAX_LOCK_ATTEMPTS,
 ): Promise<Pick[]> {
-  const user = userPrompt(season, week, games);
+  const user = userPrompt(season, week, contexts);
   let lastError: unknown;
   for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
     try {
@@ -60,8 +62,10 @@ export async function lockModelPicks(
 export async function applyLocks(
   week: WeekFile,
   client: OpenRouterClient,
+  contexts?: GameContext[],
 ): Promise<WeekFile> {
   if (weekHasPicks(week)) return week;
+  const promptGames = contexts ?? minimalGameContexts(week.games);
   const next: WeekFile = {
     ...week,
     picks: { ...week.picks },
@@ -77,6 +81,7 @@ export async function applyLocks(
       week.season,
       week.week,
       week.games,
+      promptGames,
     );
   }
   next.lockedAt = nowIso();

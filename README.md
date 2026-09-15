@@ -15,6 +15,16 @@ Pinned OpenRouter slugs (not `:latest`):
 
 Same prompt for every model. Temperature 0. One call per model. Retry only if the response is unusable JSON.
 
+Each lock builds a shared weekly **context pack** (no betting lines) and sends it to every model:
+
+- Matchup + kickoff (ET)
+- Season record (from ESPN scoreboard when present)
+- Recent regular-season form (last few completed games: W/L and scores)
+- Key injury / inactive notes (ESPN game summary; omitted with a clear note if unavailable)
+- Venue + indoor/dome flag; outdoor kickoff weather via Open-Meteo when geocodable
+
+Dry-run context only (no OpenRouter calls): `pnpm lock-week -- --context-only`
+
 ## Run locally
 
 ```bash

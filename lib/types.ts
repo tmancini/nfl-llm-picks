@@ -69,9 +69,3 @@ export type SeasonStanding = {
   weeksLocked: number;
 };
 
-export type SlateGame = {
-  id: string;
-  away: string;
-  home: string;
-  kickoffEt: string;
-};
