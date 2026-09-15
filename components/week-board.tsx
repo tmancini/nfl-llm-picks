@@ -6,7 +6,7 @@ import {
   pickResult,
   shortKickoff,
 } from "@/lib/board";
-import { teamLogoUrl } from "@/lib/logos";
+import { modelLogoUrl, teamLogoUrl } from "@/lib/logos";
 import { formatRecord, seasonStandings } from "@/lib/standings";
 import { listWeekFiles } from "@/lib/store";
 import type { Game, WeekFile } from "@/lib/types";
@@ -32,26 +32,37 @@ function MatchupCell({ game }: { game: Game }) {
 }
 
 function ModelHead({
+  modelId,
   label,
   shortLabel,
-  index,
 }: {
+  modelId: string;
   label: string;
   shortLabel: string;
-  index: number;
 }) {
-  const tones = ["bg-model-a", "bg-model-b", "bg-model-c", "bg-model-d"];
+  const logoSrc = modelLogoUrl(modelId);
   return (
-    <div className="flex flex-col items-center gap-1.5 px-1 py-2">
-      <div className="font-display text-[11px] font-bold tracking-[0.08em] text-ink uppercase">
+    <div className="flex flex-col items-center gap-1.5 px-1 py-2" title={label}>
+      {logoSrc ? (
+        <Image
+          src={logoSrc}
+          alt={label}
+          title={label}
+          width={28}
+          height={28}
+          className="h-7 w-7 object-contain"
+          unoptimized
+        />
+      ) : (
+        <div
+          className="flex h-7 w-7 items-center justify-center rounded-sm bg-white/15 text-[10px] font-bold text-white"
+          aria-hidden="true"
+        >
+          {shortLabel.slice(0, 2).toUpperCase()}
+        </div>
+      )}
+      <div className="font-display text-[11px] font-bold tracking-[0.08em] text-white/90 uppercase">
         {shortLabel}
-      </div>
-      <div
-        className={`flex h-11 w-11 items-center justify-center rounded-sm text-sm font-bold text-white shadow-sm ${tones[index % tones.length]}`}
-        title={label}
-        aria-hidden="true"
-      >
-        {shortLabel.slice(0, 2).toUpperCase()}
       </div>
       <div className="sr-only">{label}</div>
     </div>
@@ -161,12 +172,12 @@ export function WeekBoard({ week }: { week: WeekFile }) {
                   Week {week.week}
                 </div>
               </th>
-              {week.models.map((model, index) => (
+              {week.models.map((model) => (
                 <th key={model.id} className="min-w-[5.5rem] border-l border-white/10 px-1">
                   <ModelHead
+                    modelId={model.id}
                     label={model.label}
                     shortLabel={model.shortLabel}
-                    index={index}
                   />
                 </th>
               ))}

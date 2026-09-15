@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Google Gemini">
+  <title>Google Gemini</title>
+  <defs>
+    <linearGradient id="gemini" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E8DF5"/>
+      <stop offset="35%" stop-color="#8B6CF6"/>
+      <stop offset="65%" stop-color="#D96570"/>
+      <stop offset="100%" stop-color="#F6BF26"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#gemini)" d="M12 1.5c.35 4.8 1.95 7.9 6.5 10.5C13.95 14.6 12.35 17.7 12 22.5c-.35-4.8-1.95-7.9-6.5-10.5C10.05 9.4 11.65 6.3 12 1.5Z"/>
+</svg>
