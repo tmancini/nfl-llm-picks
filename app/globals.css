@@ -71,14 +71,17 @@ header {
   mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
 }
 
-a {
-  color: inherit;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-}
+/* Keep link defaults in @layer base so Tailwind color utilities win on <a>. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
 
-a:hover {
-  color: var(--accent);
+  a:hover {
+    color: var(--accent);
+  }
 }
 
 @keyframes ink-rise {
