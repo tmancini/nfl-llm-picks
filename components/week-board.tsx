@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   consensusForGame,
   isConsensusGame,
@@ -121,32 +122,26 @@ function PickCell({
 export function WeekBoard({ week }: { week: WeekFile }) {
   const season = seasonStandings(listWeekFiles(), week.season);
   const hasPicks = week.models.some((model) => (week.picks[model.id] ?? []).length > 0);
+  const weekHref = `/weeks/${week.season}/${week.week}`;
 
   return (
     <section className="rise" style={{ animationDelay: "120ms" }}>
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-accent uppercase">
-            {week.source === "fixture"
-              ? "Sample slate"
-              : week.source === "slate"
-                ? "Slate only"
-                : "Locked picks"}
-          </p>
-          <h2 className="font-display text-3xl leading-none font-bold tracking-tight text-ink sm:text-4xl">
-            Week {week.week}
-            <span className="ml-2 font-sans text-base font-medium text-ink-muted">
-              {week.season}
-            </span>
-          </h2>
-        </div>
-        <p className="max-w-xs text-right text-sm leading-snug text-ink-soft">
-          {week.source === "openrouter"
-            ? "One call per model. Temperature 0. No regenerating."
-            : week.source === "fixture"
-              ? "Placeholder picks — not an official lock."
-              : "Slate is live. Run pnpm lock-week with OPENROUTER_API_KEY."}
+      <div className="mb-4">
+        <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-accent uppercase">
+          {week.source === "fixture"
+            ? "Sample slate"
+            : week.source === "slate"
+              ? "Slate only"
+              : "Locked picks"}
         </p>
+        <h2 className="font-display text-3xl leading-none font-bold tracking-tight text-ink sm:text-4xl">
+          <Link href={weekHref} className="text-ink no-underline hover:text-accent">
+            Week {week.week}
+          </Link>
+          <span className="ml-2 font-sans text-base font-medium text-ink-muted">
+            {week.season}
+          </span>
+        </h2>
       </div>
 
       {week.source === "fixture" ? (
@@ -169,7 +164,9 @@ export function WeekBoard({ week }: { week: WeekFile }) {
               <th className="w-[9.5rem] px-3 py-3 text-left align-bottom font-mono text-[10px] font-medium tracking-[0.18em] text-white/70 uppercase">
                 NFL picks
                 <div className="mt-1 font-display text-lg tracking-normal text-white normal-case">
-                  Week {week.week}
+                  <Link href={weekHref} className="text-white no-underline hover:text-white/80">
+                    Week {week.week}
+                  </Link>
                 </div>
               </th>
               {week.models.map((model) => (

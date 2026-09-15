@@ -3,16 +3,26 @@ import Link from "next/link";
 export function Masthead({
   kicker,
   edition,
+  editionHref,
 }: {
   kicker: string;
   edition: string;
+  editionHref?: string;
 }) {
   return (
     <header className="rise">
       <div className="flex items-center justify-between gap-4 font-mono text-[10px] font-medium tracking-[0.2em] text-ink-muted uppercase sm:text-[11px]">
         <span className="text-accent">Live board</span>
         <span className="text-center">{kicker}</span>
-        <span className="text-right">{edition}</span>
+        <span className="text-right">
+          {editionHref ? (
+            <Link href={editionHref} className="text-ink-muted no-underline hover:text-accent">
+              {edition}
+            </Link>
+          ) : (
+            edition
+          )}
+        </span>
       </div>
 
       <div className="relative mt-3 overflow-hidden rounded-sm bg-header px-4 py-6 text-white sm:px-8 sm:py-8">
@@ -24,8 +34,7 @@ export function Masthead({
             </h1>
           </Link>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-            Four frontier models pick every NFL game straight up. One locked answer.
-            Graded after the whistle.
+            Four models pick every NFL game straight up. Entertainment only.
           </p>
         </div>
       </div>

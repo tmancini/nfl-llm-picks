@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Disclaimer } from "@/components/disclaimer";
 import { EmptyState } from "@/components/empty-state";
 import { Masthead } from "@/components/masthead";
+import { WeekNav } from "@/components/week-nav";
 import { listWeekFiles } from "@/lib/weeks";
 
 export const metadata = {
@@ -9,13 +10,15 @@ export const metadata = {
 };
 
 export default function ArchivePage() {
-  const weeks = [...listWeekFiles()].reverse();
+  const weeks = listWeekFiles();
+  const reversed = [...weeks].reverse();
 
   return (
     <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 py-6 sm:px-6">
       <Masthead kicker="Back issues" edition="Archive" />
-      <main className="mt-8 flex-1">
-        {weeks.length === 0 ? (
+      <main className="mt-8 flex flex-1 flex-col gap-8">
+        <WeekNav weeks={weeks} />
+        {reversed.length === 0 ? (
           <EmptyState
             title="No back issues."
             body="Once a week is locked, it lives here as a public JSON file you can audit."
@@ -24,7 +27,7 @@ export default function ArchivePage() {
           <section className="rise">
             <h2 className="font-display text-3xl font-bold tracking-tight">All weeks</h2>
             <ul className="mt-4 divide-y divide-rule border-y border-rule bg-panel">
-              {weeks.map((week) => (
+              {reversed.map((week) => (
                 <li key={`${week.season}-${week.week}`}>
                   <Link
                     href={`/weeks/${week.season}/${week.week}`}

@@ -6,9 +6,7 @@ export function Disclaimer() {
       </p>
       <p className="mt-2 max-w-3xl leading-relaxed">
         The Lock Sheet is entertainment, not betting advice. Models pick straight-up
-        winners from the slate and kickoff times only. No spreads, totals, or odds are
-        shown or sent to the models. Picks lock once. Past performance is not a
-        forecast, a tip, or an invitation to wager.
+        winners only. Past performance is not a tip or an invitation to wager.
       </p>
     </footer>
   );

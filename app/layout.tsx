@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s · The Lock Sheet",
   },
   description:
-    "Four frontier models pick every NFL game straight up. One locked answer per model, graded after the final whistle. Entertainment, not betting advice.",
+    "Four models pick every NFL game straight up. Entertainment, not betting advice.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
