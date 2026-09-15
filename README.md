@@ -42,7 +42,7 @@ Without a key, the script writes the ESPN slate with empty picks and prints the 
 
 ## Data
 
-`data/weeks/2026-w01.json` (and later weeks) is the source of truth. `data/current.json` points at the featured week.
+Locked weeks live under `data/weeks/` (e.g. `2026-w02.json`). `data/current.json` points at the featured week when one exists. The board starts empty until the first official Wednesday lock.
 
 ## GitHub Actions
 

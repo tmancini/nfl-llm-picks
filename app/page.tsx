@@ -31,7 +31,7 @@ export default function Home() {
         ) : (
           <EmptyState
             title="The sheet is blank."
-            body="No week has been locked yet. Run pnpm lock-week with OPENROUTER_API_KEY."
+            body="No week has been locked yet. Check back Wednesday before Thursday night football."
           />
         )}
       </main>
