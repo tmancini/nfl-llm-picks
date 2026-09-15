@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --surface: #eef1f4;
+  --panel: #fbfcfd;
+  --panel-alt: #f3f6f8;
+  --header: #0d2137;
+  --footer: #e8eef3;
+  --ink: #102038;
+  --ink-soft: #3d4f66;
+  --ink-muted: #6b7c90;
+  --rule: #c9d3de;
+  --accent: #0f7a5c;
+  --consensus: #d7ebe3;
+  --win: #1a7a45;
+  --loss: #c0392b;
+  --model-a: #1f4e79;
+  --model-b: #0f7a5c;
+  --model-c: #8a5a12;
+  --model-d: #5b3d8a;
+  --signal: #0d2137;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-panel-alt: var(--panel-alt);
+  --color-header: var(--header);
+  --color-footer: var(--footer);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-consensus: var(--consensus);
+  --color-win: var(--win);
+  --color-loss: var(--loss);
+  --color-model-a: var(--model-a);
+  --color-model-b: var(--model-b);
+  --color-model-c: var(--model-c);
+  --color-model-d: var(--model-d);
+  --color-signal: var(--signal);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--surface);
+}
+
+body {
+  min-height: 100%;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 420px at 12% -10%, rgba(15, 122, 92, 0.12), transparent 55%),
+    radial-gradient(800px 380px at 88% 0%, rgba(13, 33, 55, 0.1), transparent 50%),
+    linear-gradient(180deg, #e8edf2 0%, var(--surface) 38%, #e7ebf0 100%);
+  font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+}
+
+header {
+  position: relative;
+}
+
+.masthead-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+@keyframes ink-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: ink-rise 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+tbody tr {
+  animation: ink-rise 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
