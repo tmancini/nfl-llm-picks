@@ -169,19 +169,19 @@ describe("grade + standings", () => {
     const week = scaffoldWeekFile(2026, 1, [
       game({ id: "1", away: "PHI", home: "KC", status: "final", winner: "KC", homeScore: 21, awayScore: 7 }),
     ]);
-    week.picks["openai/gpt-5.6-sol"] = [
+    week.picks["openai/gpt-6-astra"] = [
       { gameId: "1", winner: "KC", rationale: "Home field." },
     ];
-    week.picks["anthropic/claude-opus-5"] = [
+    week.picks["anthropic/claude-fable-5.1"] = [
       { gameId: "1", winner: "PHI", rationale: "Eagles road form." },
     ];
     const graded = gradeWeekFile(week);
     const standings = seasonStandings([graded], 2026);
-    const sol = standings.find((row) => row.modelId === "openai/gpt-5.6-sol");
-    const opus = standings.find((row) => row.modelId === "anthropic/claude-opus-5");
-    expect(sol?.wins).toBe(1);
-    expect(opus?.losses).toBe(1);
-    expect(formatRecord(sol!)).toBe("1–0");
+    const astra = standings.find((row) => row.modelId === "openai/gpt-6-astra");
+    const fable = standings.find((row) => row.modelId === "anthropic/claude-fable-5.1");
+    expect(astra?.wins).toBe(1);
+    expect(fable?.losses).toBe(1);
+    expect(formatRecord(astra!)).toBe("1–0");
   });
 });
 
@@ -192,7 +192,7 @@ describe("lock protocol", () => {
     let calls = 0;
     const locked = await applyLocks(week, {
       async complete(model) {
-        if (model !== "openai/gpt-5.6-sol") {
+        if (model !== "openai/gpt-6-astra") {
           return JSON.stringify({
             picks: [{ gameId: "1", winner: "PHI", rationale: "Road dog with a plan." }],
           });
@@ -205,7 +205,7 @@ describe("lock protocol", () => {
       },
     });
     expect(calls).toBe(2);
-    expect(locked.picks["openai/gpt-5.6-sol"][0].winner).toBe("KC");
+    expect(locked.picks["openai/gpt-6-astra"][0].winner).toBe("KC");
     expect(weekHasPicks(locked)).toBe(true);
     expect(locked.lockedAt).toBeTruthy();
   });
@@ -228,7 +228,7 @@ describe("lock protocol", () => {
       },
     });
     expect(extra).toBe(0);
-    expect(second.picks["openai/gpt-5.6-sol"][0].winner).toBe("KC");
+    expect(second.picks["openai/gpt-6-astra"][0].winner).toBe("KC");
   });
 
   it("does not ask three times or vote", async () => {

@@ -8,9 +8,9 @@ const ESPN_ABBREV: Record<string, string> = {
 
 /** Local vendor marks for the week-board header (dark-header friendly). */
 const MODEL_LOGOS: Record<string, string> = {
-  "openai/gpt-5.6-sol": "/models/openai.svg",
-  "anthropic/claude-opus-5": "/models/anthropic.svg",
-  "google/gemini-2.5-pro": "/models/gemini.svg",
+  "openai/gpt-6-astra": "/models/openai.svg",
+  "anthropic/claude-fable-5.1": "/models/anthropic.svg",
+  "google/gemini-3.1-pro-preview": "/models/gemini.svg",
   "x-ai/grok-4.6": "/models/grok.svg",
 };
 

@@ -3,13 +3,16 @@ import type { ModelDef } from "./types";
 /**
  * Pin exact OpenRouter slugs (never `:latest`) so a week's record stays comparable.
  *
- * Google: checked 2026-09-14. `google/gemini-3.1-pro-preview` exists but is
- * still preview. The plan only swaps if 3.x Pro is stable, so keep 2.5 Pro.
+ * Checked 2026-09-15 against OpenRouter:
+ * - OpenAI frontier: GPT-6 Astra (not mid-tier Sol/Luna)
+ * - Anthropic frontier: Claude Fable 5.1 (Mythos-class; ahead of Opus 5)
+ * - Google Pro-class: Gemini 3.1 Pro Preview (no stable 3.x Pro yet; Flash is not the flagship)
+ * - xAI frontier: Grok 4.6 (newest flagship text model)
  */
 export const MODELS: readonly ModelDef[] = [
-  { id: "openai/gpt-5.6-sol", label: "GPT-5.6 Sol", shortLabel: "Sol" },
-  { id: "anthropic/claude-opus-5", label: "Claude Opus 5", shortLabel: "Opus" },
-  { id: "google/gemini-2.5-pro", label: "Gemini 2.5 Pro", shortLabel: "Gemini" },
+  { id: "openai/gpt-6-astra", label: "GPT-6 Astra", shortLabel: "Astra" },
+  { id: "anthropic/claude-fable-5.1", label: "Claude Fable 5.1", shortLabel: "Fable" },
+  { id: "google/gemini-3.1-pro-preview", label: "Gemini 3.1 Pro", shortLabel: "Gemini" },
   { id: "x-ai/grok-4.6", label: "Grok 4.6", shortLabel: "Grok" },
 ] as const;
 

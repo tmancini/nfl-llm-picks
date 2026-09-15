@@ -1,9 +1,9 @@
 export type GameStatus = "scheduled" | "live" | "final";
 
 export type ModelId =
-  | "openai/gpt-5.6-sol"
-  | "anthropic/claude-opus-5"
-  | "google/gemini-2.5-pro"
+  | "openai/gpt-6-astra"
+  | "anthropic/claude-fable-5.1"
+  | "google/gemini-3.1-pro-preview"
   | "x-ai/grok-4.6";
 
 export type ModelDef = {
