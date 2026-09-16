@@ -1,0 +1,271 @@
+{
+  "season": 2026,
+  "week": 2,
+  "source": "slate",
+  "lockedAt": null,
+  "gradedAt": null,
+  "models": [
+    {
+      "id": "openai/gpt-6-astra",
+      "label": "GPT-6 Astra",
+      "shortLabel": "Astra"
+    },
+    {
+      "id": "anthropic/claude-fable-5.1",
+      "label": "Claude Fable 5.1",
+      "shortLabel": "Fable"
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "label": "Gemini 3.1 Pro",
+      "shortLabel": "Gemini"
+    },
+    {
+      "id": "x-ai/grok-4.6",
+      "label": "Grok 4.6",
+      "shortLabel": "Grok"
+    }
+  ],
+  "games": [
+    {
+      "id": "401872932",
+      "away": "DET",
+      "home": "BUF",
+      "awayName": "Detroit Lions",
+      "homeName": "Buffalo Bills",
+      "kickoffUtc": "2026-09-18T00:15Z",
+      "kickoffEt": "Thu, Sep 17, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872933",
+      "away": "CAR",
+      "home": "ATL",
+      "awayName": "Carolina Panthers",
+      "homeName": "Atlanta Falcons",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872934",
+      "away": "CIN",
+      "home": "HOU",
+      "awayName": "Cincinnati Bengals",
+      "homeName": "Houston Texans",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872935",
+      "away": "CLE",
+      "home": "TB",
+      "awayName": "Cleveland Browns",
+      "homeName": "Tampa Bay Buccaneers",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872936",
+      "away": "GB",
+      "home": "NYJ",
+      "awayName": "Green Bay Packers",
+      "homeName": "New York Jets",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872937",
+      "away": "MIN",
+      "home": "CHI",
+      "awayName": "Minnesota Vikings",
+      "homeName": "Chicago Bears",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872938",
+      "away": "NO",
+      "home": "BAL",
+      "awayName": "New Orleans Saints",
+      "homeName": "Baltimore Ravens",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872939",
+      "away": "PHI",
+      "home": "TEN",
+      "awayName": "Philadelphia Eagles",
+      "homeName": "Tennessee Titans",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872946",
+      "away": "PIT",
+      "home": "NE",
+      "awayName": "Pittsburgh Steelers",
+      "homeName": "New England Patriots",
+      "kickoffUtc": "2026-09-20T17:00Z",
+      "kickoffEt": "Sun, Sep 20, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872940",
+      "away": "JAX",
+      "home": "DEN",
+      "awayName": "Jacksonville Jaguars",
+      "homeName": "Denver Broncos",
+      "kickoffUtc": "2026-09-20T20:05Z",
+      "kickoffEt": "Sun, Sep 20, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872941",
+      "away": "LV",
+      "home": "LAC",
+      "awayName": "Las Vegas Raiders",
+      "homeName": "Los Angeles Chargers",
+      "kickoffUtc": "2026-09-20T20:05Z",
+      "kickoffEt": "Sun, Sep 20, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872942",
+      "away": "MIA",
+      "home": "SF",
+      "awayName": "Miami Dolphins",
+      "homeName": "San Francisco 49ers",
+      "kickoffUtc": "2026-09-20T20:25Z",
+      "kickoffEt": "Sun, Sep 20, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872943",
+      "away": "SEA",
+      "home": "ARI",
+      "awayName": "Seattle Seahawks",
+      "homeName": "Arizona Cardinals",
+      "kickoffUtc": "2026-09-20T20:25Z",
+      "kickoffEt": "Sun, Sep 20, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872944",
+      "away": "WSH",
+      "home": "DAL",
+      "awayName": "Washington Commanders",
+      "homeName": "Dallas Cowboys",
+      "kickoffUtc": "2026-09-20T20:25Z",
+      "kickoffEt": "Sun, Sep 20, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872945",
+      "away": "IND",
+      "home": "KC",
+      "awayName": "Indianapolis Colts",
+      "homeName": "Kansas City Chiefs",
+      "kickoffUtc": "2026-09-21T00:20Z",
+      "kickoffEt": "Sun, Sep 20, 8:20 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872947",
+      "away": "NYG",
+      "home": "LAR",
+      "awayName": "New York Giants",
+      "homeName": "Los Angeles Rams",
+      "kickoffUtc": "2026-09-22T00:15Z",
+      "kickoffEt": "Mon, Sep 21, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    }
+  ],
+  "picks": {
+    "openai/gpt-6-astra": [],
+    "anthropic/claude-fable-5.1": [],
+    "google/gemini-3.1-pro-preview": [],
+    "x-ai/grok-4.6": []
+  },
+  "records": {
+    "openai/gpt-6-astra": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "anthropic/claude-fable-5.1": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "google/gemini-3.1-pro-preview": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "x-ai/grok-4.6": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    }
+  }
+}
