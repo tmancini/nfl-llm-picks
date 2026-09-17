@@ -1,1 +1,1 @@
-NFLLM — Four models pick every NFL game straight up.
+NFLLM — AI models pick every NFL game. Live board, straight-up picks, entertainment only.

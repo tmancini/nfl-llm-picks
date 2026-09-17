@@ -24,7 +24,7 @@ const siteDescription =
   "Four models pick every NFL game straight up. Entertainment, not betting advice.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nfl-llm-picks.vercel.app"),
+  metadataBase: new URL("https://nfllm.fun"),
   title: {
     default: "NFLLM",
     template: "%s · NFLLM",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "NFLLM — Four models pick every NFL game straight up.",
+        alt: "NFLLM — AI models pick every NFL game. Live board, straight-up picks, entertainment only.",
       },
     ],
   },

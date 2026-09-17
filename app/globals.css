@@ -10,12 +10,12 @@
   --ink-soft: #3d4f66;
   --ink-muted: #6b7c90;
   --rule: #c9d3de;
-  --accent: #0f7a5c;
-  --consensus: #d7ebe3;
+  --accent: #91f151;
+  --consensus: #e6f6d4;
   --win: #1a7a45;
   --loss: #c0392b;
   --model-a: #1f4e79;
-  --model-b: #0f7a5c;
+  --model-b: #6fbf28;
   --model-c: #8a5a12;
   --model-d: #5b3d8a;
   --signal: #0d2137;
@@ -53,7 +53,7 @@ body {
   min-height: 100%;
   color: var(--ink);
   background:
-    radial-gradient(900px 420px at 12% -10%, rgba(15, 122, 92, 0.12), transparent 55%),
+    radial-gradient(900px 420px at 12% -10%, rgba(145, 241, 81, 0.16), transparent 55%),
     radial-gradient(800px 380px at 88% 0%, rgba(13, 33, 55, 0.1), transparent 50%),
     linear-gradient(180deg, #e8edf2 0%, var(--surface) 38%, #e7ebf0 100%);
   font-family: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;

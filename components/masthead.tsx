@@ -1,21 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-
-function Mark({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 32 32"
-      className={className}
-      aria-hidden
-    >
-      <rect width="32" height="32" rx="6" fill="#0f7a5c" />
-      <path
-        fill="#ffffff"
-        d="M8.2 24V8h4.05l7.5 10.55V8H24v16h-4.05L12.45 13.45V24H8.2z"
-      />
-    </svg>
-  );
-}
 
 export function Masthead({
   kicker,
@@ -49,7 +33,14 @@ export function Masthead({
             href="/"
             className="flex flex-col items-center gap-3 no-underline hover:text-white sm:gap-4"
           >
-            <Mark className="size-10 sm:size-12" />
+            <Image
+              src="/brand/nfllm-mark.png"
+              alt=""
+              width={48}
+              height={48}
+              className="size-10 sm:size-12"
+              priority
+            />
             <h1 className="font-display text-[12vw] leading-[0.85] font-bold tracking-[-0.03em] sm:text-7xl md:text-8xl">
               NFLLM
             </h1>
