@@ -11,7 +11,7 @@ import {
 import { modelLogoUrl } from "@/lib/logos";
 import { formatRecord, seasonStandings } from "@/lib/standings";
 import { listWeekFiles } from "@/lib/store";
-import type { Game, WeekFile } from "@/lib/types";
+import type { Game, ModelDef, WeekFile } from "@/lib/types";
 
 function MatchupCell({ game }: { game: Game }) {
   const kickoff =
@@ -91,8 +91,217 @@ function BoardPickCell({
   );
 }
 
-export function WeekBoard({ week }: { week: WeekFile }) {
+function CompactModelPick({
+  week,
+  model,
+  game,
+}: {
+  week: WeekFile;
+  model: ModelDef;
+  game: Game;
+}) {
+  const logoSrc = modelLogoUrl(model.id);
+  return (
+    <div className="flex min-h-[4.5rem] flex-col overflow-hidden rounded-sm border border-rule/80 bg-panel">
+      <div className="flex items-center justify-center gap-1.5 border-b border-rule/70 bg-header px-2 py-1.5 text-white">
+        {logoSrc ? (
+          <Image
+            src={logoSrc}
+            alt=""
+            width={14}
+            height={14}
+            className="h-3.5 w-3.5 object-contain"
+            unoptimized
+          />
+        ) : null}
+        <span className="font-display text-[10px] font-bold tracking-[0.1em] uppercase">
+          {model.shortLabel}
+        </span>
+      </div>
+      <div className="flex flex-1 items-stretch justify-center">
+        <BoardPickCell week={week} modelId={model.id} game={game} />
+      </div>
+    </div>
+  );
+}
+
+function MobileGameCard({
+  week,
+  game,
+  rowIndex,
+}: {
+  week: WeekFile;
+  game: Game;
+  rowIndex: number;
+}) {
+  const highlight = isConsensusGame(week, game.id);
+  const consensus = consensusForGame(week, game.id);
+
+  return (
+    <article
+      className={`border-b border-rule/80 px-3 py-3 last:border-b-0 ${
+        highlight ? "bg-consensus/40" : rowIndex % 2 === 0 ? "bg-panel" : "bg-panel-alt"
+      }`}
+      style={{ animationDelay: `${160 + rowIndex * 28}ms` }}
+    >
+      <div className="mb-2.5">
+        <MatchupCell game={game} />
+        {highlight && consensus ? (
+          <div className="mt-1 font-mono text-[9px] tracking-[0.14em] text-ink-muted uppercase">
+            Consensus {consensus.team} {consensus.count}/{consensus.total}
+          </div>
+        ) : null}
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        {week.models.map((model) => (
+          <CompactModelPick key={model.id} week={week} model={model} game={game} />
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function MobileRecords({ week }: { week: WeekFile }) {
   const season = seasonStandings(listWeekFiles(), week.season);
+
+  return (
+    <div className="border-t-2 border-ink/20 bg-footer px-3 py-3">
+      <div className="grid grid-cols-2 gap-2">
+        {week.models.map((model) => {
+          const weekRecord = week.records[model.id];
+          const standing = season.find((row) => row.modelId === model.id);
+          const logoSrc = modelLogoUrl(model.id);
+          return (
+            <div
+              key={model.id}
+              className="rounded-sm border border-rule/80 bg-panel px-2.5 py-2 text-center"
+            >
+              <div className="mb-1 flex items-center justify-center gap-1.5">
+                {logoSrc ? (
+                  <Image
+                    src={logoSrc}
+                    alt=""
+                    width={14}
+                    height={14}
+                    className="h-3.5 w-3.5 object-contain"
+                    unoptimized
+                  />
+                ) : null}
+                <span className="font-display text-[10px] font-bold tracking-[0.1em] text-ink uppercase">
+                  {model.shortLabel}
+                </span>
+              </div>
+              <div className="font-mono text-sm font-semibold text-ink">
+                {weekRecord ? formatRecord(weekRecord) : "—"}
+              </div>
+              <div className="mt-0.5 font-mono text-[10px] text-ink-muted">
+                Season {standing ? formatRecord(standing) : "0–0"}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function DesktopTable({ week }: { week: WeekFile }) {
+  const season = seasonStandings(listWeekFiles(), week.season);
+  const weekHref = `/weeks/${week.season}/${week.week}`;
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[640px] border-collapse">
+        <thead>
+          <tr className="border-b border-rule bg-header text-white">
+            <th className="w-[9.5rem] px-3 py-3 text-left align-bottom font-mono text-[10px] font-medium tracking-[0.18em] text-white/70 uppercase">
+              NFL picks
+              <div className="mt-1 font-display text-lg tracking-normal text-white normal-case">
+                <Link href={weekHref} className="text-white no-underline hover:text-white/80">
+                  Week {week.week}
+                </Link>
+              </div>
+            </th>
+            {week.models.map((model) => (
+              <th key={model.id} className="min-w-[5.5rem] border-l border-white/10 px-1">
+                <ModelHead
+                  modelId={model.id}
+                  label={model.label}
+                  shortLabel={model.shortLabel}
+                />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {week.games.map((game, rowIndex) => {
+            const highlight = isConsensusGame(week, game.id);
+            const consensus = consensusForGame(week, game.id);
+            return (
+              <tr
+                key={game.id}
+                className={`border-t border-rule/80 ${
+                  highlight ? "bg-consensus/40" : rowIndex % 2 === 0 ? "bg-panel" : "bg-panel-alt"
+                }`}
+                style={{ animationDelay: `${160 + rowIndex * 28}ms` }}
+              >
+                <td className="px-3 py-2.5 align-middle">
+                  <MatchupCell game={game} />
+                  {highlight && consensus ? (
+                    <div className="mt-1 font-mono text-[9px] tracking-[0.14em] text-ink-muted uppercase">
+                      Consensus {consensus.team} {consensus.count}/{consensus.total}
+                    </div>
+                  ) : null}
+                </td>
+                {week.models.map((model) => (
+                  <td key={model.id} className="border-l border-rule/70 p-0 align-middle">
+                    <BoardPickCell week={week} modelId={model.id} game={game} />
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+        <tfoot>
+          <tr className="border-t-2 border-ink/20 bg-footer">
+            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink uppercase">
+              This week
+            </td>
+            {week.models.map((model) => {
+              const record = week.records[model.id];
+              return (
+                <td
+                  key={model.id}
+                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm font-semibold text-ink"
+                >
+                  {record ? formatRecord(record) : "—"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr className="border-t border-rule/70 bg-footer">
+            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink-muted uppercase">
+              Season
+            </td>
+            {week.models.map((model) => {
+              const standing = season.find((row) => row.modelId === model.id);
+              return (
+                <td
+                  key={model.id}
+                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm text-ink-soft"
+                >
+                  {standing ? formatRecord(standing) : "0–0"}
+                </td>
+              );
+            })}
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  );
+}
+
+export function WeekBoard({ week }: { week: WeekFile }) {
   const hasPicks = week.models.some((model) => (week.picks[model.id] ?? []).length > 0);
   const weekHref = `/weeks/${week.season}/${week.week}`;
 
@@ -127,93 +336,27 @@ export function WeekBoard({ week }: { week: WeekFile }) {
         </div>
       ) : null}
 
-      <div className="overflow-x-auto rounded-sm border border-rule bg-panel shadow-[0_12px_40px_-24px_rgba(16,32,56,0.45)]">
-        <table className="w-full min-w-[640px] border-collapse">
-          <thead>
-            <tr className="border-b border-rule bg-header text-white">
-              <th className="w-[9.5rem] px-3 py-3 text-left align-bottom font-mono text-[10px] font-medium tracking-[0.18em] text-white/70 uppercase">
-                NFL picks
-                <div className="mt-1 font-display text-lg tracking-normal text-white normal-case">
-                  <Link href={weekHref} className="text-white no-underline hover:text-white/80">
-                    Week {week.week}
-                  </Link>
-                </div>
-              </th>
-              {week.models.map((model) => (
-                <th key={model.id} className="min-w-[5.5rem] border-l border-white/10 px-1">
-                  <ModelHead
-                    modelId={model.id}
-                    label={model.label}
-                    shortLabel={model.shortLabel}
-                  />
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {week.games.map((game, rowIndex) => {
-              const highlight = isConsensusGame(week, game.id);
-              const consensus = consensusForGame(week, game.id);
-              return (
-                <tr
-                  key={game.id}
-                  className={`border-t border-rule/80 ${
-                    highlight ? "bg-consensus/40" : rowIndex % 2 === 0 ? "bg-panel" : "bg-panel-alt"
-                  }`}
-                  style={{ animationDelay: `${160 + rowIndex * 28}ms` }}
-                >
-                  <td className="px-3 py-2.5 align-middle">
-                    <MatchupCell game={game} />
-                    {highlight && consensus ? (
-                      <div className="mt-1 font-mono text-[9px] tracking-[0.14em] text-ink-muted uppercase">
-                        Consensus {consensus.team} {consensus.count}/{consensus.total}
-                      </div>
-                    ) : null}
-                  </td>
-                  {week.models.map((model) => (
-                    <td key={model.id} className="border-l border-rule/70 p-0 align-middle">
-                      <BoardPickCell week={week} modelId={model.id} game={game} />
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <tr className="border-t-2 border-ink/20 bg-footer">
-              <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink uppercase">
-                This week
-              </td>
-              {week.models.map((model) => {
-                const record = week.records[model.id];
-                return (
-                  <td
-                    key={model.id}
-                    className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm font-semibold text-ink"
-                  >
-                    {record ? formatRecord(record) : "—"}
-                  </td>
-                );
-              })}
-            </tr>
-            <tr className="border-t border-rule/70 bg-footer">
-              <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink-muted uppercase">
-                Season
-              </td>
-              {week.models.map((model) => {
-                const standing = season.find((row) => row.modelId === model.id);
-                return (
-                  <td
-                    key={model.id}
-                    className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm text-ink-soft"
-                  >
-                    {standing ? formatRecord(standing) : "0–0"}
-                  </td>
-                );
-              })}
-            </tr>
-          </tfoot>
-        </table>
+      <div className="overflow-hidden rounded-sm border border-rule bg-panel shadow-[0_12px_40px_-24px_rgba(16,32,56,0.45)]">
+        <div className="md:hidden">
+          <div className="border-b border-rule bg-header px-3 py-3 text-center text-white">
+            <div className="font-mono text-[10px] font-medium tracking-[0.18em] text-white/70 uppercase">
+              NFL picks
+            </div>
+            <div className="mt-1 font-display text-lg">
+              <Link href={weekHref} className="text-white no-underline hover:text-white/80">
+                Week {week.week}
+              </Link>
+            </div>
+          </div>
+          {week.games.map((game, rowIndex) => (
+            <MobileGameCard key={game.id} week={week} game={game} rowIndex={rowIndex} />
+          ))}
+          <MobileRecords week={week} />
+        </div>
+
+        <div className="hidden md:block">
+          <DesktopTable week={week} />
+        </div>
       </div>
     </section>
   );
