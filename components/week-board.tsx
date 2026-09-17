@@ -99,15 +99,13 @@ export function WeekBoard({ week }: { week: WeekFile }) {
   return (
     <section className="rise" style={{ animationDelay: "120ms" }}>
       <div className="mb-4 text-center">
-        <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-accent uppercase">
-          {week.source === "fixture"
-            ? "Sample slate"
-            : week.source === "slate"
-              ? "Slate only"
-              : "Locked picks"}
-        </p>
+        {week.source === "fixture" || week.source === "slate" ? (
+          <p className="mb-1 font-mono text-[10px] font-medium tracking-[0.22em] text-ink-muted uppercase">
+            {week.source === "fixture" ? "Sample slate" : "Slate only"}
+          </p>
+        ) : null}
         <h2 className="font-display text-3xl leading-none font-bold tracking-tight text-ink sm:text-4xl">
-          <Link href={weekHref} className="text-ink no-underline hover:text-accent">
+          <Link href={weekHref} className="text-ink no-underline hover:text-header">
             Week {week.week}
           </Link>
           <span className="ml-2 font-sans text-base font-medium text-ink-muted">
@@ -117,7 +115,7 @@ export function WeekBoard({ week }: { week: WeekFile }) {
       </div>
 
       {week.source === "fixture" ? (
-        <div className="mb-3 border border-dashed border-accent/50 bg-accent/5 px-3 py-2 font-mono text-[11px] tracking-[0.12em] text-accent uppercase">
+        <div className="mb-3 border border-dashed border-header/30 bg-header/5 px-3 py-2 font-mono text-[11px] tracking-[0.12em] text-header uppercase">
           Sample week — do not treat as official
         </div>
       ) : null}

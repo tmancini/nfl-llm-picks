@@ -13,15 +13,15 @@ export function Masthead({
   return (
     <header className="rise">
       <div className="flex items-center justify-between gap-4 font-mono text-[10px] font-medium tracking-[0.2em] text-ink-muted uppercase sm:text-[11px]">
-        <span className="text-accent">Live board</span>
-        <span className="text-center">{kicker}</span>
+        <span className="font-semibold text-header">Live board</span>
+        <span className="text-center text-ink-muted">{kicker}</span>
         <span className="text-right">
           {editionHref ? (
-            <Link href={editionHref} className="text-ink-muted no-underline hover:text-accent">
+            <Link href={editionHref} className="text-ink-muted no-underline hover:text-header">
               {edition}
             </Link>
           ) : (
-            edition
+            <span className="text-ink-muted">{edition}</span>
           )}
         </span>
       </div>
