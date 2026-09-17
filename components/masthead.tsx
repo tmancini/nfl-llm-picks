@@ -30,7 +30,7 @@ export function Masthead({
         <div className="relative">
           <Link href="/" className="block no-underline hover:text-white">
             <h1 className="font-display text-[12vw] leading-[0.85] font-bold tracking-[-0.03em] sm:text-7xl md:text-8xl">
-              The Lock Sheet
+              NFLLM
             </h1>
           </Link>
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">

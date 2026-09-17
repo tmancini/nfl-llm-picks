@@ -71,7 +71,7 @@ export function createOpenRouterClient(
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
           "HTTP-Referer": "https://github.com/thomas-ellisai/nfl-llm-picks",
-          "X-Title": "The Lock Sheet",
+          "X-Title": "NFLLM",
         },
         body: JSON.stringify(body),
       });

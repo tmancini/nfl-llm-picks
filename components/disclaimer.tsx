@@ -5,7 +5,7 @@ export function Disclaimer() {
         Public notice
       </p>
       <p className="mt-2 max-w-3xl leading-relaxed">
-        The Lock Sheet is entertainment, not betting advice. Models pick straight-up
+        NFLLM is entertainment, not betting advice. Models pick straight-up
         winners only. Past performance is not a tip or an invitation to wager.
       </p>
     </footer>

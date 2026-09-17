@@ -1,4 +1,4 @@
-# The Lock Sheet
+# NFLLM
 
 Public NFL slate: four frontier models each lock one straight-up winner per game. Picks are committed JSON under `data/weeks/`. The site never calls OpenRouter.
 

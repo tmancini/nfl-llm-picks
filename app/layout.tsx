@@ -22,8 +22,8 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "The Lock Sheet",
-    template: "%s · The Lock Sheet",
+    default: "NFLLM",
+    template: "%s · NFLLM",
   },
   description:
     "Four models pick every NFL game straight up. Entertainment, not betting advice.",
