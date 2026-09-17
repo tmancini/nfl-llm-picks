@@ -1,9 +1,9 @@
-import { isFillerRationale } from "./picks";
 import { listWeekFiles, readCurrentPointer } from "./store";
 import type { Game, Pick, WeekFile } from "./types";
 import { consensusWinner } from "./consensus";
 
 export { consensusWinner } from "./consensus";
+export { visibleRationale } from "./picks";
 
 export function pickFor(week: WeekFile, modelId: string, gameId: string): Pick | undefined {
   return (week.picks[modelId] ?? []).find((pick) => pick.gameId === gameId);
@@ -33,11 +33,6 @@ export function consensusForGame(
 
 export function isConsensusGame(week: WeekFile, gameId: string): boolean {
   return consensusForGame(week, gameId) !== null;
-}
-
-export function visibleRationale(rationale: string | undefined): string | null {
-  if (!rationale || isFillerRationale(rationale)) return null;
-  return rationale;
 }
 
 export function resolveBoardWeek(weeks = listWeekFiles()): WeekFile | null {

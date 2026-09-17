@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EmptyPickCell, PickCell } from "@/components/pick-cell";
 import {
   consensusForGame,
   isConsensusGame,
@@ -7,7 +8,7 @@ import {
   pickResult,
   shortKickoff,
 } from "@/lib/board";
-import { modelLogoUrl, teamLogoUrl } from "@/lib/logos";
+import { modelLogoUrl } from "@/lib/logos";
 import { formatRecord, seasonStandings } from "@/lib/standings";
 import { listWeekFiles } from "@/lib/store";
 import type { Game, WeekFile } from "@/lib/types";
@@ -70,7 +71,7 @@ function ModelHead({
   );
 }
 
-function PickCell({
+function BoardPickCell({
   week,
   modelId,
   game,
@@ -80,42 +81,13 @@ function PickCell({
   game: Game;
 }) {
   const pick = pickFor(week, modelId, game.id);
-  const result = pickResult(pick?.winner, game);
-
-  if (!pick) {
-    return (
-      <div className="flex h-full min-h-[3.25rem] items-center justify-center px-2 text-center font-mono text-[10px] text-ink-muted">
-        No pick
-      </div>
-    );
-  }
-
-  const ring =
-    result === "W"
-      ? "ring-2 ring-win bg-win/8"
-      : result === "L"
-        ? "ring-2 ring-loss bg-loss/8"
-        : result === "T"
-          ? "ring-1 ring-ink-muted/40"
-          : "";
-
+  if (!pick) return <EmptyPickCell />;
   return (
-    <div
-      className={`flex h-full min-h-[3.25rem] flex-col items-center justify-center gap-0.5 px-2 py-2 ${ring}`}
-      title={pick.rationale || pick.winner}
-    >
-      <Image
-        src={teamLogoUrl(pick.winner)}
-        alt={pick.winner}
-        width={36}
-        height={36}
-        className="h-9 w-9 object-contain"
-        unoptimized
-      />
-      <span className="font-mono text-[10px] font-medium tracking-wide text-ink">
-        {pick.winner}
-      </span>
-    </div>
+    <PickCell
+      winner={pick.winner}
+      rationale={pick.rationale}
+      result={pickResult(pick.winner, game)}
+    />
   );
 }
 
@@ -202,7 +174,7 @@ export function WeekBoard({ week }: { week: WeekFile }) {
                   </td>
                   {week.models.map((model) => (
                     <td key={model.id} className="border-l border-rule/70 p-0 align-middle">
-                      <PickCell week={week} modelId={model.id} game={game} />
+                      <BoardPickCell week={week} modelId={model.id} game={game} />
                     </td>
                   ))}
                 </tr>

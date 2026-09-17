@@ -12,6 +12,11 @@ export function isFillerRationale(rationale: string | undefined): boolean {
   return false;
 }
 
+export function visibleRationale(rationale: string | undefined): string | null {
+  if (!rationale || isFillerRationale(rationale)) return null;
+  return rationale;
+}
+
 export function extractJsonObject(raw: string): unknown {
   const trimmed = raw.trim();
   const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i);
