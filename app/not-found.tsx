@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col px-4 py-6 sm:px-6">
       <Masthead kicker="Misprint" edition="404" />
       <main className="mt-8 flex-1 border border-rule bg-panel px-6 py-16 text-center">
-        <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-accent uppercase">
+        <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-ink-muted uppercase">
           Week not on file
         </p>
         <h2 className="font-display mt-3 text-4xl font-bold tracking-tight">
