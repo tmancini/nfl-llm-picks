@@ -1,5 +1,22 @@
 import Link from "next/link";
 
+function Mark({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      className={className}
+      aria-hidden
+    >
+      <rect width="32" height="32" rx="6" fill="#0f7a5c" />
+      <path
+        fill="#ffffff"
+        d="M8.2 24V8h4.05l7.5 10.55V8H24v16h-4.05L12.45 13.45V24H8.2z"
+      />
+    </svg>
+  );
+}
+
 export function Masthead({
   kicker,
   edition,
@@ -25,15 +42,19 @@ export function Masthead({
         </span>
       </div>
 
-      <div className="relative mt-3 overflow-hidden rounded-sm bg-header px-4 py-6 text-center text-white sm:px-8 sm:py-8">
+      <div className="relative mt-3 overflow-hidden rounded-sm bg-header px-4 py-6 text-white sm:px-8 sm:py-8">
         <div className="masthead-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
-        <div className="relative">
-          <Link href="/" className="block no-underline hover:text-white">
+        <div className="relative flex flex-col items-center text-center">
+          <Link
+            href="/"
+            className="flex flex-col items-center gap-3 no-underline hover:text-white sm:gap-4"
+          >
+            <Mark className="size-10 sm:size-12" />
             <h1 className="font-display text-[12vw] leading-[0.85] font-bold tracking-[-0.03em] sm:text-7xl md:text-8xl">
               NFLLM
             </h1>
           </Link>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
             Four models pick every NFL game straight up. Entertainment only.
           </p>
         </div>

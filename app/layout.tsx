@@ -20,13 +20,38 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
+const siteDescription =
+  "Four models pick every NFL game straight up. Entertainment, not betting advice.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nfl-llm-picks.vercel.app"),
   title: {
     default: "NFLLM",
     template: "%s · NFLLM",
   },
-  description:
-    "Four models pick every NFL game straight up. Entertainment, not betting advice.",
+  description: siteDescription,
+  applicationName: "NFLLM",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "NFLLM",
+    title: "NFLLM",
+    description: siteDescription,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NFLLM — Four models pick every NFL game straight up.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NFLLM",
+    description: siteDescription,
+    images: ["/twitter-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

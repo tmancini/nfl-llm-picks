@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" role="img" aria-label="NFLLM">
+  <rect x="0" y="8" width="48" height="48" rx="9" fill="#0f7a5c"/>
+  <path fill="#ffffff" d="M12.3 48V16h6.1l11.25 15.82V16H42v32h-6.1L24.65 32.18V48H12.3z"/>
+  <text x="64" y="46" fill="#0d2137" font-family="Syne, Avenir Next Condensed, Arial Narrow, sans-serif" font-size="42" font-weight="800" letter-spacing="-1.5">NFLLM</text>
+</svg>
