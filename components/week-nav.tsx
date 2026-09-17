@@ -14,12 +14,14 @@ export function WeekNav({
     (a, b) => a.season - b.season || a.week - b.week,
   );
 
+  // Archive page omits `active`; home passes null when no featured week.
+  const onArchive = active === undefined;
+
   return (
     <nav
       aria-label="Weeks"
       className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] font-medium tracking-[0.12em] uppercase"
     >
-      <span className="text-ink-muted">Weeks</span>
       <div className="flex flex-wrap items-center gap-1.5">
         {sorted.map((week) => {
           const href = `/weeks/${week.season}/${week.week}`;
@@ -47,7 +49,12 @@ export function WeekNav({
       </span>
       <Link
         href="/weeks"
-        className="tracking-[0.14em] text-ink-muted no-underline hover:text-ink"
+        className={
+          onArchive
+            ? "tracking-[0.14em] text-ink no-underline"
+            : "tracking-[0.14em] text-ink-muted no-underline hover:text-ink"
+        }
+        aria-current={onArchive ? "page" : undefined}
       >
         Archive
       </Link>

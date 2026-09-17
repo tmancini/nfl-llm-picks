@@ -38,14 +38,6 @@ export function Masthead({
           </p>
         </div>
       </div>
-
-      <nav className="mt-3 flex items-center gap-5 font-mono text-[11px] font-medium tracking-[0.18em] uppercase">
-        <Link href="/">This week</Link>
-        <span className="text-ink-muted" aria-hidden="true">
-          /
-        </span>
-        <Link href="/weeks">Archive</Link>
-      </nav>
     </header>
   );
 }
