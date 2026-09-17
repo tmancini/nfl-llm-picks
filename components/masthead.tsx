@@ -25,7 +25,7 @@ export function Masthead({
         </span>
       </div>
 
-      <div className="relative mt-3 overflow-hidden rounded-sm bg-header px-4 py-6 text-white sm:px-8 sm:py-8">
+      <div className="relative mt-3 overflow-hidden rounded-sm bg-header px-4 py-6 text-center text-white sm:px-8 sm:py-8">
         <div className="masthead-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
         <div className="relative">
           <Link href="/" className="block no-underline hover:text-white">
@@ -33,7 +33,7 @@ export function Masthead({
               NFLLM
             </h1>
           </Link>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
             Four models pick every NFL game straight up. Entertainment only.
           </p>
         </div>

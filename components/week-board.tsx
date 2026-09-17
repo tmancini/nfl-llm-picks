@@ -98,7 +98,7 @@ export function WeekBoard({ week }: { week: WeekFile }) {
 
   return (
     <section className="rise" style={{ animationDelay: "120ms" }}>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <p className="font-mono text-[10px] font-medium tracking-[0.22em] text-accent uppercase">
           {week.source === "fixture"
             ? "Sample slate"

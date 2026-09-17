@@ -20,7 +20,7 @@ export function WeekNav({
   return (
     <nav
       aria-label="Weeks"
-      className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] font-medium tracking-[0.12em] uppercase"
+      className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-mono text-[11px] font-medium tracking-[0.12em] uppercase"
     >
       <div className="flex flex-wrap items-center gap-1.5">
         {sorted.map((week) => {
