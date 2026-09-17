@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "week": 2,
-  "source": "slate",
-  "lockedAt": null,
+  "source": "openrouter",
+  "lockedAt": "2026-09-17T00:34:57.726Z",
   "gradedAt": null,
   "models": [
     {
@@ -237,10 +237,334 @@
     }
   ],
   "picks": {
-    "openai/gpt-6-astra": [],
-    "anthropic/claude-fable-5.1": [],
-    "google/gemini-3.1-pro-preview": [],
-    "x-ai/grok-4.6": []
+    "openai/gpt-6-astra": [
+      {
+        "gameId": "401872932",
+        "winner": "BUF",
+        "rationale": "Buffalo's home advantage and Detroit's three offensive-line absences favor the Bills."
+      },
+      {
+        "gameId": "401872933",
+        "winner": "ATL",
+        "rationale": "Despite quarterback uncertainty, Atlanta gets home field against a Carolina defense that just allowed 59 points."
+      },
+      {
+        "gameId": "401872934",
+        "winner": "HOU",
+        "rationale": "Houston's 31-point opener and home advantage give it the edge with Joe Burrow questionable."
+      },
+      {
+        "gameId": "401872935",
+        "winner": "TB",
+        "rationale": "Tampa Bay showed more offensive production in Week 1 and hosts a Cleveland team with multiple offensive linemen questionable."
+      },
+      {
+        "gameId": "401872936",
+        "winner": "NYJ",
+        "rationale": "The Jets' strong defensive opener and home advantage outweigh Green Bay's prospects with four defensive linemen questionable."
+      },
+      {
+        "gameId": "401872937",
+        "winner": "CHI",
+        "rationale": "Chicago brings a 59-point opener home against Minnesota with Kyler Murray questionable."
+      },
+      {
+        "gameId": "401872938",
+        "winner": "BAL",
+        "rationale": "Baltimore's convincing 41-point road opener makes it the stronger choice at home."
+      },
+      {
+        "gameId": "401872939",
+        "winner": "PHI",
+        "rationale": "Philadelphia's offensive edge should overcome its injury concerns against Tennessee after a 10-point opener."
+      },
+      {
+        "gameId": "401872946",
+        "winner": "PIT",
+        "rationale": "Pittsburgh's defense gets the edge against a New England offense that managed just 10 points in Week 1."
+      },
+      {
+        "gameId": "401872940",
+        "winner": "JAX",
+        "rationale": "Jacksonville's dominant opener and Denver's confirmed offensive-line and pass-rush absences favor the Jaguars."
+      },
+      {
+        "gameId": "401872941",
+        "winner": "LAC",
+        "rationale": "The Chargers get a narrow home-field edge with Brock Bowers questionable for Las Vegas."
+      },
+      {
+        "gameId": "401872942",
+        "winner": "SF",
+        "rationale": "San Francisco's 27-7 opening win suggests a stronger all-around team than Miami entering this home matchup."
+      },
+      {
+        "gameId": "401872943",
+        "winner": "ARI",
+        "rationale": "Arizona follows a convincing road win by hosting Seattle without Sam Darnold."
+      },
+      {
+        "gameId": "401872944",
+        "winner": "WSH",
+        "rationale": "Washington's competitive opener gives it the edge against Dallas with Tyler Smith unavailable and Malik Hooker doubtful."
+      },
+      {
+        "gameId": "401872945",
+        "winner": "KC",
+        "rationale": "Kansas City's commanding opener and home advantage favor it against an Indianapolis defense that allowed 41 points."
+      },
+      {
+        "gameId": "401872947",
+        "winner": "NYG",
+        "rationale": "The Giants showed more offensive life in Week 1 and face a Rams defense missing Myles Garrett."
+      }
+    ],
+    "anthropic/claude-fable-5.1": [
+      {
+        "gameId": "401872932",
+        "winner": "BUF",
+        "rationale": "Buffalo at home on a short week with Detroit missing multiple offensive linemen favors the Bills."
+      },
+      {
+        "gameId": "401872933",
+        "winner": "ATL",
+        "rationale": "Carolina allowed 59 points in Week 1 and Atlanta at home in the dome is the steadier side."
+      },
+      {
+        "gameId": "401872934",
+        "winner": "CIN",
+        "rationale": "Cincinnati's offense looked sharp in Week 1 and Houston's defense gave up 36 to Buffalo."
+      },
+      {
+        "gameId": "401872935",
+        "winner": "TB",
+        "rationale": "Tampa Bay at home in the heat against a Cleveland offense that managed only 10 points."
+      },
+      {
+        "gameId": "401872936",
+        "winner": "GB",
+        "rationale": "Green Bay's talent edge should bounce back against the Jets despite the road trip."
+      },
+      {
+        "gameId": "401872937",
+        "winner": "MIN",
+        "rationale": "Minnesota dominated Green Bay and its defense should slow Chicago more than Carolina did."
+      },
+      {
+        "gameId": "401872938",
+        "winner": "BAL",
+        "rationale": "Baltimore rolled Indianapolis on the road and returns home against a Saints team that lost Week 1."
+      },
+      {
+        "gameId": "401872939",
+        "winner": "PHI",
+        "rationale": "Philadelphia's roster depth outclasses a Tennessee offense that scored 10 in Week 1."
+      },
+      {
+        "gameId": "401872946",
+        "winner": "PIT",
+        "rationale": "Pittsburgh's defense held Atlanta to 13 and New England's offense sputtered for 10 points."
+      },
+      {
+        "gameId": "401872940",
+        "winner": "JAX",
+        "rationale": "Jacksonville dominated Week 1 while Denver managed 10 points and is missing OL and pass-rush pieces."
+      },
+      {
+        "gameId": "401872941",
+        "winner": "LAC",
+        "rationale": "Chargers at home rebound against a Raiders team that may be without Brock Bowers."
+      },
+      {
+        "gameId": "401872942",
+        "winner": "SF",
+        "rationale": "San Francisco crushed the Rams and hosts a Miami team that scored only 13 in Week 1."
+      },
+      {
+        "gameId": "401872943",
+        "winner": "ARI",
+        "rationale": "Seattle is without Sam Darnold while Arizona won comfortably in Week 1 and is home."
+      },
+      {
+        "gameId": "401872944",
+        "winner": "WSH",
+        "rationale": "Washington nearly beat Philadelphia while Dallas lost to the Giants and is missing Tyler Smith."
+      },
+      {
+        "gameId": "401872945",
+        "winner": "KC",
+        "rationale": "Kansas City at home in prime time against a Colts team that gave up 41 in Week 1."
+      },
+      {
+        "gameId": "401872947",
+        "winner": "LAR",
+        "rationale": "Rams at home should bounce back from a poor opener against a Giants team traveling cross-country."
+      }
+    ],
+    "google/gemini-3.1-pro-preview": [
+      {
+        "gameId": "401872932",
+        "winner": "BUF",
+        "rationale": "Buffalo's offense looked strong on the road last week, and they have the home-field advantage in this matchup against a Detroit team missing Isiah Pacheco."
+      },
+      {
+        "gameId": "401872933",
+        "winner": "ATL",
+        "rationale": "Carolina's defense was completely dismantled last week giving up 59 points, giving Atlanta a great opportunity to bounce back at home."
+      },
+      {
+        "gameId": "401872934",
+        "winner": "CIN",
+        "rationale": "Cincinnati is coming off a solid win, and despite Joe Burrow's questionable status, Houston's defense struggled against Buffalo last week."
+      },
+      {
+        "gameId": "401872935",
+        "winner": "TB",
+        "rationale": "Tampa Bay put up a good fight against Cincinnati, while Cleveland was blown out by Jacksonville, making the Buccaneers the better pick at home."
+      },
+      {
+        "gameId": "401872936",
+        "winner": "NYJ",
+        "rationale": "The Jets had a convincing road win in Week 1 and their defense should stifle a Packers team that struggled heavily against Minnesota."
+      },
+      {
+        "gameId": "401872937",
+        "winner": "CHI",
+        "rationale": "Chicago's offense exploded for 59 points last week, and their momentum at home gives them the edge over a strong Vikings squad."
+      },
+      {
+        "gameId": "401872938",
+        "winner": "BAL",
+        "rationale": "Baltimore dominated Indianapolis in Week 1 and their high-powered offense should be too much for the Saints on the road."
+      },
+      {
+        "gameId": "401872939",
+        "winner": "PHI",
+        "rationale": "Philadelphia secured a gritty divisional win last week, while Tennessee's offense sputtered, giving the Eagles the advantage even on the road."
+      },
+      {
+        "gameId": "401872946",
+        "winner": "PIT",
+        "rationale": "Pittsburgh's defense looked stout in their opening win, and they should be able to contain a Patriots offense that only managed 10 points last week."
+      },
+      {
+        "gameId": "401872940",
+        "winner": "JAX",
+        "rationale": "Jacksonville is coming off a massive blowout win over Cleveland, while Denver struggled mightily against Kansas City."
+      },
+      {
+        "gameId": "401872941",
+        "winner": "LV",
+        "rationale": "The Raiders looked sharp in their two-touchdown victory over Miami, whereas the Chargers struggled defensively against Arizona."
+      },
+      {
+        "gameId": "401872942",
+        "winner": "SF",
+        "rationale": "San Francisco's defense was dominant in Week 1, and they should easily handle a Dolphins team that struggled to score against the Raiders."
+      },
+      {
+        "gameId": "401872943",
+        "winner": "ARI",
+        "rationale": "Arizona looked impressive in their win over the Chargers, and Seattle will be without quarterback Sam Darnold."
+      },
+      {
+        "gameId": "401872944",
+        "winner": "DAL",
+        "rationale": "Dallas is looking to bounce back at home after a divisional loss, and their offense should outpace Washington in a controlled dome environment."
+      },
+      {
+        "gameId": "401872945",
+        "winner": "KC",
+        "rationale": "Kansas City is formidable at home and coming off a dominant win, while Indianapolis has uncertainty with Anthony Richardson's groin injury."
+      },
+      {
+        "gameId": "401872947",
+        "winner": "NYG",
+        "rationale": "The Giants are riding high after an impressive divisional win over Dallas, while the Rams are missing key pass rusher Myles Garrett."
+      }
+    ],
+    "x-ai/grok-4.6": [
+      {
+        "gameId": "401872932",
+        "winner": "BUF",
+        "rationale": "Bills at home after a road win while Detroit is missing multiple starting offensive linemen."
+      },
+      {
+        "gameId": "401872933",
+        "winner": "ATL",
+        "rationale": "Falcons host a Panthers team that was blown out at home in week 1."
+      },
+      {
+        "gameId": "401872934",
+        "winner": "HOU",
+        "rationale": "Texans at home indoors with Joe Burrow listed as questionable."
+      },
+      {
+        "gameId": "401872935",
+        "winner": "TB",
+        "rationale": "Buccaneers at home against a Browns team that lost by 24 on the road."
+      },
+      {
+        "gameId": "401872936",
+        "winner": "NYJ",
+        "rationale": "Jets at home in drizzle after a solid road win while Green Bay was routed."
+      },
+      {
+        "gameId": "401872937",
+        "winner": "CHI",
+        "rationale": "Bears at home coming off a 59-point outburst."
+      },
+      {
+        "gameId": "401872938",
+        "winner": "BAL",
+        "rationale": "Ravens at home after a decisive road win over Indianapolis."
+      },
+      {
+        "gameId": "401872939",
+        "winner": "PHI",
+        "rationale": "Eagles are clearly the stronger 1-0 team visiting a Titans squad that lost at home."
+      },
+      {
+        "gameId": "401872946",
+        "winner": "PIT",
+        "rationale": "Steelers won at home in week 1 while New England lost a low-scoring road game."
+      },
+      {
+        "gameId": "401872940",
+        "winner": "DEN",
+        "rationale": "Broncos at Mile High against a Jaguars team with several skill and line questionables."
+      },
+      {
+        "gameId": "401872941",
+        "winner": "LAC",
+        "rationale": "Chargers at home in clear weather after both teams' week-1 results."
+      },
+      {
+        "gameId": "401872942",
+        "winner": "SF",
+        "rationale": "49ers at home after a dominant win while Miami lost on the road."
+      },
+      {
+        "gameId": "401872943",
+        "winner": "ARI",
+        "rationale": "Cardinals at home indoors with Sam Darnold listed out for Seattle."
+      },
+      {
+        "gameId": "401872944",
+        "winner": "DAL",
+        "rationale": "Cowboys at home in the rivalry after both teams opened 0-1."
+      },
+      {
+        "gameId": "401872945",
+        "winner": "KC",
+        "rationale": "Chiefs at Arrowhead after a home blowout win over Denver."
+      },
+      {
+        "gameId": "401872947",
+        "winner": "LAR",
+        "rationale": "Rams at SoFi on Monday night despite the week-1 loss."
+      }
+    ]
   },
   "records": {
     "openai/gpt-6-astra": {
