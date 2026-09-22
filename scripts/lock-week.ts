@@ -8,7 +8,7 @@ import {
   scaffoldWeekFile,
   weekHasPicks,
 } from "../lib/lock";
-import { createOpenRouterClient } from "../lib/openrouter";
+import { assertCappedOpenRouterKey, createOpenRouterClient } from "../lib/openrouter";
 import { readWeekFile, writeCurrentPointer, writeWeekFile } from "../lib/store";
 
 async function main(): Promise<void> {
@@ -78,15 +78,19 @@ async function main(): Promise<void> {
   }
 
   const apiKey = getOpenRouterApiKey();
-  if (!apiKey) {
+  const paidPicksEnabled = process.env.ENABLE_PAID_PICKS === "1";
+  if (!paidPicksEnabled) {
     const path = writeWeekFile(weekFile);
     writeCurrentPointer({ season, week });
-    console.log(`Wrote slate without picks (OPENROUTER_API_KEY missing): ${path}`);
+    console.log(`Wrote slate without picks (ENABLE_PAID_PICKS is off): ${path}`);
     console.log(
-      `Lock for real:\n  OPENROUTER_API_KEY=sk-or-... pnpm lock-week --season ${season} --week ${week}`,
+      `Lock for real: set ENABLE_PAID_PICKS=1 and a capped OPENROUTER_API_KEY, then run pnpm lock-week --season ${season} --week ${week}`,
     );
     return;
   }
+  if (!apiKey) throw new Error("ENABLE_PAID_PICKS=1 requires OPENROUTER_API_KEY");
+
+  await assertCappedOpenRouterKey(apiKey);
 
   console.log(`Building weekly context pack for ${season} week ${week}…`);
   const contexts = await buildWeekContexts(slate);

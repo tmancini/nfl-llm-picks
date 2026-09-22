@@ -1,5 +1,4 @@
 import type { Game, Pick, WeekFile, WeekRecord } from "./types";
-import { MODELS } from "./models";
 
 export function emptyRecord(pending: number): WeekRecord {
   return { wins: 0, losses: 0, pushes: 0, pending };
@@ -31,13 +30,13 @@ export function recordForModel(games: Game[], picks: Pick[] | undefined): WeekRe
 
 export function gradeWeekFile(week: WeekFile): WeekFile {
   const records: WeekFile["records"] = {};
-  for (const model of MODELS) {
+  for (const model of week.models) {
     records[model.id] = recordForModel(week.games, week.picks[model.id]);
   }
   const allFinal = week.games.every((game) => game.status === "final");
   return {
     ...week,
     records,
-    gradedAt: allFinal ? new Date().toISOString() : week.gradedAt,
+    gradedAt: allFinal ? (week.gradedAt ?? new Date().toISOString()) : week.gradedAt,
   };
 }

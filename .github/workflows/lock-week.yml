@@ -27,6 +27,7 @@ jobs:
       - name: Lock current ESPN week
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ENABLE_PAID_PICKS: "1"
         run: pnpm lock-week
       - name: Commit locked week
         run: |

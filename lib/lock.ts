@@ -9,7 +9,7 @@ import { nowIso } from "./time";
 
 export function weekHasPicks(week: WeekFile): boolean {
   if (week.source !== "openrouter") return false;
-  return MODELS.every((model) => (week.picks[model.id] ?? []).length > 0);
+  return week.models.every((model) => (week.picks[model.id] ?? []).length > 0);
 }
 
 export function scaffoldWeekFile(season: number, week: number, games: Game[]): WeekFile {

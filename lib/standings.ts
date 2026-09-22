@@ -1,6 +1,17 @@
 import { MODELS } from "./models";
 import type { SeasonStanding, WeekFile } from "./types";
 
+export function providerForModel(modelId: string): string {
+  return modelId.split("/", 1)[0];
+}
+
+export function standingForModel(
+  standings: SeasonStanding[],
+  modelId: string,
+): SeasonStanding | undefined {
+  return standings.find((row) => providerForModel(row.modelId) === providerForModel(modelId));
+}
+
 export function seasonStandings(weeks: WeekFile[], season?: number): SeasonStanding[] {
   const scoped = season === undefined ? weeks : weeks.filter((week) => week.season === season);
   return MODELS.map((model) => {
@@ -15,13 +26,17 @@ export function seasonStandings(weeks: WeekFile[], season?: number): SeasonStand
       weeksLocked: 0,
     };
     for (const week of scoped) {
-      const record = week.records[model.id];
+      const historicalModel = week.models.find(
+        (entry) => providerForModel(entry.id) === providerForModel(model.id),
+      );
+      if (!historicalModel) continue;
+      const record = week.records[historicalModel.id];
       if (!record) continue;
       standing.wins += record.wins;
       standing.losses += record.losses;
       standing.pushes += record.pushes;
       standing.pending += record.pending;
-      if ((week.picks[model.id] ?? []).length > 0) standing.weeksLocked += 1;
+      if ((week.picks[historicalModel.id] ?? []).length > 0) standing.weeksLocked += 1;
     }
     return standing;
   }).sort((a, b) => {

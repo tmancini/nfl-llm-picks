@@ -45,13 +45,37 @@ export const PICKS_JSON_SCHEMA = {
 } as const;
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+const MAX_REQUESTS_PER_LOCK = 8;
+
+/** Reject uncapped or shared keys before the first paid request. */
+export async function assertCappedOpenRouterKey(
+  apiKey: string,
+  fetcher: typeof fetch = fetch,
+): Promise<void> {
+  const response = await fetcher("https://openrouter.ai/api/v1/key", {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  });
+  if (!response.ok) throw new Error(`OpenRouter key check failed: HTTP ${response.status}`);
+  const payload = (await response.json()) as {
+    data?: { limit?: number | null; limit_reset?: string | null };
+  };
+  const { limit, limit_reset: reset } = payload.data ?? {};
+  if (reset !== "daily" || typeof limit !== "number" || limit <= 0 || limit > 1) {
+    throw new Error("OpenRouter key must have a daily spending limit of $1 or less");
+  }
+}
 
 export function createOpenRouterClient(
   apiKey: string,
   fetcher: typeof fetch = fetch,
 ): OpenRouterClient {
+  let requestCount = 0;
   return {
     async complete(model, system, user) {
+      if (requestCount >= MAX_REQUESTS_PER_LOCK) {
+        throw new Error(`OpenRouter request cap reached (${MAX_REQUESTS_PER_LOCK})`);
+      }
+      requestCount += 1;
       const body: OpenRouterRequest = {
         model,
         temperature: 0,

@@ -9,7 +9,7 @@ import {
   shortKickoff,
 } from "@/lib/board";
 import { modelLogoUrl } from "@/lib/logos";
-import { formatRecord, seasonStandings } from "@/lib/standings";
+import { formatRecord, seasonStandings, standingForModel } from "@/lib/standings";
 import { listWeekFiles } from "@/lib/store";
 import type { Game, ModelDef, WeekFile } from "@/lib/types";
 
@@ -169,7 +169,7 @@ function MobileRecords({ week }: { week: WeekFile }) {
       <div className="grid grid-cols-2 gap-2">
         {week.models.map((model) => {
           const weekRecord = week.records[model.id];
-          const standing = season.find((row) => row.modelId === model.id);
+          const standing = standingForModel(season, model.id);
           const logoSrc = modelLogoUrl(model.id);
           return (
             <div
@@ -284,7 +284,7 @@ function DesktopTable({ week }: { week: WeekFile }) {
               Season
             </td>
             {week.models.map((model) => {
-              const standing = season.find((row) => row.modelId === model.id);
+              const standing = standingForModel(season, model.id);
               return (
                 <td
                   key={model.id}

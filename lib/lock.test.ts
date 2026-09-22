@@ -10,6 +10,7 @@ import { minimalGameContexts } from "../lib/context";
 import { parsePicksPayload, validatePicks, isFillerRationale } from "../lib/picks";
 import { gradePick, recordForModel, gradeWeekFile } from "../lib/grade";
 import { applyLocks, scaffoldWeekFile, weekHasPicks } from "../lib/lock";
+import { assertCappedOpenRouterKey } from "../lib/openrouter";
 import { seasonStandings, formatRecord } from "../lib/standings";
 import { parseCliArgs } from "../lib/cli";
 import { consensusWinner } from "../lib/consensus";
@@ -346,6 +347,11 @@ describe("grade + standings", () => {
     const week = scaffoldWeekFile(2026, 1, [
       game({ id: "1", away: "PHI", home: "KC", status: "final", winner: "KC", homeScore: 21, awayScore: 7 }),
     ]);
+    week.models = week.models.map((model) =>
+      model.id.startsWith("anthropic/")
+        ? { id: "anthropic/claude-fable-5.1", label: "Claude Fable 5.1", shortLabel: "Fable" }
+        : model,
+    );
     week.picks["openai/gpt-6-astra"] = [
       { gameId: "1", winner: "KC", rationale: "Home field." },
     ];
@@ -355,14 +361,23 @@ describe("grade + standings", () => {
     const graded = gradeWeekFile(week);
     const standings = seasonStandings([graded], 2026);
     const astra = standings.find((row) => row.modelId === "openai/gpt-6-astra");
-    const fable = standings.find((row) => row.modelId === "anthropic/claude-fable-5.1");
+    const opus = standings.find((row) => row.modelId === "anthropic/claude-opus-5.5");
     expect(astra?.wins).toBe(1);
-    expect(fable?.losses).toBe(1);
+    expect(opus?.losses).toBe(1);
     expect(formatRecord(astra!)).toBe("1–0");
   });
 });
 
 describe("lock protocol", () => {
+  it("rejects an uncapped API key before paid calls", async () => {
+    const response = (limit: number | null, reset: string | null) =>
+      async () => ({ ok: true, json: async () => ({ data: { limit, limit_reset: reset } }) }) as Response;
+    await expect(assertCappedOpenRouterKey("test", response(null, null) as typeof fetch))
+      .rejects.toThrow("daily spending limit");
+    await expect(assertCappedOpenRouterKey("test", response(1, "daily") as typeof fetch))
+      .resolves.toBeUndefined();
+  });
+
   it("retries unusable JSON once, then accepts the first valid parse", async () => {
     const games = [game({ id: "1", away: "PHI", home: "KC" })];
     const week = scaffoldWeekFile(2026, 2, games);
