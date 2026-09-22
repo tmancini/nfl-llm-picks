@@ -10,7 +10,7 @@ import { minimalGameContexts } from "../lib/context";
 import { parsePicksPayload, validatePicks, isFillerRationale } from "../lib/picks";
 import { gradePick, recordForModel, gradeWeekFile } from "../lib/grade";
 import { applyLocks, scaffoldWeekFile, weekHasPicks } from "../lib/lock";
-import { assertCappedOpenRouterKey } from "../lib/openrouter";
+import { assertCappedOpenRouterKey, createOpenRouterClient } from "../lib/openrouter";
 import { seasonStandings, formatRecord } from "../lib/standings";
 import { parseCliArgs } from "../lib/cli";
 import { consensusWinner } from "../lib/consensus";
@@ -27,6 +27,14 @@ const espnFixture = {
       competitions: [
         {
           status: { type: { state: "pre", completed: false } },
+          odds: [{
+            provider: { name: "DraftKings" },
+            spread: -3.5,
+            moneyline: {
+              home: { close: { odds: "-175" } },
+              away: { close: { odds: "+145" } },
+            },
+          }],
           venue: {
             fullName: "GEHA Field at Arrowhead Stadium",
             indoor: false,
@@ -129,6 +137,12 @@ describe("ESPN parser", () => {
       awayRecord: "1-0",
       homeEspnId: "12",
       awayEspnId: "21",
+      market: {
+        source: "DraftKings via ESPN",
+        homeMoneyline: -175,
+        awayMoneyline: 145,
+        homeSpread: -3.5,
+      },
     });
   });
 
@@ -255,7 +269,7 @@ describe("ESPN parser", () => {
 });
 
 describe("prompt context", () => {
-  it("embeds context fields and forbids betting lines in the user prompt", () => {
+  it("embeds market context and asks for accuracy without forced upsets", () => {
     const games = minimalGameContexts([
       game({ id: "1", away: "PHI", home: "KC", kickoffEt: "Thu 8:15 PM ET" }),
     ]);
@@ -275,14 +289,21 @@ describe("prompt context", () => {
       precipProb: 10,
       summary: "partly cloudy",
     };
+    games[0].market = {
+      source: "DraftKings via ESPN",
+      homeMoneyline: -175,
+      awayMoneyline: 145,
+      homeSpread: -3.5,
+      fetchedAtUtc: "2026-09-16T14:00:00Z",
+    };
     const prompt = userPrompt(2026, 2, games);
-    expect(prompt).toContain("Do not consult or mention betting lines");
+    expect(prompt).toContain("Do not force a number of upsets");
+    expect(prompt).toContain("Avoid double-counting news");
     expect(prompt).toContain("partly cloudy");
     const packed = gamesForPrompt(games)[0] as Record<string, unknown>;
     expect(packed.gameId).toBe("1");
-    expect(packed).not.toHaveProperty("odds");
-    expect(packed).not.toHaveProperty("spread");
-    expect(JSON.stringify(packed)).not.toMatch(/moneyline|over\/under/i);
+    expect(packed.market).toMatchObject({ homeMoneyline: -175, awayMoneyline: 145 });
+    expect(JSON.stringify(packed)).toContain("2026-09-16T14:00:00Z");
   });
 });
 
@@ -369,6 +390,32 @@ describe("grade + standings", () => {
 });
 
 describe("lock protocol", () => {
+  it("gives each model capped live web search with structured output", async () => {
+    let body: Record<string, unknown> | null = null;
+    const fetcher = async (_url: RequestInfo | URL, init?: RequestInit) => {
+      body = JSON.parse(String(init?.body)) as Record<string, unknown>;
+      return {
+        ok: true,
+        json: async () => ({ choices: [{ message: { content: '{"picks":[]}' } }] }),
+      } as Response;
+    };
+    await createOpenRouterClient("test", fetcher as typeof fetch)
+      .complete("openai/gpt-6-astra", "system", "user");
+    expect(body).toMatchObject({
+      provider: { require_parameters: true },
+      response_format: { type: "json_schema" },
+      tools: [{
+        type: "openrouter:web_search",
+        parameters: {
+          engine: "exa",
+          max_results: 2,
+          max_total_results: 6,
+          search_context_size: "low",
+        },
+      }],
+    });
+  });
+
   it("rejects an uncapped API key before paid calls", async () => {
     const response = (limit: number | null, reset: string | null) =>
       async () => ({ ok: true, json: async () => ({ data: { limit, limit_reset: reset } }) }) as Response;

@@ -23,6 +23,14 @@ export type GameExtras = {
   awayRecord: string | null;
   homeEspnId: string | null;
   awayEspnId: string | null;
+  market: MarketOdds | null;
+};
+
+export type MarketOdds = {
+  source: string;
+  homeMoneyline: number;
+  awayMoneyline: number;
+  homeSpread: number | null;
 };
 
 export type InjuryNote = {
@@ -47,6 +55,7 @@ export type ScoreboardResult = {
   games: Game[];
   extras: Record<string, GameExtras>;
   source: "espn" | "nflverse";
+  fetchedAtUtc?: string;
 };
 
 type EspnCompetitor = {
@@ -71,6 +80,14 @@ type EspnEvent = {
     status?: { type?: { state?: string; completed?: boolean; name?: string } };
     venue?: EspnVenue;
     neutralSite?: boolean;
+    odds?: Array<{
+      provider?: { name?: string };
+      spread?: number;
+      moneyline?: {
+        home?: { close?: { odds?: string } };
+        away?: { close?: { odds?: string } };
+      };
+    }>;
   }>;
   week?: { number?: number };
   seasonType?: { type?: number };
@@ -131,6 +148,22 @@ function emptyExtras(): GameExtras {
     awayRecord: null,
     homeEspnId: null,
     awayEspnId: null,
+    market: null,
+  };
+}
+
+function parseMarketOdds(competition: NonNullable<EspnEvent["competitions"]>[number]): MarketOdds | null {
+  const line = competition.odds?.[0];
+  if (!line) return null;
+  const homeMoneyline = Number(line.moneyline?.home?.close?.odds);
+  const awayMoneyline = Number(line.moneyline?.away?.close?.odds);
+  if (!Number.isFinite(homeMoneyline) || !Number.isFinite(awayMoneyline) ||
+      homeMoneyline === 0 || awayMoneyline === 0) return null;
+  return {
+    source: `${line.provider?.name ?? "sportsbook"} via ESPN`,
+    homeMoneyline,
+    awayMoneyline,
+    homeSpread: typeof line.spread === "number" ? line.spread : null,
   };
 }
 
@@ -188,6 +221,7 @@ export function parseEspnScoreboard(payload: unknown): ScoreboardResult {
       awayRecord: overallRecord(away),
       homeEspnId: home?.team?.id ? String(home.team.id) : null,
       awayEspnId: away?.team?.id ? String(away.team.id) : null,
+      market: parseMarketOdds(competition),
     };
   }
   games.sort((a, b) => a.kickoffUtc.localeCompare(b.kickoffUtc) || a.id.localeCompare(b.id));
@@ -212,14 +246,14 @@ export async function fetchEspnScoreboard(
   if (parsed.games.length === 0) {
     throw new Error(`ESPN returned no games for ${season} week ${week}`);
   }
-  return { ...parsed, season, week };
+  return { ...parsed, season, week, fetchedAtUtc: new Date().toISOString() };
 }
 
 export async function fetchEspnCurrent(
   fetcher: EspnFetch = defaultFetch,
 ): Promise<ScoreboardResult> {
   const payload = await fetcher(ESPN_SCOREBOARD);
-  return parseEspnScoreboard(payload);
+  return { ...parseEspnScoreboard(payload), fetchedAtUtc: new Date().toISOString() };
 }
 
 function parseCsvLine(line: string): string[] {

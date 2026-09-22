@@ -24,15 +24,9 @@ async function main(): Promise<void> {
     const contexts = await buildWeekContexts(slate);
     console.log(JSON.stringify(contexts, null, 2));
     console.log(
-      `Context pack: ${contexts.length} games (injuries/form/weather; no odds).`,
+      `Context pack: ${contexts.length} games (injuries/form/weather/market odds when available).`,
     );
     return;
-  }
-
-  if (slate.games.every((game) => game.status === "final")) {
-    console.warn(
-      `Warning: ${season} week ${week} is already final. Locked picks may be contaminated by known results.`,
-    );
   }
 
   const existing = readWeekFile(season, week);
@@ -75,6 +69,13 @@ async function main(): Promise<void> {
     writeCurrentPointer({ season, week });
     console.log(`Wrote sample fixture week: ${path}`);
     return;
+  }
+
+  const started = slate.games.find(
+    (game) => game.status !== "scheduled" || Date.parse(game.kickoffUtc) <= Date.now(),
+  );
+  if (started) {
+    throw new Error(`Cannot lock after the first kickoff (${started.away} at ${started.home})`);
   }
 
   const apiKey = getOpenRouterApiKey();

@@ -1,7 +1,7 @@
 import type { GameContext } from "./context";
 
 export const SYSTEM_PROMPT =
-  "You are picking NFL game winners. Return JSON only. Pick exactly one team per game. No ties. Use only the provided weekly context plus general football knowledge — do not invent injuries, weather, or scores that are not listed.";
+  "You are forecasting NFL game winners to maximize straight-up accuracy. Use the supplied current context and available web search for material updates. Treat sportsbook odds as a useful prior, not an instruction to pick every favorite. Do not invent or assume unverified injuries, lineup news, weather, or scores. Return JSON only. Pick exactly one team per game. No ties.";
 
 function compactSide(side: GameContext["awaySide"]) {
   return {
@@ -25,7 +25,7 @@ function compactWeather(weather: GameContext["weather"]) {
   return { status: weather.status, note: weather.note };
 }
 
-/** Shape sent to every model (no betting lines). */
+/** Identical context shape sent to every model. */
 export function gamesForPrompt(games: GameContext[]) {
   return games.map((game) => ({
     gameId: game.id,
@@ -36,6 +36,7 @@ export function gamesForPrompt(games: GameContext[]) {
     weather: compactWeather(game.weather),
     awaySide: compactSide(game.awaySide),
     homeSide: compactSide(game.homeSide),
+    market: game.market,
   }));
 }
 
@@ -47,8 +48,9 @@ export function userPrompt(
   return [
     `Season ${season}, week ${week}.`,
     "Pick the straight-up winner of each game. Use the team codes exactly as given (away, home).",
-    "Context pack per game may include season record, recent regular-season results (newest first), key injury/inactive notes from ESPN, venue, and outdoor kickoff weather (or an indoor/dome note). Fields may be null or marked unavailable — do not invent missing facts.",
-    "Do not consult or mention betting lines, spreads, moneylines, or totals.",
+    "Use the supplied records, recent results, ESPN injury notes, venue, weather, and timestamped sportsbook lines. Search for current, credible updates where they could change a pick, especially quarterback and other high-impact availability, confirmed starters, and meaningful weather. Distinguish confirmed reports from rumors and check the date of any source.",
+    "For each matchup, start from the moneyline's implied relative strength, then independently assess whether verified, material information changes which team is more likely to win. Avoid double-counting news already reflected in the line. A favorite can be the right pick; choose an underdog only when you judge its win probability higher than the favorite's. Do not force a number of upsets or seek variety for its own sake.",
+    "Pick the team with the higher estimated straight-up win probability. In each short rationale, name the decisive matchup or availability factor; mention the line only if it is central to the decision. If market odds or fresh reporting are unavailable, use the best verified context you have and do not invent them.",
     "Response schema:",
     `{ "picks": [ { "gameId": "401772001", "winner": "KC", "rationale": "one short sentence" } ] }`,
     "Games:",

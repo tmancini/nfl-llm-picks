@@ -3,8 +3,17 @@ export type ChatMessage = { role: "system" | "user"; content: string };
 export type OpenRouterRequest = {
   model: string;
   messages: ChatMessage[];
-  temperature: number;
   max_tokens?: number;
+  provider?: { require_parameters: true };
+  tools?: Array<{
+    type: "openrouter:web_search";
+    parameters: {
+      engine: "exa";
+      max_results: number;
+      max_total_results: number;
+      search_context_size: "low";
+    };
+  }>;
   response_format?: {
     type: "json_schema";
     json_schema: {
@@ -78,8 +87,8 @@ export function createOpenRouterClient(
       requestCount += 1;
       const body: OpenRouterRequest = {
         model,
-        temperature: 0,
         max_tokens: 4000,
+        provider: { require_parameters: true },
         messages: [
           { role: "system", content: system },
           { role: "user", content: user },
@@ -88,6 +97,15 @@ export function createOpenRouterClient(
           type: "json_schema",
           json_schema: PICKS_JSON_SCHEMA,
         },
+        tools: [{
+          type: "openrouter:web_search",
+          parameters: {
+            engine: "exa",
+            max_results: 2,
+            max_total_results: 6,
+            search_context_size: "low",
+          },
+        }],
       };
       const res = await fetcher(OPENROUTER_URL, {
         method: "POST",

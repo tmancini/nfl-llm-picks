@@ -4,6 +4,7 @@ import {
   type EspnFetch,
   type GameExtras,
   type InjuryNote,
+  type MarketOdds,
   type RecentResult,
   type ScoreboardResult,
 } from "./espn";
@@ -36,6 +37,7 @@ export type GameContext = {
   awaySide: TeamSideContext;
   homeSide: TeamSideContext;
   weather: WeatherContext;
+  market: (MarketOdds & { fetchedAtUtc: string | null }) | null;
 };
 
 const RECENT_N = 3;
@@ -76,6 +78,7 @@ function emptyExtras(): GameExtras {
     awayRecord: null,
     homeEspnId: null,
     awayEspnId: null,
+    market: null,
   };
 }
 
@@ -101,6 +104,7 @@ export function minimalGameContexts(games: Game[]): GameContext[] {
       injuriesNote: "not fetched",
     },
     weather: { status: "unavailable", note: "not fetched" },
+    market: null,
   }));
 }
 
@@ -259,8 +263,7 @@ function sideContext(
 }
 
 /**
- * Build per-game context for the pick prompt: form, injuries, venue, weather.
- * Never includes betting lines/odds even when ESPN summary payloads contain them.
+ * Build per-game context for the pick prompt: form, injuries, venue, weather, and market odds.
  */
 export async function buildWeekContexts(
   slate: ScoreboardResult,
@@ -358,6 +361,9 @@ export async function buildWeekContexts(
         injuries?.home === null ? injuries.note : undefined,
       ),
       weather,
+      market: extras.market
+        ? { ...extras.market, fetchedAtUtc: slate.fetchedAtUtc ?? null }
+        : null,
     });
   }
   return contexts;
