@@ -15,6 +15,7 @@ import { seasonStandings, formatRecord } from "../lib/standings";
 import { parseCliArgs } from "../lib/cli";
 import { consensusWinner } from "../lib/consensus";
 import { normalizeTeamCode } from "../lib/teams";
+import { seasonTrends } from "../lib/trends";
 import type { Game } from "../lib/types";
 
 const espnFixture = {
@@ -386,6 +387,30 @@ describe("grade + standings", () => {
     expect(astra?.wins).toBe(1);
     expect(opus?.losses).toBe(1);
     expect(formatRecord(astra!)).toBe("1–0");
+  });
+
+  it("tracks cumulative accuracy by provider across model changes", () => {
+    const first = scaffoldWeekFile(2026, 2, [
+      game({ id: "1", away: "PHI", home: "KC", status: "final", winner: "KC" }),
+    ]);
+    first.source = "openrouter";
+    first.models = first.models.map((model) =>
+      model.id.startsWith("anthropic/")
+        ? { id: "anthropic/claude-fable-5.1", label: "Claude Fable 5.1", shortLabel: "Fable" }
+        : model,
+    );
+    first.records["anthropic/claude-fable-5.1"] = { wins: 1, losses: 0, pushes: 0, pending: 0 };
+    const second = scaffoldWeekFile(2026, 3, [
+      game({ id: "2", away: "PHI", home: "KC", status: "final", winner: "PHI" }),
+    ]);
+    second.source = "openrouter";
+    second.records["anthropic/claude-opus-5.5"] = { wins: 0, losses: 1, pushes: 0, pending: 0 };
+    const trend = seasonTrends([second, first], 2026).find((item) => item.provider === "anthropic");
+    expect(trend?.label).toBe("Anthropic");
+    expect(trend?.points).toEqual([
+      { week: 2, wins: 1, losses: 0, rate: 1 },
+      { week: 3, wins: 1, losses: 1, rate: 0.5 },
+    ]);
   });
 });
 

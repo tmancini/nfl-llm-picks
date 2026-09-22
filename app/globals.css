@@ -98,7 +98,3 @@ header {
 .rise {
   animation: ink-rise 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
-tbody tr {
-  animation: ink-rise 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}

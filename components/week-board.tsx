@@ -11,7 +11,9 @@ import {
 import { modelLogoUrl } from "@/lib/logos";
 import { formatRecord, seasonStandings, standingForModel } from "@/lib/standings";
 import { listWeekFiles } from "@/lib/store";
-import type { Game, ModelDef, WeekFile } from "@/lib/types";
+import { ShareWeekButton } from "@/components/share-week-button";
+import { SeasonTrend } from "@/components/season-trend";
+import type { Game, ModelDef, SeasonStanding, WeekFile } from "@/lib/types";
 
 function MatchupCell({ game }: { game: Game }) {
   const kickoff =
@@ -161,11 +163,9 @@ function MobileGameCard({
   );
 }
 
-function MobileRecords({ week }: { week: WeekFile }) {
-  const season = seasonStandings(listWeekFiles(), week.season);
-
+function MobileRecords({ week, season }: { week: WeekFile; season: SeasonStanding[] }) {
   return (
-    <div className="border-t-2 border-ink/20 bg-footer px-3 py-3">
+    <div className="border-b-2 border-ink/20 bg-footer px-3 py-3">
       <div className="grid grid-cols-2 gap-2">
         {week.models.map((model) => {
           const weekRecord = week.records[model.id];
@@ -205,8 +205,7 @@ function MobileRecords({ week }: { week: WeekFile }) {
   );
 }
 
-function DesktopTable({ week }: { week: WeekFile }) {
-  const season = seasonStandings(listWeekFiles(), week.season);
+function DesktopTable({ week, season }: { week: WeekFile; season: SeasonStanding[] }) {
   const weekHref = `/weeks/${week.season}/${week.week}`;
 
   return (
@@ -234,6 +233,38 @@ function DesktopTable({ week }: { week: WeekFile }) {
           </tr>
         </thead>
         <tbody>
+          <tr className="border-b-2 border-ink/20 bg-footer">
+            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink uppercase">
+              This week
+            </td>
+            {week.models.map((model) => {
+              const record = week.records[model.id];
+              return (
+                <td
+                  key={model.id}
+                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm font-semibold text-ink"
+                >
+                  {record ? formatRecord(record) : "—"}
+                </td>
+              );
+            })}
+          </tr>
+          <tr className="border-b border-rule/70 bg-footer">
+            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink-muted uppercase">
+              Season
+            </td>
+            {week.models.map((model) => {
+              const standing = standingForModel(season, model.id);
+              return (
+                <td
+                  key={model.id}
+                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm text-ink-soft"
+                >
+                  {standing ? formatRecord(standing) : "0–0"}
+                </td>
+              );
+            })}
+          </tr>
           {week.games.map((game, rowIndex) => {
             const highlight = isConsensusGame(week, game.id);
             const consensus = consensusForGame(week, game.id);
@@ -262,40 +293,6 @@ function DesktopTable({ week }: { week: WeekFile }) {
             );
           })}
         </tbody>
-        <tfoot>
-          <tr className="border-t-2 border-ink/20 bg-footer">
-            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink uppercase">
-              This week
-            </td>
-            {week.models.map((model) => {
-              const record = week.records[model.id];
-              return (
-                <td
-                  key={model.id}
-                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm font-semibold text-ink"
-                >
-                  {record ? formatRecord(record) : "—"}
-                </td>
-              );
-            })}
-          </tr>
-          <tr className="border-t border-rule/70 bg-footer">
-            <td className="px-3 py-3 font-display text-sm font-bold tracking-wide text-ink-muted uppercase">
-              Season
-            </td>
-            {week.models.map((model) => {
-              const standing = standingForModel(season, model.id);
-              return (
-                <td
-                  key={model.id}
-                  className="border-l border-rule/70 px-2 py-3 text-center font-mono text-sm text-ink-soft"
-                >
-                  {standing ? formatRecord(standing) : "0–0"}
-                </td>
-              );
-            })}
-          </tr>
-        </tfoot>
       </table>
     </div>
   );
@@ -304,10 +301,14 @@ function DesktopTable({ week }: { week: WeekFile }) {
 export function WeekBoard({ week }: { week: WeekFile }) {
   const hasPicks = week.models.some((model) => (week.picks[model.id] ?? []).length > 0);
   const weekHref = `/weeks/${week.season}/${week.week}`;
+  const seasonWeeks = listWeekFiles().filter(
+    (entry) => entry.season === week.season && entry.week <= week.week,
+  );
+  const season = seasonStandings(seasonWeeks, week.season);
 
   return (
     <section className="rise" style={{ animationDelay: "120ms" }}>
-      <div className="mb-4 text-center">
+      <div className="relative mb-4 text-center">
         {week.source === "fixture" || week.source === "slate" ? (
           <p className="mb-1 font-mono text-[10px] font-medium tracking-[0.22em] text-ink-muted uppercase">
             {week.source === "fixture" ? "Sample slate" : "Slate only"}
@@ -321,6 +322,9 @@ export function WeekBoard({ week }: { week: WeekFile }) {
             {week.season}
           </span>
         </h2>
+        <div className="mt-3 sm:absolute sm:right-0 sm:top-0 sm:mt-0">
+          <ShareWeekButton season={week.season} week={week.week} />
+        </div>
       </div>
 
       {week.source === "fixture" ? (
@@ -348,16 +352,17 @@ export function WeekBoard({ week }: { week: WeekFile }) {
               </Link>
             </div>
           </div>
+          <MobileRecords week={week} season={season} />
           {week.games.map((game, rowIndex) => (
             <MobileGameCard key={game.id} week={week} game={game} rowIndex={rowIndex} />
           ))}
-          <MobileRecords week={week} />
         </div>
 
         <div className="hidden md:block">
-          <DesktopTable week={week} />
+          <DesktopTable week={week} season={season} />
         </div>
       </div>
+      <SeasonTrend weeks={seasonWeeks} season={week.season} />
     </section>
   );
 }
