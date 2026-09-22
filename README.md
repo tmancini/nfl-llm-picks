@@ -15,7 +15,7 @@ Pinned OpenRouter slugs (not `:latest`):
 
 The slugs are the current flagship text models as checked against the [OpenRouter catalogue](https://openrouter.ai/models) on 2026-09-22. OpenAI's newer Sol and Luna releases are lower tiers than Astra; Google's newer Flash releases are lower tiers than Pro. Each week's JSON keeps the exact model IDs used for its picks, while season totals group successive models by provider.
 
-The board puts weekly and season records above the game picks. **Share for X** prepares a 1200×1200 PNG with the full week's picks and results; browsers with file sharing can send it through the native share sheet, while desktop browsers offer a preview and download. The season chart shows cumulative accuracy by provider as graded weeks accumulate.
+The board puts weekly and season records above the game picks. **Share for X** prepares a 1200×1200 PNG with the full week's picks and results; browsers with file sharing can send it through the native share sheet, while desktop browsers offer a preview, copy-image button, and download. The season chart shows cumulative accuracy by provider as graded weeks accumulate.
 
 Same accuracy-first prompt for every model. One call per model. Retry only if the response is unusable JSON. Each model can use capped live web search for current reporting. The prompt treats market odds as a prior, asks models to check for material updates, and never forces upsets for variety. Provider routing requires support for the requested search and structured-output parameters.
 

@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 export function ShareWeekButton({ season, week }: { season: number; week: number }) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [copyingImage, setCopyingImage] = useState(false);
   const [status, setStatus] = useState("");
   const imageUrl = `/weeks/${season}/${week}/share`;
   const filename = `nfllm-${season}-week-${week}.png`;
@@ -54,6 +55,27 @@ export function ShareWeekButton({ season, week }: { season: number; week: number
     }
   }
 
+  async function copyImage() {
+    if (!navigator.clipboard?.write || typeof ClipboardItem === "undefined") {
+      setStatus("Image copy is unavailable here. Download the PNG instead.");
+      return;
+    }
+    setCopyingImage(true);
+    setStatus("");
+    try {
+      const image = fetch(imageUrl).then(async (response) => {
+        if (!response.ok) throw new Error("Image unavailable");
+        return new Blob([await response.blob()], { type: "image/png" });
+      });
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": image })]);
+      setStatus("Image copied. Paste it into your X post.");
+    } catch {
+      setStatus("Could not copy the image. Download the PNG instead.");
+    } finally {
+      setCopyingImage(false);
+    }
+  }
+
   return (
     <>
       <button
@@ -77,9 +99,10 @@ export function ShareWeekButton({ season, week }: { season: number; week: number
             <div className="mx-auto mt-4 border border-rule" style={{ width: "min(400px, 50vh, 100%)" }}>
               <Image src={imageUrl} alt={`NFLLM Week ${week} picks and records share image`} width={1200} height={1200} unoptimized className="h-auto w-full" />
             </div>
-            <p className="mt-3 text-xs text-ink-muted">Download the PNG and attach it to your X post.</p>
+            <p className="mt-3 text-xs text-ink-muted">Copy the image, or download the PNG to attach it to your X post.</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a href={`${imageUrl}?download=1`} download={filename} className="rounded-sm bg-header px-4 py-2 text-sm font-semibold text-white no-underline hover:text-white/80">Download PNG</a>
+              <button type="button" onClick={copyImage} disabled={copyingImage} className="rounded-sm border border-rule px-4 py-2 text-sm font-semibold text-ink hover:bg-panel-alt disabled:opacity-60">{copyingImage ? "Copying…" : "Copy image"}</button>
               <button type="button" onClick={copyLink} className="rounded-sm border border-rule px-4 py-2 text-sm font-semibold text-ink hover:bg-panel-alt">Copy week link</button>
             </div>
             {status ? <p role="status" className="mt-3 text-xs text-ink-soft">{status}</p> : null}
