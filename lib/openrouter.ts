@@ -22,6 +22,7 @@ export type OpenRouterRequest = {
       schema: Record<string, unknown>;
     };
   };
+  plugins?: Array<{ id: "response-healing" }>;
 };
 
 export type OpenRouterClient = {
@@ -66,11 +67,18 @@ export async function assertCappedOpenRouterKey(
   });
   if (!response.ok) throw new Error(`OpenRouter key check failed: HTTP ${response.status}`);
   const payload = (await response.json()) as {
-    data?: { limit?: number | null; limit_reset?: string | null };
+    data?: {
+      limit?: number | null;
+      limit_reset?: string | null;
+      limit_remaining?: number | null;
+    };
   };
-  const { limit, limit_reset: reset } = payload.data ?? {};
+  const { limit, limit_reset: reset, limit_remaining: remaining } = payload.data ?? {};
   if (reset !== "daily" || typeof limit !== "number" || limit <= 0 || limit > 1) {
     throw new Error("OpenRouter key must have a daily spending limit of $1 or less");
+  }
+  if (typeof remaining !== "number" || remaining < 0.75) {
+    throw new Error("OpenRouter key needs at least $0.75 of its daily limit remaining before a lock");
   }
 }
 
@@ -97,6 +105,7 @@ export function createOpenRouterClient(
           type: "json_schema",
           json_schema: PICKS_JSON_SCHEMA,
         },
+        plugins: [{ id: "response-healing" }],
         tools: [{
           type: "openrouter:web_search",
           parameters: {

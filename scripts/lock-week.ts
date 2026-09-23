@@ -9,7 +9,14 @@ import {
   weekHasPicks,
 } from "../lib/lock";
 import { assertCappedOpenRouterKey, createOpenRouterClient } from "../lib/openrouter";
-import { readWeekFile, writeCurrentPointer, writeWeekFile } from "../lib/store";
+import {
+  readCheckpointFile,
+  readWeekFile,
+  removeCheckpointFile,
+  writeCheckpointFile,
+  writeCurrentPointer,
+  writeWeekFile,
+} from "../lib/store";
 
 async function main(): Promise<void> {
   loadLocalEnv();
@@ -29,7 +36,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  const existing = readWeekFile(season, week);
+  const existing = readWeekFile(season, week) ?? readCheckpointFile(season, week);
   let weekFile = existing
     ? {
         ...existing,
@@ -95,8 +102,14 @@ async function main(): Promise<void> {
 
   console.log(`Building weekly context pack for ${season} week ${week}…`);
   const contexts = await buildWeekContexts(slate);
-  const locked = await applyLocks(weekFile, createOpenRouterClient(apiKey), contexts);
+  const locked = await applyLocks(
+    weekFile,
+    createOpenRouterClient(apiKey),
+    contexts,
+    (partial) => { writeCheckpointFile(partial); },
+  );
   const path = writeWeekFile(locked);
+  removeCheckpointFile(season, week);
   writeCurrentPointer({ season, week });
   console.log(`Locked ${season} week ${week}: ${path}`);
 }

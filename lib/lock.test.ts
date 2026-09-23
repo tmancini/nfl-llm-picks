@@ -1,4 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import {
   parseEspnInjuries,
   parseEspnScoreboard,
@@ -16,6 +19,7 @@ import { parseCliArgs } from "../lib/cli";
 import { consensusWinner } from "../lib/consensus";
 import { normalizeTeamCode } from "../lib/teams";
 import { seasonTrends } from "../lib/trends";
+import { listWeekFiles, readCheckpointFile, removeCheckpointFile, writeCheckpointFile } from "../lib/store";
 import type { Game } from "../lib/types";
 
 const espnFixture = {
@@ -429,6 +433,7 @@ describe("lock protocol", () => {
     expect(body).toMatchObject({
       provider: { require_parameters: true },
       response_format: { type: "json_schema" },
+      plugins: [{ id: "response-healing" }],
       tools: [{
         type: "openrouter:web_search",
         parameters: {
@@ -442,12 +447,56 @@ describe("lock protocol", () => {
   });
 
   it("rejects an uncapped API key before paid calls", async () => {
-    const response = (limit: number | null, reset: string | null) =>
-      async () => ({ ok: true, json: async () => ({ data: { limit, limit_reset: reset } }) }) as Response;
-    await expect(assertCappedOpenRouterKey("test", response(null, null) as typeof fetch))
+    const response = (limit: number | null, reset: string | null, remaining: number) =>
+      async () => ({ ok: true, json: async () => ({ data: { limit, limit_reset: reset, limit_remaining: remaining } }) }) as Response;
+    await expect(assertCappedOpenRouterKey("test", response(null, null, 1) as typeof fetch))
       .rejects.toThrow("daily spending limit");
-    await expect(assertCappedOpenRouterKey("test", response(1, "daily") as typeof fetch))
+    await expect(assertCappedOpenRouterKey("test", response(1, "daily", 0.3) as typeof fetch))
+      .rejects.toThrow("$0.75");
+    await expect(assertCappedOpenRouterKey("test", response(1, "daily", 1) as typeof fetch))
       .resolves.toBeUndefined();
+  });
+
+  it("checkpoints valid models and resumes without paying for them again", async () => {
+    const games = [game({ id: "1", away: "PHI", home: "KC" })];
+    const week = scaffoldWeekFile(2026, 3, games);
+    const checkpoints: typeof week[] = [];
+    await expect(applyLocks(week, {
+      async complete(model) {
+        if (model === "google/gemini-3.1-pro-preview") return "invalid";
+        return JSON.stringify({ picks: [{ gameId: "1", winner: "KC", rationale: "KC is the stronger side." }] });
+      },
+    }, undefined, (partial) => { checkpoints.push(partial); })).rejects.toThrow("No usable pick set");
+
+    const partial = checkpoints.at(-1)!;
+    expect(partial.source).toBe("openrouter");
+    expect(partial.lockedAt).toBeNull();
+    expect(partial.picks["openai/gpt-6-astra"]).toHaveLength(1);
+    expect(partial.picks["anthropic/claude-opus-5.5"]).toHaveLength(1);
+
+    const called: string[] = [];
+    const complete = await applyLocks(partial, {
+      async complete(model) {
+        called.push(model);
+        return JSON.stringify({ picks: [{ gameId: "1", winner: "KC", rationale: "KC is the stronger side." }] });
+      },
+    });
+    expect(called).toEqual(["google/gemini-3.1-pro-preview", "x-ai/grok-4.7"]);
+    expect(weekHasPicks(complete)).toBe(true);
+  });
+
+  it("keeps incomplete checkpoints out of the published week list", () => {
+    const cwd = mkdtempSync(path.join(tmpdir(), "nfllm-lock-"));
+    try {
+      const partial = scaffoldWeekFile(2026, 3, [game({ id: "1", away: "PHI", home: "KC" })]);
+      writeCheckpointFile(partial, cwd);
+      expect(readCheckpointFile(2026, 3, cwd)?.week).toBe(3);
+      expect(listWeekFiles(cwd)).toEqual([]);
+      removeCheckpointFile(2026, 3, cwd);
+      expect(readCheckpointFile(2026, 3, cwd)).toBeNull();
+    } finally {
+      rmSync(cwd, { recursive: true, force: true });
+    }
   });
 
   it("retries unusable JSON once, then accepts the first valid parse", async () => {

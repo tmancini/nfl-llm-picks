@@ -63,6 +63,7 @@ export async function applyLocks(
   week: WeekFile,
   client: OpenRouterClient,
   contexts?: GameContext[],
+  onModelLocked?: (partial: WeekFile) => void | Promise<void>,
 ): Promise<WeekFile> {
   if (weekHasPicks(week)) return week;
   const promptGames = contexts ?? minimalGameContexts(week.games);
@@ -83,6 +84,9 @@ export async function applyLocks(
       week.games,
       promptGames,
     );
+    if (onModelLocked) {
+      await onModelLocked(gradeWeekFile({ ...next, source: "openrouter" }));
+    }
   }
   next.lockedAt = nowIso();
   next.source = "openrouter";

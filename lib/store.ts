@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { CurrentPointer, WeekFile } from "./types";
 
@@ -10,12 +10,20 @@ export function weeksDir(cwd = process.cwd()): string {
   return path.join(dataDir(cwd), "weeks");
 }
 
+export function checkpointsDir(cwd = process.cwd()): string {
+  return path.join(dataDir(cwd), "checkpoints");
+}
+
 export function weekFileName(season: number, week: number): string {
   return `${season}-w${String(week).padStart(2, "0")}.json`;
 }
 
 export function weekFilePath(season: number, week: number, cwd = process.cwd()): string {
   return path.join(weeksDir(cwd), weekFileName(season, week));
+}
+
+export function checkpointFilePath(season: number, week: number, cwd = process.cwd()): string {
+  return path.join(checkpointsDir(cwd), weekFileName(season, week));
 }
 
 export function currentPointerPath(cwd = process.cwd()): string {
@@ -41,6 +49,24 @@ export function writeWeekFile(week: WeekFile, cwd = process.cwd()): string {
   const filePath = weekFilePath(week.season, week.week, cwd);
   writeFileSync(filePath, `${JSON.stringify(week, null, 2)}\n`);
   return filePath;
+}
+
+export function readCheckpointFile(season: number, week: number, cwd = process.cwd()): WeekFile | null {
+  const filePath = checkpointFilePath(season, week, cwd);
+  if (!existsSync(filePath)) return null;
+  return JSON.parse(readFileSync(filePath, "utf8")) as WeekFile;
+}
+
+export function writeCheckpointFile(week: WeekFile, cwd = process.cwd()): string {
+  mkdirSync(checkpointsDir(cwd), { recursive: true });
+  const filePath = checkpointFilePath(week.season, week.week, cwd);
+  writeFileSync(filePath, `${JSON.stringify(week, null, 2)}\n`);
+  return filePath;
+}
+
+export function removeCheckpointFile(season: number, week: number, cwd = process.cwd()): void {
+  const filePath = checkpointFilePath(season, week, cwd);
+  if (existsSync(filePath)) unlinkSync(filePath);
 }
 
 export function writeCurrentPointer(pointer: CurrentPointer, cwd = process.cwd()): void {
