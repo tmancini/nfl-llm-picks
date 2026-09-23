@@ -121,7 +121,7 @@ export function createOpenRouterClient(
         headers: {
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://github.com/thomas-ellisai/nfl-llm-picks",
+          "HTTP-Referer": "https://github.com/tmancini/nfl-llm-picks",
           "X-Title": "NFLLM",
         },
         body: JSON.stringify(body),

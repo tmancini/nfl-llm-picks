@@ -421,8 +421,10 @@ describe("grade + standings", () => {
 describe("lock protocol", () => {
   it("gives each model capped live web search with structured output", async () => {
     let body: Record<string, unknown> | null = null;
+    let referer: string | null = null;
     const fetcher = async (_url: RequestInfo | URL, init?: RequestInit) => {
       body = JSON.parse(String(init?.body)) as Record<string, unknown>;
+      referer = new Headers(init?.headers).get("HTTP-Referer");
       return {
         ok: true,
         json: async () => ({ choices: [{ message: { content: '{"picks":[]}' } }] }),
@@ -444,6 +446,7 @@ describe("lock protocol", () => {
         },
       }],
     });
+    expect(referer).toBe("https://github.com/tmancini/nfl-llm-picks");
   });
 
   it("rejects an uncapped API key before paid calls", async () => {
