@@ -42,7 +42,8 @@ async function reviseWeek(original: WeekFile, season: number, week: number, slat
   }
   const apiKey = getOpenRouterApiKey();
   if (!apiKey) throw new Error("--revise requires OPENROUTER_API_KEY");
-  await assertCappedOpenRouterKey(apiKey);
+  const maxDailyLimit = season === 2026 && week === 3 ? 2 : 1;
+  await assertCappedOpenRouterKey(apiKey, fetch, maxDailyLimit);
 
   const originalPath = `data/archives/${season}-w${String(week).padStart(2, "0")}-original.json`;
   const revision = { originalLockedAt: original.lockedAt, originalPath, promptMode: "independent" as const };

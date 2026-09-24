@@ -61,6 +61,7 @@ const MAX_REQUESTS_PER_LOCK = 8;
 export async function assertCappedOpenRouterKey(
   apiKey: string,
   fetcher: typeof fetch = fetch,
+  maxDailyLimit = 1,
 ): Promise<void> {
   const response = await fetcher("https://openrouter.ai/api/v1/key", {
     headers: { Authorization: `Bearer ${apiKey}` },
@@ -74,8 +75,8 @@ export async function assertCappedOpenRouterKey(
     };
   };
   const { limit, limit_reset: reset, limit_remaining: remaining } = payload.data ?? {};
-  if (reset !== "daily" || typeof limit !== "number" || limit <= 0 || limit > 1) {
-    throw new Error("OpenRouter key must have a daily spending limit of $1 or less");
+  if (reset !== "daily" || typeof limit !== "number" || limit <= 0 || limit > maxDailyLimit) {
+    throw new Error(`OpenRouter key must have a daily spending limit of $${maxDailyLimit} or less`);
   }
   if (typeof remaining !== "number" || remaining < 0.75) {
     throw new Error("OpenRouter key needs at least $0.75 of its daily limit remaining before a lock");
