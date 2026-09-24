@@ -596,5 +596,21 @@
     "originalLockedAt": "2026-09-24T05:58:02.274Z",
     "originalPath": "data/archives/2026-w03-original.json",
     "promptMode": "independent"
-  }
+  },
+  "corrections": [
+    {
+      "modelId": "anthropic/claude-opus-5.5",
+      "gameId": "401872959",
+      "note": "Opus said it could not confirm Kyler Murray's Week 3 status. Minnesota announced on September 21 that Murray cleared concussion protocol and will start at Tampa Bay. The pick was not rerun.",
+      "sourceUrl": "https://www.vikings.com/news/kyler-murray-starting-quarterback-week-3-buccaneers-injury",
+      "verifiedAtUtc": "2026-09-24T12:37:29Z"
+    },
+    {
+      "modelId": "anthropic/claude-opus-5.5",
+      "gameId": "401872963",
+      "note": "Opus said Case Keenum was in line to start. Chicago had not chosen its Week 3 starter as of September 23; Keenum was the contingency if Caleb Williams and Tyson Bagent could not play. The pick was not rerun.",
+      "sourceUrl": "https://www.chicagobears.com/news/ben-johnson-confident-in-bears-qb-depth",
+      "verifiedAtUtc": "2026-09-24T12:37:29Z"
+    }
+  ]
 }
