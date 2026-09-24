@@ -12,7 +12,7 @@ import { gamesForPrompt, userPrompt } from "../lib/prompt";
 import { minimalGameContexts } from "../lib/context";
 import { parsePicksPayload, validatePicks, isFillerRationale } from "../lib/picks";
 import { gradePick, recordForModel, gradeWeekFile } from "../lib/grade";
-import { applyLocks, scaffoldWeekFile, weekHasPicks } from "../lib/lock";
+import { applyLocks, lockModelPicks, scaffoldWeekFile, weekHasPicks } from "../lib/lock";
 import { assertCappedOpenRouterKey, createOpenRouterClient } from "../lib/openrouter";
 import { seasonStandings, formatRecord } from "../lib/standings";
 import { parseCliArgs } from "../lib/cli";
@@ -362,6 +362,31 @@ describe("picks", () => {
   });
 });
 
+describe("independent revision batches", () => {
+  it("requests Gemini in two eight-game sets and validates all 16 picks", async () => {
+    const games = Array.from({ length: 16 }, (_, index) => game({
+      id: String(index + 1),
+      away: "PHI",
+      home: "KC",
+    }));
+    const contexts = minimalGameContexts(games);
+    const sizes: number[] = [];
+    const picks = await lockModelPicks({
+      async complete(_model, _system, user) {
+        const ids = (JSON.parse(user.split("Games:\n")[1]) as Array<{ gameId: string }>).map((entry) => entry.gameId);
+        sizes.push(ids.length);
+        return JSON.stringify({ picks: ids.map((gameId) => ({
+          gameId,
+          winner: "KC",
+          rationale: "KC has the stronger matchup this week.",
+        })) });
+      },
+    }, "google/gemini-3.1-pro-preview", 2026, 3, games, contexts, 2, "independent");
+    expect(sizes).toEqual([8, 8]);
+    expect(picks).toHaveLength(16);
+  });
+});
+
 describe("grade + standings", () => {
   it("scores wins, losses, pushes, and pending", () => {
     const games = [
@@ -478,6 +503,8 @@ describe("lock protocol", () => {
       .resolves.toBeUndefined();
     await expect(assertCappedOpenRouterKey("test", response(2, "daily", 1.3) as typeof fetch))
       .rejects.toThrow("$1 or less");
+    await expect(assertCappedOpenRouterKey("test", response(2, "daily", 0.61) as typeof fetch, 2, 0.5))
+      .resolves.toBeUndefined();
   });
 
   it("checkpoints valid models and resumes without paying for them again", async () => {

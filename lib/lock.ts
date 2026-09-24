@@ -42,23 +42,40 @@ export async function lockModelPicks(
   maxAttempts = MAX_LOCK_ATTEMPTS,
   mode: PromptMode = "market",
 ): Promise<Pick[]> {
-  const user = userPrompt(season, week, contexts, mode);
   const system = mode === "independent" ? INDEPENDENT_SYSTEM_PROMPT : SYSTEM_PROMPT;
-  let lastError: unknown;
-  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-    try {
-      const raw = await client.complete(modelId, system, user);
-      return validatePicks(games, parsePicksPayload(raw));
-    } catch (error) {
-      lastError = error;
-      console.warn(
-        `${modelId} attempt ${attempt}/${maxAttempts} unusable: ${String(error)}`,
+  // Gemini twice returned truncated 16-game sets; smaller independent batches
+  // keep its response within the output budget without increasing the call cap.
+  const batches = mode === "independent" && modelId.startsWith("google/") && contexts.length > 8
+    ? [contexts.slice(0, 8), contexts.slice(8)]
+    : [contexts];
+  const picks: Pick[] = [];
+  for (const batch of batches) {
+    const batchIds = new Set(batch.map((game) => game.id));
+    const batchGames = games.filter((game) => batchIds.has(game.id));
+    const user = userPrompt(season, week, batch, mode);
+    const attempts = batches.length > 1 ? 1 : maxAttempts;
+    let lastError: unknown;
+    let valid: Pick[] | null = null;
+    for (let attempt = 1; attempt <= attempts; attempt += 1) {
+      try {
+        const raw = await client.complete(modelId, system, user);
+        valid = validatePicks(batchGames, parsePicksPayload(raw));
+        break;
+      } catch (error) {
+        lastError = error;
+        console.warn(
+          `${modelId} attempt ${attempt}/${attempts} unusable: ${String(error)}`,
+        );
+      }
+    }
+    if (!valid) {
+      throw new Error(
+        `No usable pick set from ${modelId} after ${attempts} attempt(s): ${String(lastError)}`,
       );
     }
+    picks.push(...valid);
   }
-  throw new Error(
-    `No usable pick set from ${modelId} after ${maxAttempts} attempt(s): ${String(lastError)}`,
-  );
+  return validatePicks(games, picks);
 }
 
 export async function applyLocks(
