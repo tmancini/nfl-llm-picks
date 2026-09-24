@@ -1,0 +1,618 @@
+{
+  "season": 2026,
+  "week": 3,
+  "source": "openrouter",
+  "lockedAt": "2026-09-24T05:58:02.274Z",
+  "gradedAt": null,
+  "models": [
+    {
+      "id": "openai/gpt-6-astra",
+      "label": "GPT-6 Astra",
+      "shortLabel": "Astra"
+    },
+    {
+      "id": "anthropic/claude-opus-5.5",
+      "label": "Claude Opus 5.5",
+      "shortLabel": "Opus"
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "label": "Gemini 3.1 Pro",
+      "shortLabel": "Gemini"
+    },
+    {
+      "id": "x-ai/grok-4.7",
+      "label": "Grok 4.7",
+      "shortLabel": "Grok"
+    }
+  ],
+  "games": [
+    {
+      "id": "401872948",
+      "away": "ATL",
+      "home": "GB",
+      "awayName": "Atlanta Falcons",
+      "homeName": "Green Bay Packers",
+      "kickoffUtc": "2026-09-25T00:15Z",
+      "kickoffEt": "Thu, Sep 24, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872949",
+      "away": "CAR",
+      "home": "CLE",
+      "awayName": "Carolina Panthers",
+      "homeName": "Cleveland Browns",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872950",
+      "away": "CIN",
+      "home": "PIT",
+      "awayName": "Cincinnati Bengals",
+      "homeName": "Pittsburgh Steelers",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872951",
+      "away": "HOU",
+      "home": "IND",
+      "awayName": "Houston Texans",
+      "homeName": "Indianapolis Colts",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872952",
+      "away": "KC",
+      "home": "MIA",
+      "awayName": "Kansas City Chiefs",
+      "homeName": "Miami Dolphins",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872953",
+      "away": "LAC",
+      "home": "BUF",
+      "awayName": "Los Angeles Chargers",
+      "homeName": "Buffalo Bills",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872954",
+      "away": "NYJ",
+      "home": "DET",
+      "awayName": "New York Jets",
+      "homeName": "Detroit Lions",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872955",
+      "away": "SEA",
+      "home": "WSH",
+      "awayName": "Seattle Seahawks",
+      "homeName": "Washington Commanders",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872956",
+      "away": "TEN",
+      "home": "NYG",
+      "awayName": "Tennessee Titans",
+      "homeName": "New York Giants",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872957",
+      "away": "NE",
+      "home": "JAX",
+      "awayName": "New England Patriots",
+      "homeName": "Jacksonville Jaguars",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872958",
+      "away": "ARI",
+      "home": "SF",
+      "awayName": "Arizona Cardinals",
+      "homeName": "San Francisco 49ers",
+      "kickoffUtc": "2026-09-27T20:05Z",
+      "kickoffEt": "Sun, Sep 27, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872959",
+      "away": "MIN",
+      "home": "TB",
+      "awayName": "Minnesota Vikings",
+      "homeName": "Tampa Bay Buccaneers",
+      "kickoffUtc": "2026-09-27T20:05Z",
+      "kickoffEt": "Sun, Sep 27, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872960",
+      "away": "BAL",
+      "home": "DAL",
+      "awayName": "Baltimore Ravens",
+      "homeName": "Dallas Cowboys",
+      "kickoffUtc": "2026-09-27T20:25Z",
+      "kickoffEt": "Sun, Sep 27, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872961",
+      "away": "LV",
+      "home": "NO",
+      "awayName": "Las Vegas Raiders",
+      "homeName": "New Orleans Saints",
+      "kickoffUtc": "2026-09-27T20:25Z",
+      "kickoffEt": "Sun, Sep 27, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872962",
+      "away": "LAR",
+      "home": "DEN",
+      "awayName": "Los Angeles Rams",
+      "homeName": "Denver Broncos",
+      "kickoffUtc": "2026-09-28T00:20Z",
+      "kickoffEt": "Sun, Sep 27, 8:20 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872963",
+      "away": "PHI",
+      "home": "CHI",
+      "awayName": "Philadelphia Eagles",
+      "homeName": "Chicago Bears",
+      "kickoffUtc": "2026-09-29T00:15Z",
+      "kickoffEt": "Mon, Sep 28, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    }
+  ],
+  "picks": {
+    "openai/gpt-6-astra": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Green Bay's home advantage and Atlanta's depleted secondary outweigh the Packers' absences against an offense averaging eight points."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CAR",
+        "rationale": "Carolina's stronger early scoring production gives it the edge against Cleveland's defense, which has several key players questionable."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Cincinnati's more productive offense has the advantage against Pittsburgh, particularly with both starting cornerbacks listed questionable."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "HOU",
+        "rationale": "Indianapolis allowing 74 points and missing Alec Pierce preserves Houston's narrow edge despite dated reports that Nico Collins is unlikely to play."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Kansas City's consecutive 30-point performances give it a substantial offensive advantage over Miami despite its defensive availability concerns."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Buffalo's offense has scored 77 points and now faces a Chargers defense with multiple important players questionable."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Detroit's consistent scoring and home-field advantage outweigh its defensive struggles against a less productive Jets offense."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Seattle's defense has allowed just 17 points, giving it the decisive advantage against Washington's offense."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "Home field gives the Giants a narrow edge against Tennessee's low-scoring offense, with both Titans running backs questionable."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "JAX",
+        "rationale": "Jacksonville's home advantage and greater early scoring production narrowly outweigh New England's impressive defensive start."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "San Francisco's defense has allowed only 20 points and faces an Arizona offense coming off a seven-point performance."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "MIN",
+        "rationale": "Minnesota's defense, fresh off holding Chicago to three points, supplies the narrow edge over Tampa Bay."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Dallas's confirmed secondary absences favor Baltimore's offense, while the neutral-site venue removes the Cowboys' usual home advantage."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "New Orleans returns home after two competitive road performances against stronger early opposition than Las Vegas has faced."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "LAR",
+        "rationale": "Jonathon Cooper's absence weakens Denver's pass rush, giving the Rams a narrow advantage despite playing on the road."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Philadelphia's steadier scoring and Chicago's defensive absences preserve its edge despite significant offensive injury concerns."
+      }
+    ],
+    "anthropic/claude-opus-5.5": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Green Bay has home field and the better roster against a winless Falcons team, while Michael Penix Jr. makes his first start of the season for Atlanta."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CAR",
+        "rationale": "Carolina's offense looks more explosive, and Cleveland lists several defensive starters as questionable."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Cincinnati is 2-0 with a strong defense, while Pittsburgh scored just 3 points last week and has questions at running back and wide receiver."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "HOU",
+        "rationale": "Houston's defense should be the edge against a Colts offense missing Alec Pierce, but Nico Collins' hamstring is a risk."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Kansas City is much stronger than a Miami team that has lost both games by double digits."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Buffalo's high-scoring offense at home should be too much for a Chargers team that has scored only 14 points in each game."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Detroit's offense at home is the clear edge over the Jets."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Jayden Daniels is expected to miss the game, which gives Seattle's defense a clear quarterback edge."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "Even with Jaxson Dart expected out, the Giants' home field and pass rush should edge a Titans team that is 0-2 and has injury questions at running back."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "JAX",
+        "rationale": "Jacksonville is a modest home favorite and has the better offense, though New England's defense keeps this close."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "San Francisco has dominated both of its games and is at home against an inconsistent Arizona team."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "MIN",
+        "rationale": "Minnesota's defense has been elite, while Tampa Bay is 0-2 and banged up at linebacker."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Dallas is thin in the secondary, with Cobie Durant and P.J. Locke out and Malik Hooker doubtful, which favors Baltimore at a neutral site."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "New Orleans is favored at home, even without left tackle Kelvin Banks Jr., and Brock Bowers' knee is a question for Las Vegas."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "LAR",
+        "rationale": "The Rams' offense should be the difference against a Denver team with injury questions across its running backs."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Caleb Williams is expected out and backup Tyson Bagent is in the concussion protocol, so Philadelphia has a large quarterback edge."
+      }
+    ],
+    "google/gemini-3.1-pro-preview": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Green Bay is favored by 4.5 points at home and faces a winless Falcons squad reeling from a blowout loss."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CAR",
+        "rationale": "Carolina comes off a dominant 34-3 win and is favored on the road against a Cleveland team missing key pieces in the secondary."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Undefeated Cincinnati boasts strong momentum and is a solid road favorite against division rival Pittsburgh."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "HOU",
+        "rationale": "Houston is favored on the road and holds the offensive edge to secure their first win against a struggling Colts team in a dome environment."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Undefeated Kansas City is an overwhelming road favorite against a winless Miami team facing offensive struggles and defensive injuries."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Buffalo's high-powered offense has started the season strong, making them heavy home favorites over a winless Chargers squad."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Detroit is heavily favored at home in a controlled environment against the Jets, driven by a reliable and explosive offensive attack."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Undefeated Seattle is a substantial road favorite against a Washington defense that has struggled significantly early in the season."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "The Giants are home favorites and should capitalize on Tennessee's ongoing offensive struggles to secure the win."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "JAX",
+        "rationale": "Jacksonville possesses a stronger, healthier offensive core and is favored to bounce back at home against New England."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "San Francisco is a massive home favorite, boasting an undefeated record and superior depth across the board over Arizona."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "MIN",
+        "rationale": "Undefeated Minnesota is favored on the road against a winless Tampa Bay team dealing with multiple impactful defensive injuries."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Baltimore is a solid favorite in this neutral-site matchup in Brazil, possessing the rushing attack and defensive integrity to outpace Dallas."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "Despite Las Vegas's undefeated start, New Orleans is favored at home in the Superdome where their defense is traditionally formidable."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "LAR",
+        "rationale": "The Rams are road favorites and possess the offensive structure needed to outscore a Denver team still trying to find its rhythm."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Undefeated Philadelphia is heavily favored on the road against a Bears team dealing with key defensive absences."
+      }
+    ],
+    "x-ai/grok-4.7": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Penix is listed out and Tua doubtful, so Green Bay’s Jordan Love has the clearer quarterback edge at Lambeau against an 0-2 Falcons team."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CAR",
+        "rationale": "Carolina’s offense that just hung 34 on Atlanta is the more reliable side versus a Browns team with several defenders questionable."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Joe Burrow was a full practice participant and Cincinnati’s 2-0 form is the decisive edge over a Steelers offense that managed only 3 points at New England."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "HOU",
+        "rationale": "Even with Nico Collins unlikely, C.J. Stroud’s Texans are the stronger side in a matchup of 0-2 teams against an Indianapolis offense missing Alec Pierce."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Patrick Mahomes is fully available, and Kansas City’s defense and 2-0 form are a clear mismatch for 0-2 Miami."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Josh Allen and Buffalo’s 2-0 scoring offense are the decisive edge against a Chargers team that has lost both games and has Dalvin Tomlinson doubtful."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Jared Goff at home in the dome is the decisive advantage over a Jets offense that just lost a tight game to Green Bay."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Seattle’s defense, which just shut out Arizona’s scoring, faces a 0-2 Washington team without Jayden Daniels after his dislocated elbow."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "The Giants at home are the better side against a Titans team that may be without both Tony Pollard and Tyjae Spears in the rain."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "JAX",
+        "rationale": "Trevor Lawrence at home is the decisive edge after Jacksonville already handled Cleveland, against a Patriots offense that scored only 10 at Seattle."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "Brock Purdy and San Francisco’s 2-0 defense are a mismatch for Arizona after the Cardinals were blown out by Seattle."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "TB",
+        "rationale": "Kyler Murray is officially out with a concussion, which flips this near pick’em to Baker Mayfield and Tampa Bay at home."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Lamar Jackson is the decisive advantage against a Dallas secondary missing Cobie Durant, P.J. Locke, and likely Malik Hooker."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "New Orleans at home is still the stronger side; Brock Bowers’ possible return does not outweigh a Raiders team whose wins came against Miami and the Chargers."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "LAR",
+        "rationale": "Matthew Stafford after a 28-6 win over the Giants is the decisive edge over Bo Nix in a game with no weather or confirmed quarterback disruption."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Jalen Hurts and a 2-0 Eagles team are more likely to win than Chicago, whose quarterback situation is week-to-week even if Saquon Barkley’s snaps are managed."
+      }
+    ]
+  },
+  "records": {
+    "openai/gpt-6-astra": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "anthropic/claude-opus-5.5": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "google/gemini-3.1-pro-preview": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "x-ai/grok-4.7": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    }
+  },
+  "corrections": [
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872948",
+      "note": "Grok said Michael Penix Jr. was out. Atlanta named him its Week 3 starter on September 21.",
+      "sourceUrl": "https://www.atlantafalcons.com/news/michael-penix-jr-starting-qb-thursday-night-football-vs-packers",
+      "verifiedAtUtc": "2026-09-24T12:15:57Z"
+    },
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872959",
+      "note": "Grok said Kyler Murray was out with a concussion. Minnesota announced he had cleared the protocol and would start at Tampa Bay.",
+      "sourceUrl": "https://www.vikings.com/news/kyler-murray-starting-quarterback-week-3-buccaneers-injury",
+      "verifiedAtUtc": "2026-09-24T12:15:57Z"
+    },
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872955",
+      "note": "Grok described Seattle's previous game as a shutout. Arizona scored seven points in Seattle's 31–7 win.",
+      "sourceUrl": "https://www.seahawks.com/game-day/2026/reg-week2/seahawks-at-cardinals/",
+      "verifiedAtUtc": "2026-09-24T12:16:48Z"
+    }
+  ]
+}

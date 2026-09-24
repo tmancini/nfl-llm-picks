@@ -1,0 +1,438 @@
+{
+  "season": 2026,
+  "week": 3,
+  "source": "openrouter",
+  "lockedAt": null,
+  "gradedAt": null,
+  "models": [
+    {
+      "id": "openai/gpt-6-astra",
+      "label": "GPT-6 Astra",
+      "shortLabel": "Astra"
+    },
+    {
+      "id": "anthropic/claude-opus-5.5",
+      "label": "Claude Opus 5.5",
+      "shortLabel": "Opus"
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "label": "Gemini 3.1 Pro",
+      "shortLabel": "Gemini"
+    },
+    {
+      "id": "x-ai/grok-4.7",
+      "label": "Grok 4.7",
+      "shortLabel": "Grok"
+    }
+  ],
+  "games": [
+    {
+      "id": "401872948",
+      "away": "ATL",
+      "home": "GB",
+      "awayName": "Atlanta Falcons",
+      "homeName": "Green Bay Packers",
+      "kickoffUtc": "2026-09-25T00:15Z",
+      "kickoffEt": "Thu, Sep 24, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872949",
+      "away": "CAR",
+      "home": "CLE",
+      "awayName": "Carolina Panthers",
+      "homeName": "Cleveland Browns",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872950",
+      "away": "CIN",
+      "home": "PIT",
+      "awayName": "Cincinnati Bengals",
+      "homeName": "Pittsburgh Steelers",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872951",
+      "away": "HOU",
+      "home": "IND",
+      "awayName": "Houston Texans",
+      "homeName": "Indianapolis Colts",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872952",
+      "away": "KC",
+      "home": "MIA",
+      "awayName": "Kansas City Chiefs",
+      "homeName": "Miami Dolphins",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872953",
+      "away": "LAC",
+      "home": "BUF",
+      "awayName": "Los Angeles Chargers",
+      "homeName": "Buffalo Bills",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872954",
+      "away": "NYJ",
+      "home": "DET",
+      "awayName": "New York Jets",
+      "homeName": "Detroit Lions",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872955",
+      "away": "SEA",
+      "home": "WSH",
+      "awayName": "Seattle Seahawks",
+      "homeName": "Washington Commanders",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872956",
+      "away": "TEN",
+      "home": "NYG",
+      "awayName": "Tennessee Titans",
+      "homeName": "New York Giants",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872957",
+      "away": "NE",
+      "home": "JAX",
+      "awayName": "New England Patriots",
+      "homeName": "Jacksonville Jaguars",
+      "kickoffUtc": "2026-09-27T17:00Z",
+      "kickoffEt": "Sun, Sep 27, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872958",
+      "away": "ARI",
+      "home": "SF",
+      "awayName": "Arizona Cardinals",
+      "homeName": "San Francisco 49ers",
+      "kickoffUtc": "2026-09-27T20:05Z",
+      "kickoffEt": "Sun, Sep 27, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872959",
+      "away": "MIN",
+      "home": "TB",
+      "awayName": "Minnesota Vikings",
+      "homeName": "Tampa Bay Buccaneers",
+      "kickoffUtc": "2026-09-27T20:05Z",
+      "kickoffEt": "Sun, Sep 27, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872960",
+      "away": "BAL",
+      "home": "DAL",
+      "awayName": "Baltimore Ravens",
+      "homeName": "Dallas Cowboys",
+      "kickoffUtc": "2026-09-27T20:25Z",
+      "kickoffEt": "Sun, Sep 27, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872961",
+      "away": "LV",
+      "home": "NO",
+      "awayName": "Las Vegas Raiders",
+      "homeName": "New Orleans Saints",
+      "kickoffUtc": "2026-09-27T20:25Z",
+      "kickoffEt": "Sun, Sep 27, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872962",
+      "away": "LAR",
+      "home": "DEN",
+      "awayName": "Los Angeles Rams",
+      "homeName": "Denver Broncos",
+      "kickoffUtc": "2026-09-28T00:20Z",
+      "kickoffEt": "Sun, Sep 27, 8:20 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401872963",
+      "away": "PHI",
+      "home": "CHI",
+      "awayName": "Philadelphia Eagles",
+      "homeName": "Chicago Bears",
+      "kickoffUtc": "2026-09-29T00:15Z",
+      "kickoffEt": "Mon, Sep 28, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    }
+  ],
+  "picks": {
+    "openai/gpt-6-astra": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Green Bay's home advantage and Atlanta's supplied 16-point start outweigh the potential lift from Penix's NFL-reported return."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CAR",
+        "rationale": "Carolina scored at least 34 points in both supplied results, giving it the offensive edge over Cleveland's 33-point total."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Cincinnati's supplied 20-6 road win contrasts sharply with Pittsburgh's three-point performance, favoring the Bengals despite the venue."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "IND",
+        "rationale": "Indianapolis gets the home-field edge after scoring 30 at Kansas City, while Houston managed six in its latest supplied result."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Kansas City's supplied consecutive 30-point performances give it a substantial offensive advantage over Miami's two 13-point outings."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Buffalo's supplied 77-point start and home field outweigh a Chargers offense averaging 14 points before an early Eastern kickoff."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Detroit's consecutive 31-point performances in the supplied results favor its offense at home indoors against the Jets."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Seattle allowed only 17 points across the supplied games, a defensive advantage strong enough to outweigh the cross-country trip."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "The Giants' supplied 28-20 home win provides a narrow home-field edge against Tennessee, which lost both opening games at home."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "NE",
+        "rationale": "New England allowed just 16 points across its supplied results, including 13 at unbeaten Seattle, giving its defense the narrow edge."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "San Francisco's supplied wins by 20 and 22 points show stronger two-way form than Arizona brings into this road matchup."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "MIN",
+        "rationale": "Minnesota's supplied three-point defensive stand against Chicago favors it against Tampa Bay, which has conceded 56 points through two losses."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Baltimore's supplied 41-point road performance supports its offensive ceiling, while the Rio venue removes Dallas's usual home-field advantage."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "New Orleans returns home after a supplied win at Baltimore and one-point loss at Detroit, stronger opposition than Las Vegas has faced."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "LAR",
+        "rationale": "The Rams' supplied 28-6 rebound gives them a narrow two-way edge over Denver, which has scored only 30 points through two games."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Philadelphia's consecutive 24-point performances offer the more dependable attack after Chicago managed three points in its latest supplied result."
+      }
+    ],
+    "anthropic/claude-opus-5.5": [
+      {
+        "gameId": "401872948",
+        "winner": "GB",
+        "rationale": "Atlanta is 0-2 and scored 3 points in a 31-point home loss to Carolina, and Michael Penix Jr. is starting his first game back from a season-ending knee injury, at Lambeau."
+      },
+      {
+        "gameId": "401872949",
+        "winner": "CLE",
+        "rationale": "This looks close to even, and Cleveland gets the edge at home after winning at Tampa Bay, while Carolina lists several defenders as questionable, including Devin Lloyd and Jaelan Phillips."
+      },
+      {
+        "gameId": "401872950",
+        "winner": "CIN",
+        "rationale": "Cincinnati is 2-0 and held Houston to 6 points, while Pittsburgh managed just 3 points against New England."
+      },
+      {
+        "gameId": "401872951",
+        "winner": "IND",
+        "rationale": "Indianapolis scored 30 in a 3-point loss at Kansas City, while Houston managed only 6 points last week and now travels, with Nico Collins questionable."
+      },
+      {
+        "gameId": "401872952",
+        "winner": "KC",
+        "rationale": "Kansas City is 2-0, and Patrick Mahomes practiced fully last week, while Miami has lost both games by 14 or more and scored 13 each time."
+      },
+      {
+        "gameId": "401872953",
+        "winner": "BUF",
+        "rationale": "Buffalo has scored 36 and 41 points in a 2-0 start, while the Chargers have scored 14 in each of their two home losses."
+      },
+      {
+        "gameId": "401872954",
+        "winner": "DET",
+        "rationale": "Detroit plays at home indoors with an offense that has scored 31 points in both games, against a Jets offense that has topped out at 23."
+      },
+      {
+        "gameId": "401872955",
+        "winner": "SEA",
+        "rationale": "Seattle beat Arizona 31-7 even with Sam Darnold ruled out on last week's official report, while Washington is 0-2 and gave up 37 at Dallas."
+      },
+      {
+        "gameId": "401872956",
+        "winner": "NYG",
+        "rationale": "The Giants are at home against a winless Tennessee team whose top two running backs, Tony Pollard and Tyjae Spears, are both questionable with ankle injuries."
+      },
+      {
+        "gameId": "401872957",
+        "winner": "JAX",
+        "rationale": "This is close; Jacksonville gets the edge at home in 84-degree heat after beating Cleveland 34-10 in its last home game."
+      },
+      {
+        "gameId": "401872958",
+        "winner": "SF",
+        "rationale": "San Francisco is 2-0 and has won by 20 and 22 points, while Arizona lost 31-7 to Seattle and lists five questionable starters, including both cornerbacks and its center."
+      },
+      {
+        "gameId": "401872959",
+        "winner": "TB",
+        "rationale": "Minnesota scored just 9 points last week with Kyler Murray out with a concussion, and I couldn't confirm his status for this game, so Tampa Bay gets the edge at home after two one-score losses."
+      },
+      {
+        "gameId": "401872960",
+        "winner": "BAL",
+        "rationale": "Dallas's secondary is short-handed, with Cobie Durant and P.J. Locke out and Malik Hooker doubtful, which favors Baltimore at a neutral site."
+      },
+      {
+        "gameId": "401872961",
+        "winner": "NO",
+        "rationale": "New Orleans has lost by one at Detroit and won at Baltimore, and now plays at home, while the Raiders listed Brock Bowers as doubtful last week."
+      },
+      {
+        "gameId": "401872962",
+        "winner": "DEN",
+        "rationale": "This is close; Denver's home field and altitude break the tie against a Rams team that scored 7 points against San Francisco's defense."
+      },
+      {
+        "gameId": "401872963",
+        "winner": "PHI",
+        "rationale": "Chicago's quarterback situation is unsettled: Caleb Williams has a hamstring injury, Tyson Bagent is in concussion protocol, and Case Keenum, who hasn't played a regular-season game since 2023, is in line to start against 2-0 Philadelphia."
+      }
+    ],
+    "google/gemini-3.1-pro-preview": [],
+    "x-ai/grok-4.7": []
+  },
+  "records": {
+    "openai/gpt-6-astra": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "anthropic/claude-opus-5.5": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "google/gemini-3.1-pro-preview": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    },
+    "x-ai/grok-4.7": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 16
+    }
+  },
+  "revision": {
+    "originalLockedAt": "2026-09-24T05:58:02.274Z",
+    "originalPath": "data/archives/2026-w03-original.json",
+    "promptMode": "independent"
+  }
+}
