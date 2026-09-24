@@ -47,6 +47,13 @@ export type WeekFile = {
   games: Game[];
   picks: Record<string, Pick[]>;
   records: Record<string, WeekRecord>;
+  corrections?: Array<{
+    modelId: ModelId;
+    gameId: string;
+    note: string;
+    sourceUrl: string;
+    verifiedAtUtc: string;
+  }>;
 };
 
 export type CurrentPointer = {

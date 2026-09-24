@@ -591,5 +591,28 @@
       "pushes": 0,
       "pending": 16
     }
-  }
+  },
+  "corrections": [
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872948",
+      "note": "Grok said Michael Penix Jr. was out. Atlanta named him its Week 3 starter on September 21.",
+      "sourceUrl": "https://www.atlantafalcons.com/news/michael-penix-jr-starting-qb-thursday-night-football-vs-packers",
+      "verifiedAtUtc": "2026-09-24T12:15:57Z"
+    },
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872959",
+      "note": "Grok said Kyler Murray was out with a concussion. Minnesota announced he had cleared the protocol and would start at Tampa Bay.",
+      "sourceUrl": "https://www.vikings.com/news/kyler-murray-starting-quarterback-week-3-buccaneers-injury",
+      "verifiedAtUtc": "2026-09-24T12:15:57Z"
+    },
+    {
+      "modelId": "x-ai/grok-4.7",
+      "gameId": "401872955",
+      "note": "Grok described Seattle's previous game as a shutout. Arizona scored seven points in Seattle's 31–7 win.",
+      "sourceUrl": "https://www.seahawks.com/game-day/2026/reg-week2/seahawks-at-cardinals/",
+      "verifiedAtUtc": "2026-09-24T12:16:48Z"
+    }
+  ]
 }

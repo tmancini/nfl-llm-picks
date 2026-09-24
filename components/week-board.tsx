@@ -362,6 +362,29 @@ export function WeekBoard({ week }: { week: WeekFile }) {
           <DesktopTable week={week} season={season} />
         </div>
       </div>
+      {week.corrections && week.corrections.length > 0 ? (
+        <div className="mt-3 border border-rule bg-panel px-4 py-3 text-xs text-ink-soft">
+          <h3 className="font-display text-sm font-bold text-ink">Corrections to model explanations</h3>
+          <ul className="mt-2 space-y-1.5">
+            {week.corrections.map((correction) => {
+              const model = week.models.find((entry) => entry.id === correction.modelId);
+              const game = week.games.find((entry) => entry.id === correction.gameId);
+              return (
+                <li key={`${correction.modelId}-${correction.gameId}`}>
+                  <span className="font-semibold text-ink">
+                    {model?.shortLabel ?? correction.modelId} · {game ? `${game.away}@${game.home}` : correction.gameId}:
+                  </span>{" "}
+                  {correction.note}{" "}
+                  <a href={correction.sourceUrl} target="_blank" rel="noreferrer" className="underline">
+                    Team report
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-2 text-ink-muted">The original picks and explanations remain unchanged.</p>
+        </div>
+      ) : null}
       <SeasonTrend weeks={seasonWeeks} season={week.season} />
     </section>
   );
