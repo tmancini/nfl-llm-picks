@@ -55,7 +55,6 @@ pnpm grade-week
 
 For a deliberate pre-kickoff revision, manually dispatch **Lock week** with `revise=true`, `season`, and `week`. This makes a new four-model lock using the same current ESPN context but omits market lines from the prompt and instructs models not to consult odds or prediction articles. The original lock is archived under `data/archives/`; partial responses stay in `data/checkpoints/` and never replace published picks. Once all four revised sets validate, the workflow publishes the revision and labels it on the site. The daily key cap and first-kickoff guard still apply. A successful revision is idempotent.
 
-The 2026 Week 3 revision alone accepts a temporary daily key limit up to $2 so it can run before Thursday kickoff. Normal locks and all other revisions still require a $1 daily limit. Restore the NFLLM key to $1 daily after this one-time run.
 
 Paid picks are off locally by default. Without `ENABLE_PAID_PICKS=1`, the script writes the ESPN slate with empty picks and prints the lock command. With paid picks enabled, a missing key or a key without a daily spending limit of $1 or less fails before any model call. `pnpm lock-week -- --fixture` writes a clearly labeled sample week.
 

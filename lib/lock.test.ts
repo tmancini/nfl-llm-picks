@@ -499,12 +499,6 @@ describe("lock protocol", () => {
       .rejects.toThrow("$0.75");
     await expect(assertCappedOpenRouterKey("test", response(1, "daily", 1) as typeof fetch))
       .resolves.toBeUndefined();
-    await expect(assertCappedOpenRouterKey("test", response(2, "daily", 1.3) as typeof fetch, 2))
-      .resolves.toBeUndefined();
-    await expect(assertCappedOpenRouterKey("test", response(2, "daily", 1.3) as typeof fetch))
-      .rejects.toThrow("$1 or less");
-    await expect(assertCappedOpenRouterKey("test", response(2, "daily", 0.61) as typeof fetch, 2, 0.5))
-      .resolves.toBeUndefined();
   });
 
   it("checkpoints valid models and resumes without paying for them again", async () => {

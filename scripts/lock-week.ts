@@ -42,14 +42,11 @@ async function reviseWeek(original: WeekFile, season: number, week: number, slat
   }
   const apiKey = getOpenRouterApiKey();
   if (!apiKey) throw new Error("--revise requires OPENROUTER_API_KEY");
-  const checkpoint = readRevisionCheckpointFile(season, week);
-  const completedModels = checkpoint?.models.filter((model) => (checkpoint.picks[model.id] ?? []).length === slate.games.length).length ?? 0;
-  const minRemaining = completedModels >= 2 ? 0.5 : 0.75;
-  const maxDailyLimit = season === 2026 && week === 3 ? 2 : 1;
-  await assertCappedOpenRouterKey(apiKey, fetch, maxDailyLimit, minRemaining);
+  await assertCappedOpenRouterKey(apiKey);
 
   const originalPath = `data/archives/${season}-w${String(week).padStart(2, "0")}-original.json`;
   const revision = { originalLockedAt: original.lockedAt, originalPath, promptMode: "independent" as const };
+  const checkpoint = readRevisionCheckpointFile(season, week);
   if (checkpoint && checkpoint.revision?.originalLockedAt !== original.lockedAt) {
     throw new Error("Revision checkpoint does not match the original lock");
   }
