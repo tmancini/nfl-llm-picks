@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
@@ -19,7 +19,7 @@ import { parseCliArgs } from "../lib/cli";
 import { consensusWinner } from "../lib/consensus";
 import { normalizeTeamCode } from "../lib/teams";
 import { seasonTrends } from "../lib/trends";
-import { listWeekFiles, readCheckpointFile, removeCheckpointFile, writeCheckpointFile } from "../lib/store";
+import { archiveOriginalWeek, listWeekFiles, readCheckpointFile, readRevisionCheckpointFile, removeCheckpointFile, removeRevisionCheckpointFile, writeCheckpointFile, writeRevisionCheckpointFile, writeWeekFile } from "../lib/store";
 import type { Game } from "../lib/types";
 
 const espnFixture = {
@@ -310,6 +310,22 @@ describe("prompt context", () => {
     expect(packed.market).toMatchObject({ homeMoneyline: -175, awayMoneyline: 145 });
     expect(JSON.stringify(packed)).toContain("2026-09-16T14:00:00Z");
   });
+
+  it("withholds market prices in an independent revision", () => {
+    const games = minimalGameContexts([game({ id: "1", away: "PHI", home: "KC" })]);
+    games[0].market = {
+      source: "DraftKings via ESPN",
+      homeMoneyline: -175,
+      awayMoneyline: 145,
+      homeSpread: -3.5,
+      fetchedAtUtc: "2026-09-24T12:00:00Z",
+    };
+    const prompt = userPrompt(2026, 3, games, "independent");
+    expect(gamesForPrompt(games, "independent")[0]).not.toHaveProperty("market");
+    expect(prompt).not.toContain("-175");
+    expect(prompt).not.toContain("DraftKings");
+    expect(prompt).toContain("Do not consult or use sportsbook odds");
+  });
 });
 
 describe("picks", () => {
@@ -502,6 +518,25 @@ describe("lock protocol", () => {
     }
   });
 
+  it("preserves the original and keeps a revision checkpoint unpublished", () => {
+    const cwd = mkdtempSync(path.join(tmpdir(), "nfllm-revision-"));
+    try {
+      const original = scaffoldWeekFile(2026, 3, [game({ id: "1", away: "PHI", home: "KC" })]);
+      original.picks[original.models[0].id] = [{ gameId: "1", winner: "KC", rationale: "Original pick." }];
+      writeWeekFile(original, cwd);
+      const archive = archiveOriginalWeek(original, cwd);
+      const partial = { ...original, revision: { originalLockedAt: "2026-09-24T05:00:00Z", originalPath: "data/archives/2026-w03-original.json", promptMode: "independent" as const } };
+      writeRevisionCheckpointFile(partial, cwd);
+      expect(readRevisionCheckpointFile(2026, 3, cwd)?.revision?.promptMode).toBe("independent");
+      expect(listWeekFiles(cwd)[0].revision).toBeUndefined();
+      expect(JSON.parse(readFileSync(archive, "utf8")).picks[original.models[0].id][0].winner).toBe("KC");
+      removeRevisionCheckpointFile(2026, 3, cwd);
+      expect(readRevisionCheckpointFile(2026, 3, cwd)).toBeNull();
+    } finally {
+      rmSync(cwd, { recursive: true, force: true });
+    }
+  });
+
   it("retries unusable JSON once, then accepts the first valid parse", async () => {
     const games = [game({ id: "1", away: "PHI", home: "KC" })];
     const week = scaffoldWeekFile(2026, 2, games);
@@ -577,6 +612,12 @@ describe("cli + consensus", () => {
     expect(parseCliArgs(["--context-only"])).toEqual({
       contextOnly: true,
     });
+    expect(parseCliArgs(["--season", "2026", "--week", "3", "--revise"])).toEqual({
+      season: 2026,
+      week: 3,
+      revise: true,
+    });
+    expect(() => parseCliArgs(["--force", "--revise"])).toThrow();
   });
 
   it("marks 3-of-4 agreement as consensus", () => {

@@ -4,6 +4,7 @@ export type CliArgs = {
   force?: boolean;
   fixture?: boolean;
   contextOnly?: boolean;
+  revise?: boolean;
 };
 
 export function parseCliArgs(argv: string[]): CliArgs {
@@ -23,6 +24,8 @@ export function parseCliArgs(argv: string[]): CliArgs {
       args.fixture = true;
     } else if (token === "--context-only") {
       args.contextOnly = true;
+    } else if (token === "--revise") {
+      args.revise = true;
     }
   }
   if (args.season !== undefined && !Number.isInteger(args.season)) {
@@ -30,6 +33,9 @@ export function parseCliArgs(argv: string[]): CliArgs {
   }
   if (args.week !== undefined && (!Number.isInteger(args.week) || args.week < 1)) {
     throw new Error("Invalid --week");
+  }
+  if (args.revise && (args.force || args.fixture || args.contextOnly)) {
+    throw new Error("--revise cannot be combined with --force, --fixture, or --context-only");
   }
   return args;
 }

@@ -1,7 +1,7 @@
 import { MODELS, MAX_LOCK_ATTEMPTS } from "./models";
 import { emptyRecord, gradeWeekFile } from "./grade";
 import { parsePicksPayload, validatePicks } from "./picks";
-import { SYSTEM_PROMPT, userPrompt } from "./prompt";
+import { INDEPENDENT_SYSTEM_PROMPT, SYSTEM_PROMPT, userPrompt, type PromptMode } from "./prompt";
 import { minimalGameContexts, type GameContext } from "./context";
 import type { OpenRouterClient } from "./openrouter";
 import type { Game, Pick, WeekFile } from "./types";
@@ -40,12 +40,14 @@ export async function lockModelPicks(
   games: Game[],
   contexts: GameContext[],
   maxAttempts = MAX_LOCK_ATTEMPTS,
+  mode: PromptMode = "market",
 ): Promise<Pick[]> {
-  const user = userPrompt(season, week, contexts);
+  const user = userPrompt(season, week, contexts, mode);
+  const system = mode === "independent" ? INDEPENDENT_SYSTEM_PROMPT : SYSTEM_PROMPT;
   let lastError: unknown;
   for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
     try {
-      const raw = await client.complete(modelId, SYSTEM_PROMPT, user);
+      const raw = await client.complete(modelId, system, user);
       return validatePicks(games, parsePicksPayload(raw));
     } catch (error) {
       lastError = error;
@@ -64,6 +66,7 @@ export async function applyLocks(
   client: OpenRouterClient,
   contexts?: GameContext[],
   onModelLocked?: (partial: WeekFile) => void | Promise<void>,
+  mode: PromptMode = "market",
 ): Promise<WeekFile> {
   if (weekHasPicks(week)) return week;
   const promptGames = contexts ?? minimalGameContexts(week.games);
@@ -83,6 +86,8 @@ export async function applyLocks(
       week.week,
       week.games,
       promptGames,
+      MAX_LOCK_ATTEMPTS,
+      mode,
     );
     if (onModelLocked) {
       await onModelLocked(gradeWeekFile({ ...next, source: "openrouter" }));

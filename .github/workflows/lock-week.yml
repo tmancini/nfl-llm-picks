@@ -5,6 +5,20 @@ on:
     - cron: "0 14 * * 3"
     - cron: "0 1 * * 4"
   workflow_dispatch:
+    inputs:
+      revise:
+        description: "Revise an already locked week with independent, odds-free picks"
+        type: boolean
+        required: false
+        default: false
+      season:
+        description: "Season for revision (required when revise is true)"
+        type: number
+        required: false
+      week:
+        description: "Week for revision (required when revise is true)"
+        type: number
+        required: false
 
 permissions:
   contents: write
@@ -29,7 +43,19 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ENABLE_PAID_PICKS: "1"
-        run: pnpm lock-week
+          REVISE: ${{ inputs.revise }}
+          LOCK_SEASON: ${{ inputs.season }}
+          LOCK_WEEK: ${{ inputs.week }}
+        run: |
+          if [ "$REVISE" = "true" ]; then
+            if [ -z "$LOCK_SEASON" ] || [ -z "$LOCK_WEEK" ]; then
+              echo "Revision requires season and week inputs" >&2
+              exit 1
+            fi
+            pnpm lock-week --season "$LOCK_SEASON" --week "$LOCK_WEEK" --revise
+          else
+            pnpm lock-week
+          fi
       - name: Commit locked week
         if: always()
         run: |

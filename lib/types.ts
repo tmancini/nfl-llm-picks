@@ -47,6 +47,11 @@ export type WeekFile = {
   games: Game[];
   picks: Record<string, Pick[]>;
   records: Record<string, WeekRecord>;
+  revision?: {
+    originalLockedAt: string;
+    originalPath: string;
+    promptMode: "independent";
+  };
   corrections?: Array<{
     modelId: ModelId;
     gameId: string;

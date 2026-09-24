@@ -10,13 +10,62 @@ import {
 } from "../lib/lock";
 import { assertCappedOpenRouterKey, createOpenRouterClient } from "../lib/openrouter";
 import {
+  archiveOriginalWeek,
   readCheckpointFile,
+  readRevisionCheckpointFile,
   readWeekFile,
   removeCheckpointFile,
+  removeRevisionCheckpointFile,
   writeCheckpointFile,
   writeCurrentPointer,
+  writeRevisionCheckpointFile,
   writeWeekFile,
 } from "../lib/store";
+import type { WeekFile } from "../lib/types";
+
+async function reviseWeek(original: WeekFile, season: number, week: number, slate: Awaited<ReturnType<typeof fetchSlate>>): Promise<void> {
+  if (!weekHasPicks(original) || !original.lockedAt) {
+    throw new Error("--revise requires a previously locked OpenRouter week");
+  }
+  if (original.revision) {
+    console.log(`Already revised: ${season} week ${week}`);
+    return;
+  }
+  const started = slate.games.find(
+    (game) => game.status !== "scheduled" || Date.parse(game.kickoffUtc) <= Date.now(),
+  );
+  if (started) {
+    throw new Error(`Cannot revise after the first kickoff (${started.away} at ${started.home})`);
+  }
+  if (process.env.ENABLE_PAID_PICKS !== "1") {
+    throw new Error("--revise requires ENABLE_PAID_PICKS=1");
+  }
+  const apiKey = getOpenRouterApiKey();
+  if (!apiKey) throw new Error("--revise requires OPENROUTER_API_KEY");
+  await assertCappedOpenRouterKey(apiKey);
+
+  const originalPath = `data/archives/${season}-w${String(week).padStart(2, "0")}-original.json`;
+  const revision = { originalLockedAt: original.lockedAt, originalPath, promptMode: "independent" as const };
+  const checkpoint = readRevisionCheckpointFile(season, week);
+  if (checkpoint && checkpoint.revision?.originalLockedAt !== original.lockedAt) {
+    throw new Error("Revision checkpoint does not match the original lock");
+  }
+  const base: WeekFile = checkpoint ?? { ...scaffoldWeekFile(season, week, slate.games), revision };
+  console.log(`Building independent context pack for ${season} week ${week}…`);
+  const contexts = await buildWeekContexts(slate);
+  archiveOriginalWeek(original);
+  const locked = await applyLocks(
+    base,
+    createOpenRouterClient(apiKey),
+    contexts,
+    (partial) => { writeRevisionCheckpointFile(partial); },
+    "independent",
+  );
+  const path = writeWeekFile(locked);
+  removeRevisionCheckpointFile(season, week);
+  writeCurrentPointer({ season, week });
+  console.log(`Revised ${season} week ${week}: ${path}`);
+}
 
 async function main(): Promise<void> {
   loadLocalEnv();
@@ -25,6 +74,13 @@ async function main(): Promise<void> {
   const season = args.season ?? live.season;
   const week = args.week ?? live.week;
   const slate = args.season || args.week ? await fetchSlate(season, week) : live;
+
+  if (args.revise) {
+    const original = readWeekFile(season, week);
+    if (!original) throw new Error("--revise requires an existing week file");
+    await reviseWeek(original, season, week, slate);
+    return;
+  }
 
   if (args.contextOnly) {
     console.log(`Fetching weekly context for ${season} week ${week} (no model calls)…`);
