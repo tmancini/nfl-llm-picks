@@ -333,21 +333,6 @@ export function WeekBoard({ week }: { week: WeekFile }) {
         </div>
       ) : null}
 
-      {week.revision ? (
-        <div className="mb-3 border border-header/25 bg-header/5 px-3 py-2 text-sm text-ink-soft">
-          Revised before kickoff with independent model picks. Sportsbook lines were withheld from the models. The{" "}
-          <a
-            href={`https://github.com/tmancini/nfl-llm-picks/blob/main/${week.revision.originalPath}`}
-            target="_blank"
-            rel="noreferrer"
-            className="underline"
-          >
-            original lock
-          </a>{" "}
-          is preserved.
-        </div>
-      ) : null}
-
       {!hasPicks && week.source === "slate" ? (
         <div className="mb-3 border border-dashed border-ink/25 bg-panel px-3 py-2 text-sm text-ink-soft">
           ESPN slate loaded without model picks. Lock with{" "}
