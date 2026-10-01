@@ -2,7 +2,7 @@
   "season": 2026,
   "week": 4,
   "source": "openrouter",
-  "lockedAt": null,
+  "lockedAt": "2026-10-01T06:58:35.994Z",
   "gradedAt": null,
   "models": [
     {
@@ -401,8 +401,170 @@
         "rationale": "New Orleans has home field in the dome, and Atlanta's defense is short-handed with A.J. Terrell and Da'Shawn Hand on IR."
       }
     ],
-    "google/gemini-3.1-pro-preview": [],
-    "x-ai/grok-4.7": []
+    "google/gemini-3.1-pro-preview": [
+      {
+        "gameId": "401872964",
+        "winner": "PIT",
+        "rationale": "Pittsburgh is favored on the road against a Browns team missing multiple key pieces on the interior offensive line."
+      },
+      {
+        "gameId": "401872965",
+        "winner": "IND",
+        "rationale": "Indianapolis enters as solid neutral-site favorites in London against a Washington defense dealing with questionable depth."
+      },
+      {
+        "gameId": "401872966",
+        "winner": "ARI",
+        "rationale": "Arizona is favored on the road facing a Giants roster plagued by injuries, including the loss of Jaxson Dart."
+      },
+      {
+        "gameId": "401872967",
+        "winner": "HOU",
+        "rationale": "Despite a winless start, Houston is favored at home and highly motivated to bounce back in a favorable matchup against Dallas."
+      },
+      {
+        "gameId": "401872968",
+        "winner": "GB",
+        "rationale": "Green Bay commands a strong implied win probability as road favorites over a struggling 0-3 Buccaneers squad."
+      },
+      {
+        "gameId": "401872969",
+        "winner": "CIN",
+        "rationale": "Cincinnati is favored at home and has the overall team strength to edge out Jacksonville in a competitive contest."
+      },
+      {
+        "gameId": "401872970",
+        "winner": "LAR",
+        "rationale": "The Rams are respected by the market as road favorites in Philadelphia, giving them the clear probability edge."
+      },
+      {
+        "gameId": "401872971",
+        "winner": "BUF",
+        "rationale": "The undefeated Bills are massive home favorites and comfortably outmatch a struggling Patriots roster."
+      },
+      {
+        "gameId": "401872972",
+        "winner": "CHI",
+        "rationale": "Even with Caleb Williams doubtful, the market implies Chicago still has the defensive strength and roster depth to win at home."
+      },
+      {
+        "gameId": "401872973",
+        "winner": "BAL",
+        "rationale": "Baltimore is overwhelmingly favored at home to dispatch a winless Titans team in rainy conditions."
+      },
+      {
+        "gameId": "401872974",
+        "winner": "MIN",
+        "rationale": "The undefeated Vikings are heavy home favorites against a 0-3 Dolphins team struggling for answers."
+      },
+      {
+        "gameId": "401872975",
+        "winner": "SF",
+        "rationale": "San Francisco carries an unblemished record and strong home-favorite odds to overcome a competitive Denver squad."
+      },
+      {
+        "gameId": "401872976",
+        "winner": "KC",
+        "rationale": "Kansas City is solidly favored on the road to hand Las Vegas its first loss in this battle of undefeated division rivals."
+      },
+      {
+        "gameId": "401872977",
+        "winner": "SEA",
+        "rationale": "Seattle is a heavy home favorite and poised to handle a winless Chargers team dealing with multiple questionable impact players."
+      },
+      {
+        "gameId": "401872978",
+        "winner": "DET",
+        "rationale": "Detroit holds a clear edge as road favorites against a Panthers squad missing key offensive lineman Damien Lewis."
+      },
+      {
+        "gameId": "401872979",
+        "winner": "NO",
+        "rationale": "New Orleans is favored at home in this divisional clash, and their overall offensive scheme should endure the absence of Travis Etienne Jr."
+      }
+    ],
+    "x-ai/grok-4.7": [
+      {
+        "gameId": "401872964",
+        "winner": "PIT",
+        "rationale": "Rodgers and a healthier skill group are more likely to win than Watson behind a Browns line missing both Jenkins and center Elgton Jenkins."
+      },
+      {
+        "gameId": "401872965",
+        "winner": "IND",
+        "rationale": "Daniel Jones’ Colts are the stronger side in a neutral London setting, with no verified high-impact absence flipping Jayden Daniels’ Commanders ahead."
+      },
+      {
+        "gameId": "401872966",
+        "winner": "ARI",
+        "rationale": "Jaxson Dart’s meniscus absence leaves the Giants without their starting quarterback, which is the decisive edge for Brissett’s Cardinals."
+      },
+      {
+        "gameId": "401872967",
+        "winner": "DAL",
+        "rationale": "Nico Collins is officially out and Houston is also missing multiple linemen, so Dak’s offense is more likely to win than the 0-3 Texans."
+      },
+      {
+        "gameId": "401872968",
+        "winner": "GB",
+        "rationale": "Jordan Love remains the healthier, more productive quarterback against a winless Bucs team with no verified starter-level absence."
+      },
+      {
+        "gameId": "401872969",
+        "winner": "CIN",
+        "rationale": "Joe Burrow at home is the decisive edge over Trevor Lawrence, and Cincinnati’s questionable defensive backs are not enough to flip it."
+      },
+      {
+        "gameId": "401872970",
+        "winner": "LAR",
+        "rationale": "Matthew Stafford is still more likely to win than Jalen Hurts even with Puka Nacua doubtful, after Philadelphia’s 27-7 offensive collapse."
+      },
+      {
+        "gameId": "401872971",
+        "winner": "BUF",
+        "rationale": "Josh Allen and the unbeaten Bills are clearly the stronger side against Drake Maye after New England’s 35-6 loss."
+      },
+      {
+        "gameId": "401872972",
+        "winner": "CHI",
+        "rationale": "Caleb Williams is out, but Case Keenum just handled Philadelphia and remains more likely to win at home than Geno Smith’s Jets."
+      },
+      {
+        "gameId": "401872973",
+        "winner": "BAL",
+        "rationale": "Lamar Jackson is expected to play, and Baltimore’s offense is a mismatch for a Titans team that has scored 10, 20 and 7 points."
+      },
+      {
+        "gameId": "401872974",
+        "winner": "MIN",
+        "rationale": "Even with Justin Jefferson questionable, Kyler Murray’s unbeaten Vikings are far more likely to beat an 0-3 Dolphins offense."
+      },
+      {
+        "gameId": "401872975",
+        "winner": "SF",
+        "rationale": "Brock Purdy, with McCaffrey and Trent Williams practicing fully, outweighs Nick Bosa’s absence against Bo Nix."
+      },
+      {
+        "gameId": "401872976",
+        "winner": "KC",
+        "rationale": "Patrick Mahomes is the decisive quarterback edge over Kirk Cousins despite both teams being 3-0."
+      },
+      {
+        "gameId": "401872977",
+        "winner": "SEA",
+        "rationale": "Sam Darnold at home is a clear quarterback and form edge over an 0-3 Chargers team with Ladd McConkey questionable."
+      },
+      {
+        "gameId": "401872978",
+        "winner": "DET",
+        "rationale": "Jared Goff’s offense is the decisive factor against Bryce Young, and light drizzle is not enough to change that."
+      },
+      {
+        "gameId": "401872979",
+        "winner": "NO",
+        "rationale": "The Saints at home are more likely to win than Tua’s Falcons, even with Travis Etienne out."
+      }
+    ]
   },
   "records": {
     "openai/gpt-6-astra": {
