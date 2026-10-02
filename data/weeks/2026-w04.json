@@ -35,10 +35,10 @@
       "homeName": "Cleveland Browns",
       "kickoffUtc": "2026-10-02T00:15Z",
       "kickoffEt": "Thu, Oct 1, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 27,
+      "awayScore": 24,
+      "winner": "CLE"
     },
     {
       "id": "401872965",
@@ -569,27 +569,27 @@
   "records": {
     "openai/gpt-6-astra": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 16
+      "pending": 15
     },
     "anthropic/claude-opus-5.5": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 16
+      "pending": 15
     },
     "google/gemini-3.1-pro-preview": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 16
+      "pending": 15
     },
     "x-ai/grok-4.7": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 16
+      "pending": 15
     }
   }
 }
