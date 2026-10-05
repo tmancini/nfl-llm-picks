@@ -48,10 +48,10 @@
       "homeName": "Washington Commanders",
       "kickoffUtc": "2026-10-04T13:30Z",
       "kickoffEt": "Sun, Oct 4, 9:30 AM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 13,
+      "awayScore": 30,
+      "winner": "IND"
     },
     {
       "id": "401872966",
@@ -61,10 +61,10 @@
       "homeName": "New York Giants",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 36,
+      "awayScore": 24,
+      "winner": "NYG"
     },
     {
       "id": "401872967",
@@ -74,10 +74,10 @@
       "homeName": "Houston Texans",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 30,
+      "awayScore": 34,
+      "winner": "DAL"
     },
     {
       "id": "401872968",
@@ -87,10 +87,10 @@
       "homeName": "Tampa Bay Buccaneers",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 14,
+      "awayScore": 17,
+      "winner": "GB"
     },
     {
       "id": "401872969",
@@ -100,10 +100,10 @@
       "homeName": "Cincinnati Bengals",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 17,
+      "awayScore": 22,
+      "winner": "JAX"
     },
     {
       "id": "401872970",
@@ -113,10 +113,10 @@
       "homeName": "Philadelphia Eagles",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 20,
+      "awayScore": 24,
+      "winner": "LAR"
     },
     {
       "id": "401872971",
@@ -126,10 +126,10 @@
       "homeName": "Buffalo Bills",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 26,
+      "awayScore": 29,
+      "winner": "NE"
     },
     {
       "id": "401872972",
@@ -139,10 +139,10 @@
       "homeName": "Chicago Bears",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 23,
+      "awayScore": 12,
+      "winner": "CHI"
     },
     {
       "id": "401872973",
@@ -152,10 +152,10 @@
       "homeName": "Baltimore Ravens",
       "kickoffUtc": "2026-10-04T17:00Z",
       "kickoffEt": "Sun, Oct 4, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 24,
+      "awayScore": 18,
+      "winner": "BAL"
     },
     {
       "id": "401872974",
@@ -165,10 +165,10 @@
       "homeName": "Minnesota Vikings",
       "kickoffUtc": "2026-10-04T20:05Z",
       "kickoffEt": "Sun, Oct 4, 4:05 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 15,
+      "awayScore": 10,
+      "winner": "MIN"
     },
     {
       "id": "401872975",
@@ -178,10 +178,10 @@
       "homeName": "San Francisco 49ers",
       "kickoffUtc": "2026-10-04T20:25Z",
       "kickoffEt": "Sun, Oct 4, 4:25 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 24,
+      "awayScore": 14,
+      "winner": "SF"
     },
     {
       "id": "401872976",
@@ -191,10 +191,10 @@
       "homeName": "Las Vegas Raiders",
       "kickoffUtc": "2026-10-04T20:25Z",
       "kickoffEt": "Sun, Oct 4, 4:25 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 27,
+      "awayScore": 30,
+      "winner": "KC"
     },
     {
       "id": "401872977",
@@ -204,10 +204,10 @@
       "homeName": "Seattle Seahawks",
       "kickoffUtc": "2026-10-04T20:25Z",
       "kickoffEt": "Sun, Oct 4, 4:25 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 30,
+      "awayScore": 23,
+      "winner": "SEA"
     },
     {
       "id": "401872978",
@@ -217,10 +217,10 @@
       "homeName": "Carolina Panthers",
       "kickoffUtc": "2026-10-05T00:20Z",
       "kickoffEt": "Sun, Oct 4, 8:20 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 32,
+      "awayScore": 26,
+      "winner": "CAR"
     },
     {
       "id": "401872979",
@@ -568,28 +568,28 @@
   },
   "records": {
     "openai/gpt-6-astra": {
-      "wins": 0,
-      "losses": 1,
+      "wins": 9,
+      "losses": 6,
       "pushes": 0,
-      "pending": 15
+      "pending": 1
     },
     "anthropic/claude-opus-5.5": {
-      "wins": 0,
-      "losses": 1,
+      "wins": 9,
+      "losses": 6,
       "pushes": 0,
-      "pending": 15
+      "pending": 1
     },
     "google/gemini-3.1-pro-preview": {
-      "wins": 0,
-      "losses": 1,
+      "wins": 9,
+      "losses": 6,
       "pushes": 0,
-      "pending": 15
+      "pending": 1
     },
     "x-ai/grok-4.7": {
-      "wins": 0,
-      "losses": 1,
+      "wins": 10,
+      "losses": 5,
       "pushes": 0,
-      "pending": 15
+      "pending": 1
     }
   }
 }
