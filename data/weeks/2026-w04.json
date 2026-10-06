@@ -3,7 +3,7 @@
   "week": 4,
   "source": "openrouter",
   "lockedAt": "2026-10-01T06:58:35.994Z",
-  "gradedAt": null,
+  "gradedAt": "2026-10-06T12:25:50.268Z",
   "models": [
     {
       "id": "openai/gpt-6-astra",
@@ -230,10 +230,10 @@
       "homeName": "New Orleans Saints",
       "kickoffUtc": "2026-10-06T00:15Z",
       "kickoffEt": "Mon, Oct 5, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 24,
+      "awayScore": 45,
+      "winner": "ATL"
     }
   ],
   "picks": {
@@ -569,27 +569,27 @@
   "records": {
     "openai/gpt-6-astra": {
       "wins": 9,
-      "losses": 6,
+      "losses": 7,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "anthropic/claude-opus-5.5": {
       "wins": 9,
-      "losses": 6,
+      "losses": 7,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "google/gemini-3.1-pro-preview": {
       "wins": 9,
-      "losses": 6,
+      "losses": 7,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "x-ai/grok-4.7": {
       "wins": 10,
-      "losses": 5,
+      "losses": 6,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     }
   }
 }
