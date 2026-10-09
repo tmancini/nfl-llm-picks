@@ -35,10 +35,10 @@
       "homeName": "Dallas Cowboys",
       "kickoffUtc": "2026-10-09T00:15Z",
       "kickoffEt": "Thu, Oct 8, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 16,
+      "awayScore": 24,
+      "winner": "TB"
     },
     {
       "id": "401872981",
@@ -536,27 +536,27 @@
   "records": {
     "openai/gpt-6-astra": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 15
+      "pending": 14
     },
     "anthropic/claude-opus-5.5": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 15
+      "pending": 14
     },
     "google/gemini-3.1-pro-preview": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 15
+      "pending": 14
     },
     "x-ai/grok-4.7": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 15
+      "pending": 14
     }
   }
 }
