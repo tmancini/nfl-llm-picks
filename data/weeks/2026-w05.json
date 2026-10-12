@@ -48,10 +48,10 @@
       "homeName": "Jacksonville Jaguars",
       "kickoffUtc": "2026-10-11T13:30Z",
       "kickoffEt": "Sun, Oct 11, 9:30 AM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 19,
+      "awayScore": 17,
+      "winner": "JAX"
     },
     {
       "id": "401872982",
@@ -61,10 +61,10 @@
       "homeName": "Miami Dolphins",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 24,
+      "awayScore": 31,
+      "winner": "CIN"
     },
     {
       "id": "401872983",
@@ -74,10 +74,10 @@
       "homeName": "New York Jets",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 17,
+      "awayScore": 12,
+      "winner": "NYJ"
     },
     {
       "id": "401872984",
@@ -87,10 +87,10 @@
       "homeName": "Tennessee Titans",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 3,
+      "awayScore": 26,
+      "winner": "HOU"
     },
     {
       "id": "401872985",
@@ -100,10 +100,10 @@
       "homeName": "Pittsburgh Steelers",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 34,
+      "awayScore": 22,
+      "winner": "PIT"
     },
     {
       "id": "401872986",
@@ -113,10 +113,10 @@
       "homeName": "New England Patriots",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 45,
+      "awayScore": 17,
+      "winner": "NE"
     },
     {
       "id": "401872987",
@@ -126,10 +126,10 @@
       "homeName": "New Orleans Saints",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 13,
+      "awayScore": 23,
+      "winner": "MIN"
     },
     {
       "id": "401872988",
@@ -139,9 +139,9 @@
       "homeName": "Washington Commanders",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "final",
+      "homeScore": 27,
+      "awayScore": 27,
       "winner": null
     },
     {
@@ -152,10 +152,10 @@
       "homeName": "Green Bay Packers",
       "kickoffUtc": "2026-10-11T17:00Z",
       "kickoffEt": "Sun, Oct 11, 1:00 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 31,
+      "awayScore": 7,
+      "winner": "GB"
     },
     {
       "id": "401872989",
@@ -165,10 +165,10 @@
       "homeName": "Los Angeles Chargers",
       "kickoffUtc": "2026-10-11T20:05Z",
       "kickoffEt": "Sun, Oct 11, 4:05 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 17,
+      "awayScore": 23,
+      "winner": "DEN"
     },
     {
       "id": "401872991",
@@ -178,10 +178,10 @@
       "homeName": "Arizona Cardinals",
       "kickoffUtc": "2026-10-11T20:25Z",
       "kickoffEt": "Sun, Oct 11, 4:25 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 21,
+      "awayScore": 45,
+      "winner": "DET"
     },
     {
       "id": "401872992",
@@ -191,10 +191,10 @@
       "homeName": "Seattle Seahawks",
       "kickoffUtc": "2026-10-11T20:25Z",
       "kickoffEt": "Sun, Oct 11, 4:25 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 29,
+      "awayScore": 32,
+      "winner": "SF"
     },
     {
       "id": "401872993",
@@ -204,10 +204,10 @@
       "homeName": "Atlanta Falcons",
       "kickoffUtc": "2026-10-12T00:20Z",
       "kickoffEt": "Sun, Oct 11, 8:20 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 23,
+      "awayScore": 30,
+      "winner": "BAL"
     },
     {
       "id": "401872994",
@@ -535,28 +535,28 @@
   },
   "records": {
     "openai/gpt-6-astra": {
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "pending": 14
+      "wins": 9,
+      "losses": 4,
+      "pushes": 1,
+      "pending": 1
     },
     "anthropic/claude-opus-5.5": {
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "pending": 14
+      "wins": 9,
+      "losses": 4,
+      "pushes": 1,
+      "pending": 1
     },
     "google/gemini-3.1-pro-preview": {
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "pending": 14
+      "wins": 10,
+      "losses": 3,
+      "pushes": 1,
+      "pending": 1
     },
     "x-ai/grok-4.7": {
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "pending": 14
+      "wins": 9,
+      "losses": 4,
+      "pushes": 1,
+      "pending": 1
     }
   }
 }
