@@ -3,7 +3,7 @@
   "week": 5,
   "source": "openrouter",
   "lockedAt": "2026-10-07T19:42:48.642Z",
-  "gradedAt": null,
+  "gradedAt": "2026-10-13T13:11:14.578Z",
   "models": [
     {
       "id": "openai/gpt-6-astra",
@@ -217,10 +217,10 @@
       "homeName": "Los Angeles Rams",
       "kickoffUtc": "2026-10-13T00:15Z",
       "kickoffEt": "Mon, Oct 12, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 34,
+      "awayScore": 37,
+      "winner": "BUF"
     }
   ],
   "picks": {
@@ -536,27 +536,27 @@
   "records": {
     "openai/gpt-6-astra": {
       "wins": 9,
-      "losses": 4,
+      "losses": 5,
       "pushes": 1,
-      "pending": 1
+      "pending": 0
     },
     "anthropic/claude-opus-5.5": {
       "wins": 9,
-      "losses": 4,
+      "losses": 5,
       "pushes": 1,
-      "pending": 1
+      "pending": 0
     },
     "google/gemini-3.1-pro-preview": {
       "wins": 10,
-      "losses": 3,
+      "losses": 4,
       "pushes": 1,
-      "pending": 1
+      "pending": 0
     },
     "x-ai/grok-4.7": {
       "wins": 9,
-      "losses": 4,
+      "losses": 5,
       "pushes": 1,
-      "pending": 1
+      "pending": 0
     }
   }
 }
