@@ -507,7 +507,7 @@ describe("lock protocol", () => {
     const checkpoints: typeof week[] = [];
     await expect(applyLocks(week, {
       async complete(model) {
-        if (model === "google/gemini-3.1-pro-preview") return "invalid";
+        if (model === "google/gemini-4-argon") return "invalid";
         return JSON.stringify({ picks: [{ gameId: "1", winner: "KC", rationale: "KC is the stronger side." }] });
       },
     }, undefined, (partial) => { checkpoints.push(partial); })).rejects.toThrow("No usable pick set");
@@ -525,7 +525,7 @@ describe("lock protocol", () => {
         return JSON.stringify({ picks: [{ gameId: "1", winner: "KC", rationale: "KC is the stronger side." }] });
       },
     });
-    expect(called).toEqual(["google/gemini-3.1-pro-preview", "x-ai/grok-4.7"]);
+    expect(called).toEqual(["google/gemini-4-argon", "x-ai/grok-4.7"]);
     expect(weekHasPicks(complete)).toBe(true);
   });
 

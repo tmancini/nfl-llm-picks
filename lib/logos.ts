@@ -11,6 +11,7 @@ const MODEL_LOGOS: Record<string, string> = {
   "openai/gpt-6-astra": "/models/openai.svg",
   "anthropic/claude-fable-5.1": "/models/anthropic.svg",
   "google/gemini-3.1-pro-preview": "/models/gemini.svg",
+  "google/gemini-4-argon": "/models/gemini.svg",
   "x-ai/grok-4.6": "/models/grok.svg",
 };
 

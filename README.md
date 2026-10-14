@@ -10,10 +10,10 @@ Pinned OpenRouter slugs (not `:latest`):
 
 - `openai/gpt-6-astra`
 - `anthropic/claude-opus-5.5`
-- `google/gemini-3.1-pro-preview`
+- `google/gemini-4-argon`
 - `x-ai/grok-4.7`
 
-The slugs are the current flagship text models as checked against the [OpenRouter catalogue](https://openrouter.ai/models) on 2026-09-22. OpenAI's newer Sol and Luna releases are lower tiers than Astra; Google's newer Flash releases are lower tiers than Pro. Each week's JSON keeps the exact model IDs used for its picks, while season totals group successive models by provider.
+The slugs are the current flagship text models as checked against the [OpenRouter catalogue](https://openrouter.ai/models) on 2026-10-14. Gemini 4 Argon replaces Gemini 3.1 Pro for future locks; Week 6 was already locked with Gemini 3.1 Pro. OpenAI's newer Sol and Luna releases and Anthropic's newer Sonnet and Haiku releases are lower tiers than Astra and Opus. Each week's JSON keeps the exact model IDs used for its picks, while season totals group successive models by provider.
 
 The board puts weekly and season records above the game picks. **Share for X** prepares a 1200×1200 PNG with the full week's picks and results; browsers with file sharing can send it through the native share sheet, while desktop browsers offer a preview, copy-image button, and download. The season chart shows cumulative accuracy by provider as graded weeks accumulate.
 
