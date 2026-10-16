@@ -35,10 +35,10 @@
       "homeName": "Denver Broncos",
       "kickoffUtc": "2026-10-16T00:15Z",
       "kickoffEt": "Thu, Oct 15, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 17,
+      "awayScore": 14,
+      "winner": "DEN"
     },
     {
       "id": "401872996",
@@ -503,27 +503,27 @@
   "records": {
     "openai/gpt-6-astra": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "anthropic/claude-opus-5.5": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "google/gemini-3.1-pro-preview": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "x-ai/grok-4.7": {
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     }
   }
 }
