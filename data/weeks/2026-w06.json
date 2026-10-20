@@ -3,7 +3,7 @@
   "week": 6,
   "source": "openrouter",
   "lockedAt": "2026-10-14T18:16:42.404Z",
-  "gradedAt": null,
+  "gradedAt": "2026-10-20T10:39:17.066Z",
   "models": [
     {
       "id": "openai/gpt-6-astra",
@@ -204,10 +204,10 @@
       "homeName": "San Francisco 49ers",
       "kickoffUtc": "2026-10-20T00:15Z",
       "kickoffEt": "Mon, Oct 19, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 23,
+      "awayScore": 17,
+      "winner": "SF"
     }
   ],
   "picks": {
@@ -502,28 +502,28 @@
   },
   "records": {
     "openai/gpt-6-astra": {
-      "wins": 7,
+      "wins": 8,
       "losses": 6,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "anthropic/claude-opus-5.5": {
-      "wins": 8,
+      "wins": 9,
       "losses": 5,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "google/gemini-3.1-pro-preview": {
-      "wins": 6,
+      "wins": 7,
       "losses": 7,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "x-ai/grok-4.7": {
-      "wins": 7,
+      "wins": 8,
       "losses": 6,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     }
   }
 }
