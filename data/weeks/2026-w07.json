@@ -1,0 +1,529 @@
+{
+  "season": 2026,
+  "week": 7,
+  "source": "openrouter",
+  "lockedAt": "2026-10-21T18:21:35.759Z",
+  "gradedAt": null,
+  "models": [
+    {
+      "id": "openai/gpt-6-astra",
+      "label": "GPT-6 Astra",
+      "shortLabel": "Astra"
+    },
+    {
+      "id": "anthropic/claude-opus-5.5",
+      "label": "Claude Opus 5.5",
+      "shortLabel": "Opus"
+    },
+    {
+      "id": "google/gemini-4-argon",
+      "label": "Gemini 4 Argon",
+      "shortLabel": "Gemini"
+    },
+    {
+      "id": "x-ai/grok-4.7",
+      "label": "Grok 4.7",
+      "shortLabel": "Grok"
+    }
+  ],
+  "games": [
+    {
+      "id": "401873010",
+      "away": "NE",
+      "home": "CHI",
+      "awayName": "New England Patriots",
+      "homeName": "Chicago Bears",
+      "kickoffUtc": "2026-10-23T00:15Z",
+      "kickoffEt": "Thu, Oct 22, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873011",
+      "away": "PIT",
+      "home": "NO",
+      "awayName": "Pittsburgh Steelers",
+      "homeName": "New Orleans Saints",
+      "kickoffUtc": "2026-10-25T13:30Z",
+      "kickoffEt": "Sun, Oct 25, 9:30 AM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873012",
+      "away": "CIN",
+      "home": "BAL",
+      "awayName": "Cincinnati Bengals",
+      "homeName": "Baltimore Ravens",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873013",
+      "away": "CLE",
+      "home": "TEN",
+      "awayName": "Cleveland Browns",
+      "homeName": "Tennessee Titans",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873014",
+      "away": "IND",
+      "home": "MIN",
+      "awayName": "Indianapolis Colts",
+      "homeName": "Minnesota Vikings",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873015",
+      "away": "MIA",
+      "home": "NYJ",
+      "awayName": "Miami Dolphins",
+      "homeName": "New York Jets",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873016",
+      "away": "NYG",
+      "home": "HOU",
+      "awayName": "New York Giants",
+      "homeName": "Houston Texans",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873017",
+      "away": "SF",
+      "home": "ATL",
+      "awayName": "San Francisco 49ers",
+      "homeName": "Atlanta Falcons",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873018",
+      "away": "TB",
+      "home": "CAR",
+      "awayName": "Tampa Bay Buccaneers",
+      "homeName": "Carolina Panthers",
+      "kickoffUtc": "2026-10-25T17:00Z",
+      "kickoffEt": "Sun, Oct 25, 1:00 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873019",
+      "away": "DEN",
+      "home": "ARI",
+      "awayName": "Denver Broncos",
+      "homeName": "Arizona Cardinals",
+      "kickoffUtc": "2026-10-25T20:05Z",
+      "kickoffEt": "Sun, Oct 25, 4:05 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873020",
+      "away": "GB",
+      "home": "DET",
+      "awayName": "Green Bay Packers",
+      "homeName": "Detroit Lions",
+      "kickoffUtc": "2026-10-25T20:25Z",
+      "kickoffEt": "Sun, Oct 25, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873021",
+      "away": "LAR",
+      "home": "LV",
+      "awayName": "Los Angeles Rams",
+      "homeName": "Las Vegas Raiders",
+      "kickoffUtc": "2026-10-25T20:25Z",
+      "kickoffEt": "Sun, Oct 25, 4:25 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873022",
+      "away": "KC",
+      "home": "SEA",
+      "awayName": "Kansas City Chiefs",
+      "homeName": "Seattle Seahawks",
+      "kickoffUtc": "2026-10-26T00:20Z",
+      "kickoffEt": "Sun, Oct 25, 8:20 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    },
+    {
+      "id": "401873009",
+      "away": "DAL",
+      "home": "PHI",
+      "awayName": "Dallas Cowboys",
+      "homeName": "Philadelphia Eagles",
+      "kickoffUtc": "2026-10-27T00:15Z",
+      "kickoffEt": "Mon, Oct 26, 8:15 PM ET",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winner": null
+    }
+  ],
+  "picks": {
+    "openai/gpt-6-astra": [
+      {
+        "gameId": "401873010",
+        "winner": "CHI",
+        "rationale": "Chicago's home advantage and New England's multiple offensive-line availability concerns outweigh the Patriots' stronger recent form."
+      },
+      {
+        "gameId": "401873011",
+        "winner": "PIT",
+        "rationale": "Pittsburgh's recent offensive production gives it the edge against New Orleans' struggling defense despite significant receiver absences."
+      },
+      {
+        "gameId": "401873012",
+        "winner": "CIN",
+        "rationale": "With the moneylines even, Cincinnati's extra rest and Jackson's unresolved ankle injury narrowly outweigh Baltimore's home advantage."
+      },
+      {
+        "gameId": "401873013",
+        "winner": "CLE",
+        "rationale": "Cleveland's defense, allowing just 27 points over its last two games, has the edge against Tennessee's injury-depleted offensive interior."
+      },
+      {
+        "gameId": "401873014",
+        "winner": "MIN",
+        "rationale": "Minnesota's rested defense has allowed only 39 points across three games and faces an Indianapolis offense missing Alec Pierce."
+      },
+      {
+        "gameId": "401873015",
+        "winner": "NYJ",
+        "rationale": "The Jets' home-field edge and steadier recent defense outweigh Miami's rest advantage and New York's injury concerns."
+      },
+      {
+        "gameId": "401873016",
+        "winner": "HOU",
+        "rationale": "Houston's offense has scored at least 26 points in three straight games and faces a Giants defense with multiple questionable starters."
+      },
+      {
+        "gameId": "401873017",
+        "winner": "SF",
+        "rationale": "San Francisco's consistent scoring and unbeaten form outweigh its injury concerns against an Atlanta defense allowing 30-plus points in consecutive losses."
+      },
+      {
+        "gameId": "401873018",
+        "winner": "CAR",
+        "rationale": "Carolina's consecutive wins and healthier quarterback outlook provide the edge with Mayfield practicing but not yet confirmed to start."
+      },
+      {
+        "gameId": "401873019",
+        "winner": "DEN",
+        "rationale": "Denver's defense has allowed 31 points over two consecutive wins, supporting its edge despite Surtain and Hufanga being doubtful."
+      },
+      {
+        "gameId": "401873020",
+        "winner": "DET",
+        "rationale": "Detroit's rested, productive offense can exploit Green Bay's defensive front without Micah Parsons and Javon Hargrave."
+      },
+      {
+        "gameId": "401873021",
+        "winner": "LAR",
+        "rationale": "Despite substantial injuries, the Rams retain the offensive matchup edge against a Raiders defense allowing 108 points over three straight losses."
+      },
+      {
+        "gameId": "401873022",
+        "winner": "SEA",
+        "rationale": "Seattle's home advantage and Kansas City's uncertainty at both offensive tackle spots support a narrow edge despite the Chiefs' unbeaten record."
+      },
+      {
+        "gameId": "401873009",
+        "winner": "DAL",
+        "rationale": "Hurts' confirmed injured-reserve placement and Barkley's uncertain availability leave Philadelphia at an offensive disadvantage against Dallas."
+      }
+    ],
+    "anthropic/claude-opus-5.5": [
+      {
+        "gameId": "401873010",
+        "winner": "CHI",
+        "rationale": "Chicago has home field, and New England's line is hurting, with its starting center and a guard doubtful and RT Morgan Moses questionable."
+      },
+      {
+        "gameId": "401873011",
+        "winner": "PIT",
+        "rationale": "Pittsburgh is the better all-around team, and the game in Paris takes away New Orleans' home field."
+      },
+      {
+        "gameId": "401873012",
+        "winner": "CIN",
+        "rationale": "Lamar Jackson missed Wednesday practice after sitting out two games, so Tyler Huntley probably starts again, and I lean Cincinnati in an even game."
+      },
+      {
+        "gameId": "401873013",
+        "winner": "CLE",
+        "rationale": "Cleveland's defense has won close, low-scoring games, which gives it the edge over a 1-5 Tennessee team."
+      },
+      {
+        "gameId": "401873014",
+        "winner": "MIN",
+        "rationale": "Unbeaten Minnesota is at home against an Indianapolis team missing Alec Pierce and likely Sauce Gardner."
+      },
+      {
+        "gameId": "401873015",
+        "winner": "NYJ",
+        "rationale": "The Jets are at home against a winless Miami team that has scored little all year."
+      },
+      {
+        "gameId": "401873016",
+        "winner": "HOU",
+        "rationale": "Houston is a big home favorite in the dome and has the stronger roster."
+      },
+      {
+        "gameId": "401873017",
+        "winner": "SF",
+        "rationale": "Unbeaten San Francisco is the more complete team, even without Deebo Samuel."
+      },
+      {
+        "gameId": "401873018",
+        "winner": "CAR",
+        "rationale": "Baker Mayfield's thumb is still uncertain (the call comes Friday), while Carolina is at home and playing well."
+      },
+      {
+        "gameId": "401873019",
+        "winner": "DEN",
+        "rationale": "Denver's overall edge should hold up even if Pat Surtain and Talanoa Hufanga miss the game."
+      },
+      {
+        "gameId": "401873020",
+        "winner": "DET",
+        "rationale": "Green Bay is missing Micah Parsons and two defensive tackles, which takes away much of its pass rush against Detroit's offense in the dome."
+      },
+      {
+        "gameId": "401873021",
+        "winner": "LAR",
+        "rationale": "The Rams have the better roster and coaching, even with injuries, against a Raiders team on a three-game losing streak."
+      },
+      {
+        "gameId": "401873022",
+        "winner": "SEA",
+        "rationale": "Seattle's home crowd and a solid favorite line make it a slight pick over unbeaten Kansas City, whose tackles are both questionable."
+      },
+      {
+        "gameId": "401873009",
+        "winner": "DAL",
+        "rationale": "With Jalen Hurts on IR, Philadelphia's offense has struggled, so Dallas is the pick."
+      }
+    ],
+    "google/gemini-4-argon": [
+      {
+        "gameId": "401873010",
+        "winner": "CHI",
+        "rationale": "Chicago holds home-field advantage against a New England offensedepleted along the offensive line with Alijah Vera-Tucker and Ben Brown doubtful."
+      },
+      {
+        "gameId": "401873011",
+        "winner": "PIT",
+        "rationale": "Pittsburgh brings superior recent form and a 4-2 record into this neutral-site matchup against a 2-4 Saints team struggling defensively."
+      },
+      {
+        "gameId": "401873012",
+        "winner": "CIN",
+        "rationale": "A rested Cincinnati squad coming off a bye week edges a Baltimore team dealing with ankle and offensive line injuries to Lamar Jackson and Cam Jurgens."
+      },
+      {
+        "gameId": "401873013",
+        "winner": "CLE",
+        "rationale": "Cleveland's stingy defense that just held Baltimore to 10 points gives the 4-2 Browns the edge over a 1-5 Titans team missing multiple interior offensive linemen."
+      },
+      {
+        "gameId": "401873014",
+        "winner": "MIN",
+        "rationale": "Undefeated Minnesota returns from its bye week at home against a slumping Colts team likely missing top cornerback Sauce Gardner."
+      },
+      {
+        "gameId": "401873015",
+        "winner": "NYJ",
+        "rationale": "The Jets' defense and home-field edge outweigh their injury concerns against a winless 0-5 Dolphins team."
+      },
+      {
+        "gameId": "401873016",
+        "winner": "HOU",
+        "rationale": "Houston is a heavy home favorite riding consecutive wins with a high-scoring offense against a Giants team with several questionable defensive starters."
+      },
+      {
+        "gameId": "401873017",
+        "winner": "SF",
+        "rationale": "Unbeaten 6-0 San Francisco has the offensive consistency to overcome Deebo Samuel's absence against an Atlanta defense allowing 30.5 points per game over its last two outings."
+      },
+      {
+        "gameId": "401873018",
+        "winner": "CAR",
+        "rationale": "Carolina comes in off impressive wins over Detroit and Philadelphia while 1-5 Tampa Bay faces key injuries to Baker Mayfield and Antoine Winfield Jr."
+      },
+      {
+        "gameId": "401873019",
+        "winner": "DEN",
+        "rationale": "Denver's strong defense and two-game winning streak make the Broncos the clear choice over a 2-4 Arizona team missing running back James Conner."
+      },
+      {
+        "gameId": "401873020",
+        "winner": "DET",
+        "rationale": "Detroit comes off a bye week at Ford Field to face a Green Bay defense missing pass rushers Micah Parsons and Javon Hargrave."
+      },
+      {
+        "gameId": "401873021",
+        "winner": "LAR",
+        "rationale": "The Rams are solidly favored to rebound against a Raiders defense that has surrendered at least 30 points in three straight losses."
+      },
+      {
+        "gameId": "401873022",
+        "winner": "SEA",
+        "rationale": "Seattle's home-field advantage at Lumen Field and implied market strength carry the edge over a Chiefs offense with questionable statuses for Rashee Rice and two offensive tackles."
+      },
+      {
+        "gameId": "401873009",
+        "winner": "DAL",
+        "rationale": "Dallas is heavily favored on the road against a struggling Eagles team that has Jalen Hurts on injured reserve and Saquon Barkley questionable."
+      }
+    ],
+    "x-ai/grok-4.7": [
+      {
+        "gameId": "401873010",
+        "winner": "CHI",
+        "rationale": "Chicago’s home edge holds with Drake Maye’s line thinned by Vera-Tucker and Brown not practicing and no weather offset."
+      },
+      {
+        "gameId": "401873011",
+        "winner": "PIT",
+        "rationale": "Pittsburgh’s stronger form is the decisive gap against a 2-4 Saints side, and light rain does not flip that."
+      },
+      {
+        "gameId": "401873012",
+        "winner": "BAL",
+        "rationale": "Even with Lamar Jackson still out of practice and Huntley likely starting, the market already prices that and Baltimore remains the slight home side."
+      },
+      {
+        "gameId": "401873013",
+        "winner": "CLE",
+        "rationale": "Cleveland’s better record and recent form outweigh questionable front-seven pieces against a 1-5 Titans team."
+      },
+      {
+        "gameId": "401873014",
+        "winner": "MIN",
+        "rationale": "Undefeated Minnesota at home is the clear strength edge, with Sauce Gardner doubtful further weakening Indianapolis."
+      },
+      {
+        "gameId": "401873015",
+        "winner": "NYJ",
+        "rationale": "The Jets’ home matchup against an 0-5 Dolphins team is the decisive gap despite Breece Hall’s questionable tag."
+      },
+      {
+        "gameId": "401873016",
+        "winner": "HOU",
+        "rationale": "Houston is priced as a heavy home favorite, and no verified Giants quarterback or starter news justifies fading that."
+      },
+      {
+        "gameId": "401873017",
+        "winner": "SF",
+        "rationale": "Undefeated San Francisco remains the stronger side even with Deebo Samuel out and Nick Bosa questionable."
+      },
+      {
+        "gameId": "401873018",
+        "winner": "CAR",
+        "rationale": "Carolina’s form is decisive while Baker Mayfield’s thumb return is unconfirmed and Tampa is planning around Jalon Daniels."
+      },
+      {
+        "gameId": "401873019",
+        "winner": "DEN",
+        "rationale": "Denver’s overall form still outweighs doubtful statuses for Pat Surtain and Talanoa Hufanga in a dome."
+      },
+      {
+        "gameId": "401873020",
+        "winner": "DET",
+        "rationale": "Detroit at home is the stronger side, with Micah Parsons already out and that loss reflected in Green Bay’s standing."
+      },
+      {
+        "gameId": "401873021",
+        "winner": "LAR",
+        "rationale": "The Rams are the clearer strength side against a Raiders team on a three-game losing streak, indoors."
+      },
+      {
+        "gameId": "401873022",
+        "winner": "SEA",
+        "rationale": "Seattle’s home edge is the market’s decisive lean over unbeaten Kansas City, with no verified Mahomes absence to reprice it."
+      },
+      {
+        "gameId": "401873009",
+        "winner": "DAL",
+        "rationale": "Jalen Hurts is on injured reserve, so Dallas is the more likely winner despite Philadelphia being at home."
+      }
+    ]
+  },
+  "records": {
+    "openai/gpt-6-astra": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 14
+    },
+    "anthropic/claude-opus-5.5": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 14
+    },
+    "google/gemini-4-argon": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 14
+    },
+    "x-ai/grok-4.7": {
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 14
+    }
+  }
+}
