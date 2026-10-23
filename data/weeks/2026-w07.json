@@ -35,10 +35,10 @@
       "homeName": "Chicago Bears",
       "kickoffUtc": "2026-10-23T00:15Z",
       "kickoffEt": "Thu, Oct 22, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 30,
+      "awayScore": 24,
+      "winner": "CHI"
     },
     {
       "id": "401873011",
@@ -502,28 +502,28 @@
   },
   "records": {
     "openai/gpt-6-astra": {
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "anthropic/claude-opus-5.5": {
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "google/gemini-4-argon": {
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     },
     "x-ai/grok-4.7": {
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "pending": 14
+      "pending": 13
     }
   }
 }
