@@ -3,7 +3,7 @@
   "week": 7,
   "source": "openrouter",
   "lockedAt": "2026-10-21T18:21:35.759Z",
-  "gradedAt": null,
+  "gradedAt": "2026-10-27T11:16:12.254Z",
   "models": [
     {
       "id": "openai/gpt-6-astra",
@@ -204,10 +204,10 @@
       "homeName": "Philadelphia Eagles",
       "kickoffUtc": "2026-10-27T00:15Z",
       "kickoffEt": "Mon, Oct 26, 8:15 PM ET",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winner": null
+      "status": "final",
+      "homeScore": 21,
+      "awayScore": 38,
+      "winner": "DAL"
     }
   ],
   "picks": {
@@ -502,28 +502,28 @@
   },
   "records": {
     "openai/gpt-6-astra": {
-      "wins": 9,
+      "wins": 10,
       "losses": 4,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "anthropic/claude-opus-5.5": {
-      "wins": 9,
+      "wins": 10,
       "losses": 4,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "google/gemini-4-argon": {
-      "wins": 9,
+      "wins": 10,
       "losses": 4,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     },
     "x-ai/grok-4.7": {
-      "wins": 8,
+      "wins": 9,
       "losses": 5,
       "pushes": 0,
-      "pending": 1
+      "pending": 0
     }
   }
 }
